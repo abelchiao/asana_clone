@@ -20,11 +20,24 @@ class LoginForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value })
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, idx) => (
+          <li key={idx}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   render() {
     return (
       <div className='login-parent'>
         <form className='login-form' onSubmit={this.handleSubmit}>
           <h1 className='login-title'>{this.props.formType}</h1>
+          {this.renderErrors()}
           <label>Email Address
             <input
               type='text'
