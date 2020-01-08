@@ -10,9 +10,9 @@ class UtilBar extends React.Component {
       <button></button>
     );
 
-    const utilBar = () => (
+    // const utilBar = () => (
 
-    );
+    // );
 
     return (
       <div>
