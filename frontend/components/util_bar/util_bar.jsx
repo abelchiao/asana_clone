@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class UtilBar extends React.Component {
   constructor(props) {
@@ -6,19 +7,23 @@ class UtilBar extends React.Component {
   }
 
   render() {
-    const sessionLinks = () => (
-      <button></button>
+    const utilBar = this.props.currentUser ? (
+      <div>
+        <div>Hello, {this.props.currentUser.first_name}</div>
+        <button onClick={this.props.logout}>Log Out</button>
+      </div>
+    ) : (
+      <div>
+        <div>search, add, ?</div>
+        <Link className='session-link' to='/signup'>Sign Up</Link>
+        <Link className='session-link' to='/login'>Log In</Link>
+      </div>
     );
-
-    // const utilBar = () => (
-
-    // );
 
     return (
       <div>
         <h1>Not-sana</h1>
-        {display}
-        <button onClick={this.props.logout}>Log Out</button>
+        {utilBar}
       </div>
     )
   }

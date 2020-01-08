@@ -22,9 +22,9 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.props.formType}</h1>
-        <form onSubmit={this.handleSubmit}>
+      <div className='login-parent'>
+        <form className='login-form' onSubmit={this.handleSubmit}>
+          <h1 className='login-title'>{this.props.formType}</h1>
           <label>Email Address
             <input
               type='text'
