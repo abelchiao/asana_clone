@@ -1,4 +1,4 @@
-.login-parent {
+.signup-parent {
   display: flex;
   width: 585px;
   height: 560px;
@@ -6,10 +6,11 @@
   border-radius: 5px;
   margin: 0 auto;
   font-family: 'Montserrat', sans-serif;
+  align-items: center;
   flex-direction: column;
 }
 
-.login-logo {
+.signup-logo {
   display: flex;
   height: 15%;
   width: 15%;
@@ -18,14 +19,14 @@
   padding-bottom: 30px;
 }
 
-.login-header {
+.signup-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.demo-login-button {
+.demo-signup-button {
   width: 150px;
 }
 
@@ -35,20 +36,24 @@
   color: #cbd4db;
 }
 
-.login-form {
-  display: block;
-  margin-left: 90px;
-  margin-right: 90px;
+.signup-form {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-between;
+  /* margin-left: 90px;
+  margin-right: 90px; */
 }
 
-.login-title {
+.signup-title {
   display: flex;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   margin-top: 50px;
 }
 
-.login-button, .demo-login-button {
+.signup-button, .demo-signup-button {
   padding: 5px;
   background: rgb(20,170,245);
   color: white;
@@ -58,16 +63,16 @@
   margin: 0 auto;
 }
 
-.login-button-container {
+.signup-button-container {
   display: flex;
   /* flex-direction: row; */
   /* align-items: right; */
 }
 
-.login-button {
+.signup-button {
   width: 67px;
   margin-top: 20px;
-  transform: translateX(180px);
+  /* transform: translateX(180px); */
   /* align-items: flex-end;
   justify-content: flex-end; */
 }
@@ -78,24 +83,27 @@
   height: 100px;
 }
 
-.login-input {
-  margin-top: 30px;
+.signup-input {
+  display: block;
+  margin-top: 20px;
   font-size: 12px;
   font-weight: bold;
   color: rgb(113,121,132);
+  width: 50%;
+  /* justify-content: space-between; */
 }
 
-.login-input-field {
+.signup-input-field {
   border: 1px solid #cbd4db;
   height: 40px;
-  width: 100%;
+  width: 90%;
   border-radius: 4px;
   margin-top: 10px;
   font-size: 14px;
   padding-left: 10px;
 }
 
-.login-signup-link {
+.signup-login-link {
   display: flex;
   color: white;
   justify-content: center;
@@ -105,7 +113,7 @@
   font-size: 15px;
 }
 
-.login-signup-button {
+.signup-login-button {
   color: white;
   background: transparent;
   padding: 7px 12px 7px 12px;
@@ -113,4 +121,8 @@
   border-radius: 4px;
   margin-left: 10px;
   border: 1px solid white;
+}
+
+.signup-first-name {
+  margin-left: 0px;
 }

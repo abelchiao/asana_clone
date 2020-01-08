@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.navigateToSignup = this.navigateToSignup.bind(this);
   };
 
   handleSubmit(e) {
@@ -26,6 +27,10 @@ class LoginForm extends React.Component {
     const demoUser = {email: 'demo@demo.demo', password: '123456'}
     this.props.processForm(demoUser);
   }
+
+  navigateToSignup() {
+    this.props.history.push('/signup');
+  };
 
   renderErrors() {
     return (
@@ -77,13 +82,15 @@ class LoginForm extends React.Component {
               </label>
             </div>
             <br />
-            <input className='login-button' type='submit' value={this.props.formType} />
+            <div className='login-button-container'>
+              <input className='login-button' type='submit' value={this.props.formType} />
+            </div>
           </form>
         </div>
-          <div className='login-signup-link'>
-            <div>Don't have an account?</div>
-            <button className='login-signup-button'>Sign Up</button>
-          </div>
+        <div className='login-signup-link'>
+          <div>Don't have an account?</div>
+          <button className='login-signup-button' onClick={this.navigateToSignup}>Sign Up</button>
+        </div>
       </div>
     )
   }

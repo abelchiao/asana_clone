@@ -20,22 +20,6 @@ html {
   height: 100%;
 }
 
-.signup-parent {
-  display: flex;
-  width: 585px;
-  height: 560px;
-  background: white;
-}
-
-.signup-form {
-  border-radius: 5px;
-  margin: 0 auto;
-  background: white;
-  padding: 50px;
-  width: 585px;
-  height: 560px;
-}
-
 .session-link {
   color: red;
   background: white;
