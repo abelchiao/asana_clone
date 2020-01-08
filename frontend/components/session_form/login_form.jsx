@@ -6,8 +6,9 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: ''
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   };
 
   handleSubmit(e) {
@@ -18,6 +19,12 @@ class LoginForm extends React.Component {
 
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value })
+  }
+
+  demoLogin(e) {
+    e.preventDefault();
+    const demoUser = {email: 'demo@demo.demo', password: '123456'}
+    this.props.processForm(demoUser);
   }
 
   renderErrors() {
@@ -34,28 +41,49 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className='login-parent'>
-        <form className='login-form' onSubmit={this.handleSubmit}>
-          <h1 className='login-title'>{this.props.formType}</h1>
-          {this.renderErrors()}
-          <label>Email Address
-            <input
-              type='text'
-              value={this.state.email}
-              onChange={this.update('email')}
-            />
-          </label>
-          <br />
-          <label>Password
-            <input
-              type='password'
-              value={this.state.password}
-              onChange={this.update('password')}
-            />
-          </label>
-          <br />
-          <input className='sessionSubmit' type='submit' value={this.props.formType} />
-        </form>
+      <div>
+        <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' />
+        <div className='login-parent'>
+          <div className='login-header'>
+            <h1 className='login-title'>{this.props.formType}</h1>
+            <button className='demo-login-button' onClick={this.demoLogin}>Demo Login</button>
+            <div className='or-separator'>
+              or
+            </div>
+          </div>
+          <form className='login-form' onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
+            <div className='login-input'>
+              <label>Email Address
+                <br/>
+                <input
+                  className='login-input-field'
+                  type='text'
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                />
+              </label>
+            </div>
+            <br />
+            <div className='login-input'>
+              <label>Password
+                <br/>
+                <input
+                  className='login-input-field'
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                />
+              </label>
+            </div>
+            <br />
+            <input className='login-button' type='submit' value={this.props.formType} />
+          </form>
+        </div>
+          <div className='login-signup-link'>
+            <div>Don't have an account?</div>
+            <button className='login-signup-button'>Sign Up</button>
+          </div>
       </div>
     )
   }
