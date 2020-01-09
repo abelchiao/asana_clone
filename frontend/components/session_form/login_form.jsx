@@ -47,7 +47,8 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' />
+        <img className='login-logo' src={window.logo} />
+        {/* <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' /> */}
         <div className='login-parent'>
           <div className='login-header'>
             <h1 className='login-title'>{this.props.formType}</h1>
