@@ -60,7 +60,6 @@ class LoginForm extends React.Component {
     return (
       <div>
         <img className='login-logo' onClick={this.navigateToSplash} src={window.logo} />
-        {/* <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' /> */}
         <div className='login-parent'>
           <div className='login-header'>
             <h1 className='login-title'>{this.props.formType}</h1>
@@ -70,9 +69,7 @@ class LoginForm extends React.Component {
             </div>
           </div>
           <form className='login-form' onSubmit={this.handleSubmit}>
-            <div className='session-error-container'>
-              {this.renderErrors()}
-            </div>
+            {this.renderErrors()}
             <div className='login-input'>
               <label>Email Address
                 <br/>

@@ -145,8 +145,10 @@
 .session-error-list {
   width: 80%;
   display: flex;
+  margin: auto;
   margin-top: 20px;
   align-items: center;
+  justify-content: center;
   border-radius: 4px;
   /* padding-top: 20px; */
   flex-direction: column;
