@@ -15,7 +15,7 @@ class Api::SessionsController < ApplicationController
     else
       # flash.now[:errors] = ['Invalid username or password']
       # render :new
-      render json: ['Invalid username/password combination'], status: 401
+      render json: ['The username or password is not correct.'], status: 401
     end
   end
 

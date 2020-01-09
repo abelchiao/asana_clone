@@ -44,13 +44,13 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul className='session-error-list'>
+      <div className='session-error-list'>
         {this.props.errors.map((error, idx) => (
-          <li key={idx}>
+          <div className='session-error-item' key={idx}>
             {error}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     );
   };
 
@@ -114,7 +114,9 @@ class SignupForm extends React.Component {
               </label>
             </div>
             <br/>
-            <input className='signup-button' type='submit' value={this.props.formType} />
+            <div className='signup-button-container'>
+              <button className='signup-button' type='submit'>Sign Up</button>
+            </div>
           </form>
         </div>
         <div className='signup-login-link'>

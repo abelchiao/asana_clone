@@ -69,17 +69,14 @@
 
 .login-button-container {
   display: flex;
-  /* flex-direction: row; */
-  /* align-items: right; */
+  width: 100%;
 }
 
 .login-button {
   width: 67px;
   margin-top: 20px;
   margin-bottom: 30px;
-  transform: translateX(180px);
-  /* align-items: flex-end;
-  justify-content: flex-end; */
+  margin-right: 0px;
 }
 
 .or-separator::before {
@@ -131,6 +128,24 @@
   cursor: pointer;
 }
 
-.session-error-list {
+/* .session-error-list {
+  width: 80%;
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  flex-direction: column;
+  background: #FFEDEF;
+} */
+
+/* .session-error-item {
+  margin: auto;
+  padding: 0px;
+} */
+
+
+/* .session-error-container {
   list-style-type: none;
-}
+  width: 405px;
+  background: #FFEDEF;
+  height: 69px;
+} */
