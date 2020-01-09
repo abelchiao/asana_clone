@@ -12,6 +12,7 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToLogin = this.navigateToLogin.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.navigateToSplash = this.navigateToSplash.bind(this);
   };
 
   handleSubmit(e) {
@@ -33,6 +34,10 @@ class SignupForm extends React.Component {
     this.props.history.push('/login');
   };
 
+  navigateToSplash() {
+    this.props.history.push('/');
+  };
+
   renderErrors() {
     return (
       <ul>
@@ -48,7 +53,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div>
-        <img className='signup-logo' src={window.logo} />
+        <img className='signup-logo' onClick={this.navigateToSplash} src={window.logo} />
         {/* <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' /> */}
         <div className='signup-parent'>
           <div className='signup-header'>

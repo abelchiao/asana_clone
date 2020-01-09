@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.navigateToSignup = this.navigateToSignup.bind(this);
+    this.navigateToSplash = this.navigateToSplash.bind(this);
   };
 
   handleSubmit(e) {
@@ -32,6 +33,10 @@ class LoginForm extends React.Component {
     this.props.history.push('/signup');
   };
 
+  navigateToSplash() {
+    this.props.history.push('/');
+  };
+
   renderErrors() {
     return (
       <ul>
@@ -47,7 +52,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <img className='login-logo' src={window.logo} />
+        <img className='login-logo' onClick={this.navigateToSplash} src={window.logo} />
         {/* <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' /> */}
         <div className='login-parent'>
           <div className='login-header'>

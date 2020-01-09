@@ -19,6 +19,10 @@
   padding-bottom: 30px;
 }
 
+.signup-logo:hover {
+  cursor: pointer;
+}
+
 .signup-header {
   display: flex;
   flex-direction: column;
@@ -61,6 +65,11 @@
   font-size: 14px;
   border-radius: 5px;
   margin: 0 auto;
+}
+
+.signup-button:hover, .demo-signup-button:hover {
+  background: rgb(6, 104, 231);
+  cursor: pointer;
 }
 
 .signup-button-container {
@@ -121,6 +130,12 @@
   border-radius: 4px;
   margin-left: 10px;
   border: 1px solid white;
+}
+
+.signup-login-button:hover {
+  color: rgb(113,121,132);
+  background: white;
+  cursor: pointer;
 }
 
 .signup-first-name {

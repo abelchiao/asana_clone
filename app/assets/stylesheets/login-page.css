@@ -18,6 +18,10 @@
   padding-bottom: 30px;
 }
 
+.login-logo:hover {
+  cursor: pointer;
+}
+
 .login-header {
   display: flex;
   flex-direction: column;
@@ -56,6 +60,11 @@
   font-size: 14px;
   border-radius: 5px;
   margin: 0 auto;
+}
+
+.login-button:hover, .demo-login-button:hover {
+  background: rgb(6, 104, 231);
+  cursor: pointer;
 }
 
 .login-button-container {
@@ -113,4 +122,10 @@
   border-radius: 4px;
   margin-left: 10px;
   border: 1px solid white;
+}
+
+.login-signup-button:hover {
+  color: rgb(113,121,132);
+  background: white;
+  cursor: pointer;
 }
