@@ -6,12 +6,12 @@ import {
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
-import UtilBarContainer from './nav_bar/nav_bar_container';
+import NavBarContainer from './nav_bar/nav_bar_container';
 import HomeContainer from './home/home_container';
 
 const App = () => (
   <div>
-    {/* <UtilBarContainer /> */}
+    <NavBarContainer />
     <AuthRoute path='/login' component={LoginFormContainer} />
     <AuthRoute path='/signup' component={SignupFormContainer} />
     <ProtectedRoute path='/home' component={HomeContainer}/>

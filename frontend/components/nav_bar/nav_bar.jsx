@@ -15,15 +15,15 @@ class NavBar extends React.Component {
       </div>
     ) : (
       <div>
-        <div>search, add, dopdown</div>
+        {/* <div>search, add, dropdown</div> */}
         <Link className='session-link' to='/signup'>Sign Up</Link>
         <Link className='session-link' to='/login'>Log In</Link>
       </div>
     );
 
     return (
-      <div>
-        <h1>Not-sana</h1>
+      <div className='nav-bar-parent'>
+        <h1 className='nav-title'>Not-sana</h1>
         {/* <h2>{this.props.pageTitle}</h2> */}
         {navBar}
       </div>
