@@ -7,10 +7,31 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
+Team.delete_all
+Project.delete_all
 
 User.create!(
   first_name: 'Demo',
   last_name: 'User',
   email: 'demo@demo.demo',
   password: '123456'
+  )
+
+Team.create!(
+  title: 'Engineering',
+  description: 'sajflkajflkjsa'
+)
+
+Project.create!(
+  title: 'UserAuth',
+  owner_id: 1,
+  team_id: 1,
+  description: 'done'
+)
+
+Project.create!(
+  title: 'Projects MVP',
+  owner_id: 1,
+  team_id: 1,
+  description: 'asfafafldj'
 )
