@@ -9,12 +9,13 @@ class NavBar extends React.Component {
   render() {
     const navBar = this.props.currentUser ? (
       <div>
+        {/* <h1>{this.props.pageTitle}</h1> */}
         <div>Hello, {this.props.currentUser.first_name}</div>
         <button onClick={this.props.logout}>Log Out</button>
       </div>
     ) : (
       <div>
-        <div>search, add, ?</div>
+        <div>search, add, dopdown</div>
         <Link className='session-link' to='/signup'>Sign Up</Link>
         <Link className='session-link' to='/login'>Log In</Link>
       </div>
@@ -23,6 +24,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <h1>Not-sana</h1>
+        {/* <h2>{this.props.pageTitle}</h2> */}
         {navBar}
       </div>
     )
