@@ -6,7 +6,7 @@ import {
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
-import UtilBarContainer from './util_bar/util_bar_container';
+import UtilBarContainer from './nav_bar/nav_bar_container';
 import HomeContainer from './home/home_container';
 
 const App = () => (
