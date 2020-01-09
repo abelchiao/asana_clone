@@ -24,8 +24,9 @@ class NavBar extends React.Component {
     return (
       <div className='nav-bar-parent'>
         <h1 className='nav-title'>Not-sana</h1>
-        {/* <h2>{this.props.pageTitle}</h2> */}
-        {navBar}
+        <div>
+          {navBar}
+        </div>
       </div>
     )
   }

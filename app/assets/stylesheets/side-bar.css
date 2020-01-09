@@ -1,0 +1,15 @@
+.side-bar-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+}
+
+.side-bar-nav-link-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+}
+
+.side-bar-favs-container {
+  border: 1px solid white;
+}

@@ -7,15 +7,18 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='side-bar-container'>
         Sidebar here
         <div>
           Logo
         </div>
-        <div>
-          Home, My Tasks, Inbox, Portfolios
+        <div className='side-bar-nav-link-container'>
+          <div>Home</div>
+          <div>My Tasks</div>
+          <div>Inbox</div>
+          <div>Portfolios</div>
         </div>
-        <div>
+        <div className='side-bar-favs-container'>
           Favorites
         </div>
         <div>
