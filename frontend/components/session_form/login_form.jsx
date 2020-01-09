@@ -13,6 +13,10 @@ class LoginForm extends React.Component {
     this.navigateToSplash = this.navigateToSplash.bind(this);
   };
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
@@ -30,6 +34,9 @@ class LoginForm extends React.Component {
   }
 
   navigateToSignup() {
+    // console.log("LSKDJF")
+    // this.props.clearErrors()
+    // //   .then(() => this.props.history.push('/signup'))
     this.props.history.push('/signup');
   };
 
@@ -39,7 +46,7 @@ class LoginForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className='session-error-list'>
         {this.props.errors.map((error, idx) => (
           <li key={idx}>
             {error}

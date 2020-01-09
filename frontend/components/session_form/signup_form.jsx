@@ -15,6 +15,10 @@ class SignupForm extends React.Component {
     this.navigateToSplash = this.navigateToSplash.bind(this);
   };
 
+  componentDidMount() {
+    this.props.clearErrors()
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state);
@@ -40,7 +44,7 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className='session-error-list'>
         {this.props.errors.map((error, idx) => (
           <li key={idx}>
             {error}

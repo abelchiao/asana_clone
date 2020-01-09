@@ -1,7 +1,7 @@
 .signup-parent {
   display: flex;
   width: 585px;
-  height: 560px;
+  /* height: 560px; */
   background: white;
   border-radius: 5px;
   margin: 0 auto;
@@ -81,6 +81,7 @@
 .signup-button {
   width: 67px;
   margin-top: 20px;
+  margin-bottom: 30px;
   /* transform: translateX(180px); */
   /* align-items: flex-end;
   justify-content: flex-end; */

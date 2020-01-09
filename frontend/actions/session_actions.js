@@ -1,6 +1,8 @@
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS'
+
 import * as SessionAPIUtil from '../util/session_api_util'
 
 const receiveCurrentUser = user => ({
