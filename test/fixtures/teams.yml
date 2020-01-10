@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: teams
+#
+#  id          :bigint           not null, primary key
+#  description :text             default(""), not null
+#  title       :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_teams_on_title  (title) UNIQUE
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the

@@ -5,12 +5,20 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 class NewProjectPage extends React.Component {
   constructor(props) {
     super(props)
-    this.setState({
+    this.state = {
       title: '',
       description: '',
-      ownerId: this.props.ownerId
+      owner_id: this.props.ownerId,
+      team_id: 1,
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  };
 
-    })
+  handleSubmit(e) {
+    e.preventDefault();
+    const project = this.state
+    debugger
+    this.props.createProject(project);
   };
 
   update(field) {
@@ -18,20 +26,21 @@ class NewProjectPage extends React.Component {
   };
 
   render() {
+    // debugger
     return (
       <div>
         {/* <SideBarContainer />
         <NavBarContainer /> */}
         <h1>Add project details</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Project name
             <input 
               type="text"
               onChange={this.update('title')}
             />
           </label>
+          <input type='submit' value='Create Project'/>
         </form>
-
       </div>
     )
   };

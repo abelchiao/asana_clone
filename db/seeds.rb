@@ -35,3 +35,13 @@ Project.create!(
   team_id: 1,
   description: 'asfafafldj'
 )
+
+ProjectMembership.create!(
+  member_id: 1,
+  project_id: 1
+)
+
+ProjectMembership.create!(
+  member_id: 1,
+  project_id: 2
+)

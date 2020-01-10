@@ -1,6 +1,7 @@
 class Api::ProjectsController < ApplicationController
   def index
-    @projects = 
+    @projects = current_user.projects
+    render :index
   end
   
   def create
@@ -9,6 +10,7 @@ class Api::ProjectsController < ApplicationController
       render 'api/projects/show'
     else
       render json: @project.errors.full_messages, status: 422
+    end
   end
 
   private
