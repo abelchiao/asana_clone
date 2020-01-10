@@ -8,7 +8,7 @@ const projectsReducer = (oldState = {}, action) => {
       nextState[action.project.id] = action.project;
       return nextState;
     case RECEIVE_PROJECTS:
-      nextState = Object.assign(nextState, action.projects)
+      nextState = Object.assign({}, action.projects)
       return nextState;
     default:
       return oldState;

@@ -1,0 +1,1 @@
+export const fetchAssociatedProjects = state => Object.values(state.entities.projects);

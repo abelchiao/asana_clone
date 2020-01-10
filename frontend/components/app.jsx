@@ -9,7 +9,7 @@ import SignupFormContainer from './session_form/signup_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import HomeContainer from './home/home_container';
 import SplashContainer from './splash/splash_container';
-import NewProjectPageContainer from './new_project_page/new_project_page_container';
+import NewProjectPageContainer from './projects/new_project_page/new_project_page_container';
 
 
 const App = () => (

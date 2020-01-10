@@ -18,6 +18,9 @@ class NewProjectPage extends React.Component {
     e.preventDefault();
     const project = this.state
     this.props.createProject(project);
+    const project_membership = { member_id: project.owner_id, project_id: project.id }
+    this.props.createProjectMembership(project_membership)
+    // this.props.createProjectMembership(project.owner_id, project.id);
   };
 
   update(field) {

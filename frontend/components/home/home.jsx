@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import SideBarContainer from '../side_bar/side_bar_container'
 import { Link } from 'react-router-dom';
+import ProjectIndexContainer from '../projects/project_index/project_index_container';
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Home extends React.Component {
         <div className='home-main'>
           <NavBarContainer />
           Home Page!
+          <ProjectIndexContainer />
           <Link to='/projects/new'>Create Project</Link>
         </div>
       </div>
