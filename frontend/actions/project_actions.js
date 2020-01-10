@@ -23,3 +23,8 @@ export const createProject = project => dispatch => {
   return ProjectApiUtil.createProject(project)
     .then(project => dispatch(receiveProject(project)));
 };
+
+export const fetchProjects = () => dispatch => {
+  return ProjectApiUtil.fetchProjects()
+    .then(projects => dispatch(receiveProjects(projects)))
+}

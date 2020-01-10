@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBarContainer from '../side_bar/side_bar_container';
-import NavBarContainer from '../nav_bar/nav_bar_container';
+import SideBarContainer from '../../side_bar/side_bar_container';
+import NavBarContainer from '../../nav_bar/nav_bar_container';
 
 class NewProjectPage extends React.Component {
   constructor(props) {
@@ -17,7 +17,6 @@ class NewProjectPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = this.state
-    debugger
     this.props.createProject(project);
   };
 
@@ -26,7 +25,6 @@ class NewProjectPage extends React.Component {
   };
 
   render() {
-    // debugger
     return (
       <div>
         {/* <SideBarContainer />
@@ -39,6 +37,13 @@ class NewProjectPage extends React.Component {
               onChange={this.update('title')}
             />
           </label>
+          <br/>
+          <label>Description
+            <textarea
+              onChange={this.update('description')}
+            />
+          </label>
+          <br/>
           <input type='submit' value='Create Project'/>
         </form>
       </div>
