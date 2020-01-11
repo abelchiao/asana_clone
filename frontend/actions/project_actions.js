@@ -27,9 +27,11 @@ const removeProject = projectId => ({
 // })
 
 export const createProject = project => dispatch => {
+  // debugger
   return ProjectApiUtil.createProject(project)
     .then(project => dispatch(receiveProject(project)))
     // .then((project) => ProjectApiUtil.createProjectMembership(project.owner_id, project.id))
+    // .then(project => ProjectApiUtil.createProjectMembership(project.owner_id, project.id))
 };
 
 export const fetchProjects = () => dispatch => {

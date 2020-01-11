@@ -9,9 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createProject: project => dispatch(createProject(project)),
-  createProjectMembership: (project_membership) => {
-    return createProjectMembership(project_membership)
-  }
+  // createProjectMembership: (project_membership) => createProjectMembership(project_membership)
   // createProjectMembership: project => dispatch(createProjectMembership(project.owner_id, project.id))
 });
 

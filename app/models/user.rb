@@ -34,11 +34,14 @@ class User < ApplicationRecord
   has_many :project_memberships,
     primary_key: :id,
     foreign_key: :member_id,
-    class_name: :ProjectMembership
+    class_name: :ProjectMembership,
+    inverse_of: :member,
+    dependent: :destroy
 
   has_many :projects,
     through: :project_memberships,
     source: :project
+    # inverse_of: :members
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

@@ -35,9 +35,12 @@ class Project < ApplicationRecord
   has_many :project_memberships,
     primary_key: :id,
     foreign_key: :project_id,
-    class_name: :ProjectMembership
+    class_name: :ProjectMembership,
+    inverse_of: :project,
+    dependent: :destroy
 
   has_many :members,
     through: :project_memberships,
     source: :member
+    # inverse_of: :projects
 end

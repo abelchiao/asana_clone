@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ProjectIndex from './project_index';
+import RecentProjectIndex from './recent_project_index';
 import { fetchProjects } from '../../../actions/project_actions';
 import { fetchAssociatedProjects } from '../../../reducers/selectors';
 
@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
   fetchProjects: () => dispatch(fetchProjects())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(RecentProjectIndex);
