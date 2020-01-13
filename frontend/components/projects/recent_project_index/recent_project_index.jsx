@@ -15,17 +15,12 @@ class RecentProjectIndex extends React.Component {
 
     return (
       <div className='project-index-container'>
-        <h1>Recent Projects</h1>
-        <div className='project-list'>
-          {projects.map(project => <RecentProjectIndexItem key={project.id} project={project} />)}
-          {/* {
-            this.props.projects.map(project => (
-              <div key={project.id}>
-                <img className='list-icon' src={window.listIcon} />
-                <div key={project.id}>{project.title}</div>
-              </div>
+        <div className='project-grid'>
+          {
+            projects.map(project => (
+              <RecentProjectIndexItem key={project.id} project={project} />
             ))
-          } */}
+          }
         </div>
       </div>
     );

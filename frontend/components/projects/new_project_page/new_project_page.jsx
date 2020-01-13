@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBarContainer from '../../side_bar/side_bar_container';
 import NavBarContainer from '../../nav_bar/nav_bar_container';
+// import { closeModal } from '../../../actions/modal_actions';
 
 class NewProjectPage extends React.Component {
   constructor(props) {
@@ -23,11 +24,6 @@ class NewProjectPage extends React.Component {
     e.preventDefault();
     const project = this.state
     this.props.createProject(project);
-    // extract id from newly made project?
-    const project_membership = { member_id: project.owner_id, project_id: 10 }
-    // debugger
-    // this.props.createProjectMembership(project_membership)
-    // this.props.createProjectMembership(project.owner_id, project.id);
   };
 
   toggleDescription() {
@@ -38,10 +34,21 @@ class NewProjectPage extends React.Component {
   }
 
   render() {
+    // const ({ closeModal })
     return (
       <div className='create-project-parent'>
-        {/* <SideBarContainer />
-        <NavBarContainer /> */}
+        <div className='modal-nav'>
+          <div className='modal-back-button'></div>
+          <div className='modal-exit-button-container'>
+            <img src={window.smallXIcon} onClick={this.props.closeModal}/>
+            {/* <button 
+              className='modal-exit-button'
+              onClick={this.props.closeModal}
+            >
+              X
+            </button> */}
+          </div>
+        </div>
         <div className='create-project-content'>
           <h1 className='apd-title'>Add project details</h1>
           <form className='create-project-form' onSubmit={this.handleSubmit}>

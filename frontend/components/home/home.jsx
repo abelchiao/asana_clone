@@ -13,18 +13,27 @@ class Home extends React.Component {
     return (
       <div className='home-parent'>
         {/* <img src={window.waterBackground} alt="sfasfa"/> */}
-        <div className='home-content'>
+        <div className='home-all'>
           <div className='side-bar-container'>
             <SideBarContainer />
           </div>
           <div className='home-main'>
-            <NavBarContainer />
-            Home Page!
-            <RecentProjectIndexContainer />
-            {/* <Link to='/projects/new'>Create Project</Link> */}
-            {this.props.createProject}
+            <div className='home-navbar'>
+              <NavBarContainer />
+            </div>
+            <div className='home-content'>
+              Home Page!
+              <div className='home-category-header'>
+                <div className='category-toggle-triangle'>
+                  <img src={window.downTriangle} />
+                </div>
+                <h2 className='home-category-title'>Recent projects</h2>
+              </div>
+              <RecentProjectIndexContainer />
+              {/* <Link to='/projects/new'>Create Project</Link> */}
+              {this.props.createProject}
+            </div>
           </div>
-          
         </div>
       </div>
     );

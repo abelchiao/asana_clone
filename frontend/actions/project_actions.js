@@ -38,3 +38,8 @@ export const fetchProjects = () => dispatch => {
   return ProjectApiUtil.fetchProjects()
     .then(projects => dispatch(receiveProjects(projects)))
 };
+
+export const fetchProject = projectId => dispatch => {
+  return ProjectApiUtil.fetchProject(projectId)
+    .then(project => dispatch(receiveProject(project)))
+};

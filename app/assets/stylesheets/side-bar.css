@@ -3,7 +3,7 @@
   flex-direction: column;
   border: 1px solid white;
   height: 100vh;
-
+  background-color: rgb(187, 187, 238);
 }
 
 .side-bar-nav-link-container {
