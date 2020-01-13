@@ -1,0 +1,91 @@
+.create-project-parent {
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.create-project-content {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  padding: 30px 0px;
+}
+
+.apd-title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.create-project-form {
+  margin-top: 30px;
+}
+
+.create-project-input {
+
+}
+
+.create-project-input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.adl-container {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+#add-description-link {
+  color: #14aaf5;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.create-project-field-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #6f7782
+}
+
+#cp-title {
+  height: 40px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0 9px;
+}
+
+#cp-description {
+  max-height: 70px;
+  min-height: 70px;
+  padding: 9px 9px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+#cp-button {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+  background-color: #14aaf5;
+  border-color: #14aaf5;
+  color: #fff;
+  border-radius: 4px;
+}
+
+#cp-button:hover {
+  background-color: #3f85ee;
+}

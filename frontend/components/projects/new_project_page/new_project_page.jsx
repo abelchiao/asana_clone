@@ -14,6 +14,10 @@ class NewProjectPage extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   };
+  
+  update(field) {
+    return e => this.setState({ [field]: e.currentTarget.value })
+  };
 
   handleSubmit(e) {
     e.preventDefault();
@@ -26,32 +30,63 @@ class NewProjectPage extends React.Component {
     // this.props.createProjectMembership(project.owner_id, project.id);
   };
 
-  update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value })
-  };
+  toggleDescription() {
+    let toggleLink = document.getElementById('add-description-link');
+    let toggleField = document.getElementById('cp-description-field');
+    toggleLink.classList.add('hidden');
+    toggleField.classList.remove('hidden');
+  }
 
   render() {
     return (
-      <div>
+      <div className='create-project-parent'>
         {/* <SideBarContainer />
         <NavBarContainer /> */}
-        <h1>Add project details</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>Project name
-            <input 
-              type="text"
-              onChange={this.update('title')}
-            />
-          </label>
-          <br/>
-          <label>Description
-            <textarea
-              onChange={this.update('description')}
-            />
-          </label>
-          <br/>
-          <input type='submit' value='Create Project'/>
-        </form>
+        <div className='create-project-content'>
+          <h1 className='apd-title'>Add project details</h1>
+          <form className='create-project-form' onSubmit={this.handleSubmit}>
+            <div className='create-project-input'>
+              <div className='create-project-input-field'>
+                <label 
+                  className='create-project-field-label' 
+                  htmlFor='cp-title'
+                >
+                  Project name
+                </label>
+                <input
+                  id='cp-title'
+                  type="text"
+                  onChange={this.update('title')}
+                />
+              </div>
+              <div className='adl-container'>
+                <a 
+                  id='add-description-link' 
+                  onClick={this.toggleDescription} 
+                >
+                  Add a description
+                </a>
+              </div>
+              <div 
+                className='create-project-input-field hidden' 
+                id='cp-description-field'
+              >
+                <label 
+                  className='create-project-field-label' 
+                  htmlFor='cp-description'
+                >
+                  Description
+                </label>
+                <textarea
+                  id='cp-description'
+                  onChange={this.update('description')}
+                />
+              </div>
+            </div>
+            <br/>
+            <input id='cp-button' type='submit' value='Create Project'/>
+          </form>
+        </div>
       </div>
     )
   };

@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   border: 1px solid white;
+  height: 100vh;
+
 }
 
 .side-bar-nav-link-container {

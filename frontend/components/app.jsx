@@ -13,7 +13,7 @@ import NewProjectPageContainer from './projects/new_project_page/new_project_pag
 
 
 const App = () => (
-  <div>
+  <div className='app'>
     <Switch>
       <Route exact path='/' component={SplashContainer} />
       <AuthRoute path='/login' component={LoginFormContainer} />

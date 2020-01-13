@@ -1,4 +1,5 @@
 import React from 'react'
+import RecentProjectIndexItem from './recent_project_index_item';
 
 class RecentProjectIndex extends React.Component {
   constructor(props) {
@@ -10,13 +11,21 @@ class RecentProjectIndex extends React.Component {
   }
 
   render() {
+    const { projects } = this.props;
+
     return (
       <div className='project-index-container'>
         <h1>Recent Projects</h1>
         <div className='project-list'>
-          {
-            this.props.projects.map(project => <div key={project.id}>{project.title}</div>)
-          }
+          {projects.map(project => <RecentProjectIndexItem key={project.id} project={project} />)}
+          {/* {
+            this.props.projects.map(project => (
+              <div key={project.id}>
+                <img className='list-icon' src={window.listIcon} />
+                <div key={project.id}>{project.title}</div>
+              </div>
+            ))
+          } */}
         </div>
       </div>
     );

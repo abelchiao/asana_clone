@@ -56,7 +56,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='signup-bg'>
         <img className='signup-logo' onClick={this.navigateToSplash} src={window.logo} />
         {/* <img className='login-logo' src='assets/logo_horizontal_white.png' alt='Asana Logo' /> */}
         <div className='signup-parent'>

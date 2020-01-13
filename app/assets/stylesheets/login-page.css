@@ -1,3 +1,12 @@
+.login-bg {
+  width: 100%;
+  min-height: 100vh;
+  /* padding-bottom: auto; */
+  background: url("../images/water-background.jpg");
+  background-size: cover;
+  /* background-image: linear-gradient(to top right, rgb(255, 100, 115) 60%, rgb(254, 168, 90)); */
+}
+
 .login-parent {
   display: flex;
   width: 585px;

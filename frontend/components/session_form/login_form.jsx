@@ -58,7 +58,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='login-bg'>
         <img className='login-logo' onClick={this.navigateToSplash} src={window.logo} />
         <div className='login-parent'>
           <div className='login-header'>

@@ -7,7 +7,7 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <div className='side-bar-container'>
+      <div className='side-bar-parent'>
         Sidebar here
         <div>
           Logo
