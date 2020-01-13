@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
+  background: #fff
 }
 
 .create-project-content {
@@ -56,6 +57,7 @@
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0 9px;
+  border-color: #9ca6af
 }
 
 #cp-description {
@@ -67,6 +69,7 @@
   line-height: 20px;
   box-sizing: border-box;
   border-radius: 4px;
+  border-color: #9ca6af
 }
 
 #cp-button {

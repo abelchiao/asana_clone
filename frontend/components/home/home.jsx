@@ -21,7 +21,8 @@ class Home extends React.Component {
             <NavBarContainer />
             Home Page!
             <RecentProjectIndexContainer />
-            <Link to='/projects/new'>Create Project</Link>
+            {/* <Link to='/projects/new'>Create Project</Link> */}
+            {this.props.createProject}
           </div>
           
         </div>

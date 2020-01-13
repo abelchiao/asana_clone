@@ -4,4 +4,16 @@
 
 .project-list {
   border: 1px solid white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-icon {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4186e0;
+  border-radius: 20px;
 }
