@@ -12,14 +12,14 @@ class RecentProjectIndex extends React.Component {
   }
 
   render() {
-    const { projects } = this.props;
+    const { projects, deleteProject } = this.props;
 
     return (
       <div className='project-index-container'>
         <div className='project-grid'>
           {
             projects.map(project => (
-              <RecentProjectIndexItem key={project.id} project={project} />
+              <RecentProjectIndexItem key={project.id} project={project} deleteProject={deleteProject} />
             ))
           }
           {this.props.createProject}

@@ -25,9 +25,13 @@ class NewProjectPage extends React.Component {
     e.preventDefault();
     const project = this.state
     this.props.createProject(project)
-      // .then(project => this.props.history.location.replace(`/projects/${project.id}`))
-    // this.props.history.push(`/projects/${project.id}`)
+      .then(action => this.props.history.push(`/projects/${action.project.id}`))
+      .then(() => this.props.closeModal());
+      // .then(project => {
+      //   debugger
+      //   return this.props.history.push(`/projects/${project.project.id}`)})
   };
+
 
   toggleDescription() {
     let toggleLink = document.getElementById('add-description-link');
@@ -98,7 +102,7 @@ class NewProjectPage extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   };
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RecentProjectIndex from './recent_project_index';
-import { fetchProjects } from '../../../actions/project_actions';
+import { fetchProjects, deleteProject } from '../../../actions/project_actions';
 import { fetchAssociatedProjects } from '../../../reducers/selectors';
 import { openModal, closeModal } from '../../../actions/modal_actions';
 
@@ -22,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
       <div className='tile-project-title'>New Project</div>
     </div>
   ),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  deleteProject: projectId => dispatch(deleteProject(projectId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecentProjectIndex);
