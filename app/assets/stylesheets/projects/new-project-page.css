@@ -46,7 +46,7 @@
 }
 
 .create-project-input {
-
+  
 }
 
 .create-project-input-field {
@@ -81,7 +81,7 @@
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0 9px;
-  border-color: #9ca6af
+  border: 1px #9ca6af solid;
 }
 
 #cp-description {

@@ -14,7 +14,7 @@ class Home extends React.Component {
       <div className='home-parent'>
         {/* <img src={window.waterBackground} alt="sfasfa"/> */}
         <div className='home-all'>
-          <div className='side-bar-container'>
+          <div id='home-sidebar-container' className='side-bar-container'>
             <SideBarContainer />
           </div>
           <div className='home-main'>
@@ -22,7 +22,6 @@ class Home extends React.Component {
               <NavBarContainer />
             </div>
             <div className='home-content'>
-              Home Page!
               <div className='home-category-header'>
                 <div className='category-toggle-triangle'>
                   <img src={window.downTriangle} />

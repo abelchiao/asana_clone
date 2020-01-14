@@ -57,9 +57,20 @@ body {
 }
 
 /* * {
-  border: 1px solid red;
+  border: 1px solid red
 } */
 
 li {
   list-style: none;
+}
+
+.nav-burger-icon {
+  fill: #9ca6af;
+  height: 16px;
+  width: 16px;
+}
+
+.nav-burger-icon:hover {
+  cursor: pointer;
+  fill: #3a3d41
 }

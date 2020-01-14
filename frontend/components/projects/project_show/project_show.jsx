@@ -27,7 +27,7 @@ class ProjectShow extends React.Component {
     return (
       <div className='project-show-parent'>
         {/* <div className='project-show-all'> */}
-          <div className='side-bar-container'>
+          <div id='ps-sidebar-container' className='side-bar-container'>
             <SideBarContainer />
           </div>
           <div className='project-show-main'>

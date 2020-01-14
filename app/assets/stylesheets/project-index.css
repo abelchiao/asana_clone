@@ -32,14 +32,16 @@
   position: relative;
   top: 0;
   transition: top ease 0.5s;
-  padding: 0 15px;
-  margin: 20px;
+  padding: 15px;
+  margin: 5px 15px;
   text-decoration: none;
   color: black;
+  border-radius: 20px;
 }
 
 .project-tile:hover, .new-project-tile:hover {
-  top: -10px;
+  top: -5px;
+  background-color: rgb(230, 230, 230)
 }
 
 .tile-project-title {
