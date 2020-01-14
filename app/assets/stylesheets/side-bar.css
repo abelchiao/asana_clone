@@ -1,10 +1,11 @@
 .side-bar-parent {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   /* background-color: #151B26; */
   background-color: #151b26;
-  color: #fff;
+  color: #cbd4db;
   width: 100%;
 }
 
@@ -55,4 +56,24 @@
 
 .side-bar-favs-container {
   border-bottom: 1px solid #273240;
+}
+
+.side-bar-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #cbd4db;
+}
+
+.side-bar-link:hover {
+  cursor: pointer;
+  background-color: #444c5c;
+}
+
+.side-bar-link-icon {
+  fill: #6f7782;
+  height: 20px;
+  width: 20px;
+  margin: 0 10px;
 }

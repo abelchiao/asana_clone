@@ -13,40 +13,33 @@ class NavBar extends React.Component {
     burger.classList.add('hidden');
   }
 
-  render() {
-    const navBar = this.props.currentUser ? (
-      <div>
-        {/* <h1>{this.props.pageTitle}</h1> */}
-        <div>Hello, {this.props.currentUser.first_name}</div>
-        <button onClick={this.props.logout}>Log Out</button>
-      </div>
-    ) : (
-      <div>
-        {/* <div>search, add, dropdown</div> */}
-        <Link className='session-link' to='/signup'>Sign Up</Link>
-        <Link className='session-link' to='/login'>Log In</Link>
-      </div>
-    );
+  revealDropdown() {
+    document.getElementById('home-nav-user-dropdown-content').classList.toggle('show')
+  }
 
+  render() {
     return (
       <div className='nav-bar-parent'>
-        <svg onClick={this.toggleShowSidebar} id='home-burger' className='nav-burger-icon hidden' viewBox='0 0 32 32'>
-          <path d="M31,4H1C0.4,4,0,3.6,0,3s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,4,31,4z M31,16H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,16,31,16z M31,28H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,28,31,28z"></path>
-        </svg>
-        <h1>Home</h1>
-        <button onClick={this.props.logout}>Log Out</button>
+        <div className='home-nav-left-items'>
+          <svg onClick={this.toggleShowSidebar} id='home-burger' className='nav-burger-icon hidden' viewBox='0 0 32 32'>
+            <path d="M31,4H1C0.4,4,0,3.6,0,3s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,4,31,4z M31,16H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,16,31,16z M31,28H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,28,31,28z"></path>
+          </svg>
+          <h1>Home</h1>
+        </div>
+        <div onClick={this.revealDropdown} className='home-user-dropdown-parent'>
+          <div className='nb-user-util-icon'>AC</div>
+          <div
+            id='home-nav-user-dropdown-content' 
+            className='home-nav-user-dropdown-content' 
+          >
+            {this.props.createProject}
+            <div className='home-nav-dropdown-content-item' onClick={this.props.logout}>
+              Sign out
+            </div>
+          </div>
+        </div>
       </div>
     )
-
-    // from when trying to use same nav bar for splash and home
-    // return (
-    //   <div className='nav-bar-parent'>
-    //     <h1 className='nav-title'>Not-sana</h1>
-    //     <div>
-    //       {navBar}
-    //     </div>
-    //   </div>
-    // )
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SideBarContainer from '../../side_bar/side_bar_container';
 import NavBarContainer from '../../nav_bar/nav_bar_container';
 // import { closeModal } from '../../../actions/modal_actions';
@@ -23,7 +24,9 @@ class NewProjectPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = this.state
-    this.props.createProject(project);
+    this.props.createProject(project)
+      // .then(project => this.props.history.location.replace(`/projects/${project.id}`))
+    // this.props.history.push(`/projects/${project.id}`)
   };
 
   toggleDescription() {
@@ -34,7 +37,7 @@ class NewProjectPage extends React.Component {
   }
 
   render() {
-    // const ({ closeModal })
+    // debugger
     return (
       <div className='create-project-parent'>
         <div className='modal-nav'>
@@ -99,4 +102,4 @@ class NewProjectPage extends React.Component {
   };
 };
 
-export default NewProjectPage;
+export default withRouter(NewProjectPage);

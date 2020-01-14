@@ -1,6 +1,8 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './nav_bar';
 import { logout } from '../../actions/session_actions'
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -8,7 +10,13 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  createProject: (
+    <div className='home-nav-dropdown-content-item' onClick={() => dispatch(openModal('create-project'))}>
+      New Project
+    </div>
+  ),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

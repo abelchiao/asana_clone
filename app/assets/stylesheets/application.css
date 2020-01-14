@@ -49,7 +49,7 @@ body {
 
 .side-bar-container {
   width: 280px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .hidden {
@@ -68,6 +68,7 @@ li {
   fill: #9ca6af;
   height: 16px;
   width: 16px;
+  margin-right: 20px;
 }
 
 .nav-burger-icon:hover {
