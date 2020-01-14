@@ -47,13 +47,18 @@ body {
   width: 100%;
 }
 
+.side-bar-container {
+  width: 244px;
+  height: 100vh;
+}
+
 .hidden {
   display: none;
 }
 
-* {
+/* * {
   border: 1px solid red;
-}
+} */
 
 li {
   list-style: none;

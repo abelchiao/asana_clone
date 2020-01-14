@@ -1,0 +1,25 @@
+.ps-nav-bar-parent {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid purple;
+  padding: 0 20px;
+}
+
+.nb-user-util-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7a6ff0;
+  font-size: 11px;
+  height: 26px;
+  line-height: 26px;
+  min-width: 26px;
+  width: 26px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 100%;
+}
