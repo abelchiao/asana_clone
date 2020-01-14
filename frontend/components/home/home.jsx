@@ -30,8 +30,6 @@ class Home extends React.Component {
                 <h2 className='home-category-title'>Recent projects</h2>
               </div>
               <RecentProjectIndexContainer />
-              {/* <Link to='/projects/new'>Create Project</Link> */}
-              {this.props.createProject}
             </div>
           </div>
         </div>

@@ -1,7 +1,6 @@
 .side-bar-parent {
   display: flex;
   flex-direction: column;
-  border: 1px solid white;
   height: 100vh;
   /* background-color: #151B26; */
   background-color: #151b26;
@@ -30,6 +29,7 @@
 
 .side-bar-logo {
   height: 16px;
+  padding-left: 10px;
 }
 
 .side-burger-icon {
@@ -50,9 +50,9 @@
 .side-bar-nav-link-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid white;
+  border-bottom: 1px solid #273240;
 }
 
 .side-bar-favs-container {
-  border: 1px solid white;
+  border-bottom: 1px solid #273240;
 }

@@ -1,28 +1,29 @@
 .home-parent {
   /* display: block; */
-  min-height: 100vh;
+  /* min-height: 100vh; */
   width: 100%;
+  box-sizing: border-box;
 }
 
 .home-all {
   background: #fff;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   width: 100%;
 }
 
 .home-main {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   margin: 0 auto;
   align-items: center;
 }
 
 .home-content {
-  width: 850px;
+  width: 80%;
 }
 
 /* .side-bar-parent {

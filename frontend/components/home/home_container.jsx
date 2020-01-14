@@ -8,12 +8,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createProject: (
-    <button onClick={() => dispatch(openModal('create-project'))}>
-      New Project
-    </button>
-  ),
-  closeModal: () => dispatch(closeModal())
+  // createProject: (
+  //   <button onClick={() => dispatch(openModal('create-project'))}>
+  //     New Project
+  //   </button>
+  // ),
+  // closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
