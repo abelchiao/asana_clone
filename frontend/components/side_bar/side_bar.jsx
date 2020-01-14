@@ -8,9 +8,10 @@ class SideBar extends React.Component {
   render() {
     return (
       <div className='side-bar-parent'>
-        Sidebar here
-        <div>
-          Logo
+        <div className='side-bar-header'>
+          <div className='side-bar-logo'>
+            {/* <img src={window.coloredLogo} /> */}
+          </div>
         </div>
         <div className='side-bar-nav-link-container'>
           <div>Home</div>

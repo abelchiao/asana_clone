@@ -3,6 +3,11 @@ class Api::ProjectsController < ApplicationController
     @projects = current_user.projects
     render :index
   end
+
+  def show
+    @project = Project.find(params[:id])
+    render :show
+  end
   
   def create
     @project = Project.new(project_params)

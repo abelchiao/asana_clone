@@ -1,20 +1,23 @@
 .project-index-container {
   /* border: 1px solid white; */
+  display: flex;
+  align-content: flex-start;
 }
 
 .project-grid {
   display: flex;
-  flex-wrap: row wrap;
+  flex-flow: row-reverse wrap;
+  /* align-content: flex-end; */
   justify-content: space-between;
   padding-top: 15px;
   width: 100%;
 }
 
-.project-grid::after {
+/* .project-grid::after {
   content: '';
-  /* flex: auto; */
+  flex: auto;
   width: 150px;
-}
+} */
 
 .project-tile {
   box-sizing: border-box;
@@ -26,6 +29,7 @@
   /* justify-content: center; */
   align-items: center;
   cursor: pointer;
+  /* padding  */
 }
 
 .tile-project-title {

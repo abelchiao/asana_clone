@@ -3,7 +3,23 @@
   flex-direction: column;
   border: 1px solid white;
   height: 100vh;
-  background-color: rgb(187, 187, 238);
+  /* background-color: #151B26; */
+  background-color: #151b26;
+  color: #fff;
+  width: 244px;
+}
+
+.side-bar-header {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.side-bar-logo {
+  height: 16px;
+  width: 100px;
+  background-image: image_url("logo_horizontal_color.svg");
+  z-index: 10;
 }
 
 .side-bar-nav-link-container {
