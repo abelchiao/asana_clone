@@ -45,7 +45,20 @@
   margin: 0 25px;
 }
 
+.home-projects-category-collapse-toggle {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
 .home-category-collapse-down-triangle {
+  fill: #9ca6af;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.home-category-collapse-right-triangle {
   fill: #9ca6af;
   width: 16px;
   height: 16px;
@@ -58,4 +71,8 @@
 
 .home-category-title {
   font-size: 16px;
+}
+
+.home-projects-category-collapse-toggle:hover {
+  cursor: pointer;
 }
