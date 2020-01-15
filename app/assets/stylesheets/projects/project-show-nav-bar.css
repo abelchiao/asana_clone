@@ -24,6 +24,24 @@
 
 .ps-nav-left-items {
   display: flex;
+  align-items: center;
+}
+
+.ps-nav-project-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  background: #4186e0;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.ps-nav-project-icon {
+  height: 16px;
+  width: 16px;
+  fill: #fff;
 }
 
 .ps-user-dropdown-parent {

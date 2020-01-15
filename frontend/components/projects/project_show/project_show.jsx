@@ -8,22 +8,11 @@ class ProjectShow extends React.Component {
   };
 
   componentDidMount() {
-    // debugger
     this.props.fetchProject(this.props.match.params.projectId)
   }
 
   render() {
     const { project, logout, createProject, closeModal } = this.props;
-    let display
-    let navBar
-    if (project) {
-      display = <h1>{project.title}</h1>;
-      navBar = <ProjectShowNavBar project={project} logout={logout} createProject={createProject} closeModal={closeModal} />
-    } else {
-      display = <div>Not fetched</div>
-      navBar = <div>Navbar broken</div>
-    }
-
     return (
       <div className='project-show-parent'>
         <div id='ps-sidebar-container' className='side-bar-container'>

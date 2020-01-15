@@ -15,27 +15,50 @@ class RecentProjectIndexItem extends React.Component {
     const dropdownIcon = document.getElementById(`project-tile-${this.props.project.id}`);
     dropdownIcon.classList.toggle('show');
 
-    window.onclick = event => {
-      if (!event.target.matches(`#project-tile-${this.props.project.id}`)) {
-        let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
-        for (let i = 0; i < dropdowns.length; i++) {
-          let openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
+    window.onclick = () => {
+      let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
         }
       }
     }
+    // window.onclick = event => {
+    //   if (!event.target.matches(`#project-tile-${this.props.project.id}`)) {
+    //     let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    //     for (let i = 0; i < dropdowns.length; i++) {
+    //       let openDropdown = dropdowns[i];
+    //       if (openDropdown.classList.contains('show')) {
+    //         openDropdown.classList.remove('show');
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   handleDelete(e) {
     e.stopPropagation();
     this.props.deleteProject(this.props.project.id);
+    let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
   }
 
   handleEdit(e) {
     e.stopPropagation();
     this.props.openModal('edit-project', this.props.project.id);
+    let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
   }
 
   navigateToShow() {
