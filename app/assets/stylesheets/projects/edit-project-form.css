@@ -1,0 +1,18 @@
+.edit-form-parent {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.edit-form-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray
+}
+
+.edit-form-close-icon {
+  width: 16px;
+  height: 16px;
+}

@@ -2,14 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NewProjectPageContainer from '../projects/new_project_page/new_project_page_container';
 import { closeModal } from '../../actions/modal_actions';
+import EditProjectFormContainer from '../projects/edit_project/edit_project_form_container';
 
-function Modal({modal, closeModal}) {
+function Modal({modal, closeModal, currentProjectId}) {
   if (!modal) return null;
 
   let component;
   switch (modal) {
     case 'create-project':
       component = <NewProjectPageContainer />;
+      break;
+    case 'edit-project':
+      component = <EditProjectFormContainer currentProjectId={currentProjectId} />
       break;
     default:
       return null;
@@ -25,7 +29,8 @@ function Modal({modal, closeModal}) {
 };
 
 const mapStateToProps = state => ({
-  modal: state.ui.modal
+  modal: state.ui.modal,
+  currentProjectId: state.ui.currentProject
 });
 
 const mapDispatchToProps = dispatch => ({

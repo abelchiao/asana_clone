@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import NewProjectPage from './new_project_page';
 import { createProject } from '../../../actions/project_actions';
-import { createProjectMembership } from '../../../util/project_api_util';
 import { closeModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = state => ({

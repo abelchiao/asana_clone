@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
     </div>
   ),
   closeModal: () => dispatch(closeModal()),
+  openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
   deleteProject: projectId => dispatch(deleteProject(projectId))
 });
 
