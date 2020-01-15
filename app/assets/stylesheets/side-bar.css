@@ -30,11 +30,11 @@
 
 .side-bar-logo {
   height: 16px;
-  padding-left: 10px;
+  padding-left: 30px;
 }
 
 .side-burger-icon {
-  margin-right: 15px;
+  margin-right: 25px;
   cursor: pointer;
   fill: #9ca6af;
   height: 16px;
@@ -76,4 +76,132 @@
   height: 20px;
   width: 20px;
   margin: 0 10px;
+}
+
+.side-bar-link-text {
+  font-size: 16px;
+  line-height: 20px;
+
+}
+
+.side-bar-project-index-section {
+  padding: 5px 0;
+}
+
+.side-bar-project-index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px 0 15px;
+}
+
+.side-bar-projects-label {
+  font-size: 16px;
+  line-height: 24px;
+  color: #e8ecee
+}
+
+.side-bar-projects-label:hover {
+  cursor: default;
+}
+
+.add-project-cross {
+  height: 12px;
+  width: 12px;
+  fill: rgba(255,255,255,.5);
+  padding: 2px;
+}
+
+.add-project-cross:hover {
+  cursor: pointer;
+  fill: #fff;
+}
+
+.side-bar-project-index-parent {
+  /* padding: 0 15px; */
+}
+
+.side-bar-project-index-item {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 15px;
+}
+
+.side-bar-project-index-item:hover {
+  background-color: #444c5c;
+  cursor: pointer;
+}
+
+.side-bar-project-color-icon {
+  fill: #4186e0;
+  height: 12px;
+  width: 12px;
+  margin-right: 10px;
+}
+
+.side-bar-project-name {
+  display: block;
+  /* vertical-align: middle; */
+  width: 100%;
+  height: 26px;
+  font-size: 13px;
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+}
+
+.side-bar-dropdown-container {
+  position: relative;
+}
+
+.side-bar-project-dropdown-icon {
+  height: 20px;
+  width: 12px;
+  margin-left: 10px;
+  fill: #fff;
+  opacity: 0;
+  margin-top: 10px;
+  padding: 0 3px;
+}
+
+.side-bar-project-dropdown-icon:hover {
+  opacity: 1;
+}
+
+.side-bar-project-dropdown-contents {
+  display: none;
+  position: absolute;
+  background: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid #e8ecee;
+  border-radius: 4px;
+  left: 10px;
+  top: 30px;
+  width: 150px;
+  z-index: 1;
+}
+
+.side-bar-project-dropdown-item {
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  height: 20px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.side-bar-project-dropdown-item:hover {
+  background: #d3d7da;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+.project-plus-dropdown-container {
+  position: relative;
 }

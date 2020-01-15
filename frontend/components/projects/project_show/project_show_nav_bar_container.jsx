@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import ProjectShowNavBar from './project_show_nav_bar';
 import { logout } from '../../../actions/session_actions';
-import { fetchProject } from '../../../actions/project_actions';
+import { fetchProject, deleteProject } from '../../../actions/project_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
 
 
@@ -18,7 +18,9 @@ const mapDispatchToProps = dispatch => ({
       New Project
     </div>
   ),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
+  deleteProject: projectId => dispatch(deleteProject(projectId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectShowNavBar)

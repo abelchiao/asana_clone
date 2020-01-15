@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBarContainer from '../../side_bar/side_bar_container';
 import ProjectShowNavBar from '../project_show/project_show_nav_bar';
+import ProjectShowNavBarContainer from '../project_show/project_show_nav_bar_container';
 
 class ProjectShow extends React.Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class ProjectShow extends React.Component {
   }
 
   render() {
+    if (!this.props) return null;
+
     const { project, logout, createProject, closeModal } = this.props;
     return (
       <div className='project-show-parent'>
@@ -23,7 +26,12 @@ class ProjectShow extends React.Component {
             {/* <ProjectShowNavBar /> */}
             {/* <ProjectShowNavBar project={this.props.project} logout={this.props.logout} /> */}
             {/* {navBar} */}
-            <ProjectShowNavBar project={project} logout={logout} createProject={createProject} closeModal={closeModal} />
+            <ProjectShowNavBarContainer 
+              project={project} 
+              logout={logout} 
+              createProject={createProject} 
+              closeModal={closeModal}
+            />
           </div>
         </div>
       </div>

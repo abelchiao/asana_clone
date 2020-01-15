@@ -55,7 +55,9 @@ class SideBar extends React.Component {
             <svg className='side-bar-link-icon' viewBox='0 0 40 40'>
               <path d="M37.9,15L22.2,3.8c-1.3-1-3.1-1-4.4-0.1L2.2,14.4c-0.7,0.5-0.9,1.4-0.4,2.1c0.5,0.7,1.4,0.9,2.1,0.4L6,15.4v12.3c0,4.6,3.7,8.3,8.3,8.3h11.4c4.6,0,8.3-3.7,8.3-8.3V15.9l2.1,1.5c0.3,0.2,0.6,0.3,0.9,0.3c0.5,0,0.9-0.2,1.2-0.6C38.7,16.4,38.5,15.5,37.9,15z M31,27.7c0,2.9-2.4,5.3-5.3,5.3H14.3C11.4,33,9,30.6,9,27.7V13.3l10.6-7.2c0.2-0.2,0.5-0.2,0.8,0L31,13.7V27.7z"></path>
             </svg>
-            Home
+            <div className='side-bar-link-text'>
+              Home
+            </div>
           </Link>
           <div>My Tasks</div>
           <div>Inbox</div>
@@ -64,7 +66,16 @@ class SideBar extends React.Component {
         <div className='side-bar-favs-container'>
           Favorites
         </div>
-        <div>
+        <div className='side-bar-project-index-section'>
+          <div className='side-bar-project-index-header'>
+            <h1 className='side-bar-projects-label'>Projects</h1>
+            <div className='project-plus-dropdown-container'>
+              <svg onClick={() => this.props.openModal('create-project')} className='add-project-cross' viewBox='0 0 24 24'>
+                <path d="M10,10V4c0-1.1,0.9-2,2-2s2,0.9,2,2v6h6c1.1,0,2,0.9,2,2s-0.9,2-2,2h-6v6c0,1.1-0.9,2-2,2s-2-0.9-2-2v-6H4c-1.1,0-2-0.9-2-2s0.9-2,2-2H10z"></path>
+              </svg>
+            </div>
+
+          </div>
           <SideBarProjectIndexContainer />
         </div>
       </div>

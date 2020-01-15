@@ -25,6 +25,7 @@
 .ps-nav-left-items {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .ps-nav-project-icon-wrapper {
@@ -32,7 +33,7 @@
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 40px;
+  min-width: 40px;
   background: #4186e0;
   border-radius: 8px;
   margin-right: 10px;
@@ -42,6 +43,15 @@
   height: 16px;
   width: 16px;
   fill: #fff;
+}
+
+.ps-nav-project-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
 }
 
 .ps-user-dropdown-parent {
@@ -70,6 +80,54 @@
 }
 
 .ps-nav-dropdown-content-item:hover {
+  background: #d3d7da;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+.ps-nav-util-dropdown-container {
+  position: relative;
+}
+
+.ps-nav-util-dropdown-icon {
+  height: 16px;
+  width: 16px;
+  fill: #6f7782;
+  margin-left: 10px;
+}
+
+.ps-nav-util-dropdown-icon:hover {
+  cursor: pointer;
+  fill: #5c81b6
+}
+
+.ps-nav-util-dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid #e8ecee;
+  border-radius: 4px;
+  right: -5px;
+  top: 25px;
+  width: 150px;
+  z-index: 1;
+}
+
+.ps-nav-util-dropdown-item {
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  height: 20px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.ps-nav-util-dropdown-item:hover {
   background: #d3d7da;
   cursor: pointer;
 }

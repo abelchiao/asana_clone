@@ -4,16 +4,16 @@ import { createProject } from '../../../util/project_api_util';
 
 class RecentProjectIndex extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   };
 
   componentDidMount() {
-    this.props.fetchProjects()
-  }
+    this.props.fetchProjects();
+  };
 
   render() {
+    if (!this.props.projects) return null;
     const { projects, deleteProject, openModal, closeModal } = this.props;
-  
     return (
       <div className='project-index-container'>
         <div className='project-grid'>

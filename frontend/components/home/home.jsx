@@ -12,7 +12,6 @@ class Home extends React.Component {
   render() {
     return (
       <div className='home-parent'>
-        {/* <img src={window.waterBackground} alt="sfasfa"/> */}
         <div className='home-all'>
           <div id='home-sidebar-container' className='side-bar-container'>
             <SideBarContainer />
