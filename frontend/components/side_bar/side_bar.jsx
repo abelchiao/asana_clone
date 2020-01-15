@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import SideBarProjectIndexContainer from './side_bar_project_index_container';
 
 class SideBar extends React.Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class SideBar extends React.Component {
           Favorites
         </div>
         <div>
-          Teams/Projects
+          <SideBarProjectIndexContainer />
         </div>
       </div>
     );

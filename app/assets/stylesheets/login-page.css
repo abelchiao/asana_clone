@@ -2,9 +2,9 @@
   width: 100%;
   min-height: 100vh;
   /* padding-bottom: auto; */
-  background: url("../images/water-background.jpg");
-  background-size: cover;
-  /* background-image: linear-gradient(to top right, rgb(255, 100, 115) 60%, rgb(254, 168, 90)); */
+  /* background-image: url("water-background.jpg"); */
+  /* background-size: cover; */
+  background-image: linear-gradient(to top right, rgb(255, 100, 115) 60%, rgb(254, 168, 90));
 }
 
 .login-parent {
@@ -23,7 +23,7 @@
   height: 15%;
   width: 15%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 40px;
   padding-bottom: 30px;
 }
 
@@ -59,6 +59,8 @@
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 30px;
 }
 
 .login-button, .demo-login-button {
@@ -119,6 +121,7 @@
   align-items: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
+  padding-bottom: 15px;
 }
 
 .login-signup-button {

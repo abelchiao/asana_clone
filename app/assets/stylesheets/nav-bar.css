@@ -43,6 +43,7 @@
   padding-left: 30px;
   height: 40px;
   border-bottom: 1px solid #e8ecee;
+  font-size: 13px;
 }
 
 .home-nav-dropdown-content-item:hover {

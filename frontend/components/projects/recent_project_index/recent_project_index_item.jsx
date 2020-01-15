@@ -12,7 +12,20 @@ class RecentProjectIndexItem extends React.Component {
 
   revealProjectTileDropdown(e) {
     e.stopPropagation();
-    document.getElementById(`project-tile-${this.props.project.id}`).classList.toggle('show');
+    const dropdownIcon = document.getElementById(`project-tile-${this.props.project.id}`);
+    dropdownIcon.classList.toggle('show');
+
+    window.onclick = event => {
+      if (!event.target.matches(`#project-tile-${this.props.project.id}`)) {
+        let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+        for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
   }
 
   handleDelete(e) {

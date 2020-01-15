@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   createProject: (
     <div className='home-nav-dropdown-content-item' onClick={() => dispatch(openModal('create-project'))}>
-      New Project
+      <div>New Project</div>
     </div>
   ),
   closeModal: () => dispatch(closeModal())

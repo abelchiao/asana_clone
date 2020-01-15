@@ -131,3 +131,12 @@
 .project-tile-menu-icon:hover {
   opacity: 1;
 }
+
+.new-project-tile:hover {
+  .new-project-icon {
+    border: 2px dashed #3a3d41;
+  }
+  .new-project-icon .svg-plus-icon {
+    fill: #3a3d41;
+  }
+}

@@ -69,7 +69,7 @@ class SignupForm extends React.Component {
           </div>
           {this.renderErrors()}
           <form className='signup-form' onSubmit={this.handleSubmit}>
-            <br/>
+            {/* <br/> */}
             <div className='signup-input signup-first-name'>
               <label>First Name
                 <input 
@@ -80,7 +80,7 @@ class SignupForm extends React.Component {
                 />
               </label>
             </div>
-            <br/>
+            {/* <br/> */}
             <div className='signup-input'>
               <label>Last Name
                 <input 
@@ -91,7 +91,7 @@ class SignupForm extends React.Component {
                 />
               </label>
             </div>
-            <br/>
+            {/* <br/> */}
             <div className='signup-input'>
               <label>Email Address
                 <input 
@@ -102,7 +102,7 @@ class SignupForm extends React.Component {
                 />
               </label>
             </div>
-            <br/>
+            {/* <br/> */}
             <div className='signup-input'>
               <label>Password
                 <input 
@@ -113,7 +113,7 @@ class SignupForm extends React.Component {
                 />
               </label>
             </div>
-            <br/>
+            {/* <br/> */}
             <div className='signup-button-container'>
               <button className='signup-button' type='submit'>Sign Up</button>
             </div>

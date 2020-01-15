@@ -4,7 +4,7 @@ import NewProjectPageContainer from '../projects/new_project_page/new_project_pa
 import { closeModal } from '../../actions/modal_actions';
 import EditProjectFormContainer from '../projects/edit_project/edit_project_form_container';
 
-function Modal({modal, closeModal, currentProjectId}) {
+function Modal({modal, closeModal, currentProject}) {
   if (!modal) return null;
 
   let component;
@@ -13,7 +13,7 @@ function Modal({modal, closeModal, currentProjectId}) {
       component = <NewProjectPageContainer />;
       break;
     case 'edit-project':
-      component = <EditProjectFormContainer currentProjectId={currentProjectId} />
+      component = <EditProjectFormContainer currentProject={currentProject} />
       break;
     default:
       return null;
@@ -30,7 +30,7 @@ function Modal({modal, closeModal, currentProjectId}) {
 
 const mapStateToProps = state => ({
   modal: state.ui.modal,
-  currentProjectId: state.ui.currentProject
+  currentProject: state.entities.projects[state.ui.currentProject]
 });
 
 const mapDispatchToProps = dispatch => ({
