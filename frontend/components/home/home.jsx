@@ -23,9 +23,9 @@ class Home extends React.Component {
             </div>
             <div className='home-content'>
               <div className='home-category-header'>
-                <div className='category-toggle-triangle'>
-                  <img src={window.downTriangle} />
-                </div>
+                <svg className='home-category-collapse-down-triangle' viewBox='0 0 32 32'>
+                  <path d="M7.207,13.707L16.5,23l9.293-9.293c0.63-0.63,0.184-1.707-0.707-1.707H7.914C7.023,12,6.577,13.077,7.207,13.707z"></path>
+                </svg>
                 <h2 className='home-category-title'>Recent projects</h2>
               </div>
               <RecentProjectIndexContainer />
