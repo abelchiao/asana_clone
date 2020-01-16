@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: project_sections
+# Table name: sections
 #
 #  id         :bigint           not null, primary key
 #  title      :string           not null
@@ -13,7 +13,7 @@
 #  index_project_sections_on_project_id_and_title  (project_id,title) UNIQUE
 #
 
-class ProjectSection < ApplicationRecord
+class Section < ApplicationRecord
   validates :title, :project_id, presence: true
   validates :title, uniqueness: { scope: :project_id }
 
