@@ -46,7 +46,7 @@ class Project < ApplicationRecord
 
   has_many :sections,
     foreign_key: :project_id,
-    class_name: :ProjectSection
+    class_name: :Section
 
   has_many :tasks,
     through: :sections,
