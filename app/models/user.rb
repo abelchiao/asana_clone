@@ -31,6 +31,10 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :Project
 
+  has_many :tasks,
+    foreign_key: :assignee_id,
+    class_name: :Task
+
   has_many :project_memberships,
     primary_key: :id,
     foreign_key: :member_id,
