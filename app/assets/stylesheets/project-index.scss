@@ -95,6 +95,14 @@
   fill: #fff;
   z-index: 1;
   padding: 5px;
+  // 
+  opacity: 0;
+  fill: rgba(255, 255, 255, .5)
+  // 
+}
+
+.project-tile:hover .project-tile-menu-icon {
+  opacity: 1
 }
 
 .project-tile-dropdown-contents {
@@ -129,7 +137,10 @@
 }
 
 .project-tile-menu-icon:hover {
+  // 
   opacity: 1;
+  fill: #fff
+  // 
 }
 
 .new-project-tile:hover {

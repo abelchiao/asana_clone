@@ -35,7 +35,7 @@ class RecentProjectIndexItem extends React.Component {
     //     }
     //   }
     // }
-  }
+  };
 
   handleDelete(e) {
     e.stopPropagation();

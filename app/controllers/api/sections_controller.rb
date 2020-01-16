@@ -1,6 +1,6 @@
 class Api::SectionsController < ApplicationController
   def index
-    @sections = Project.find_by(id: params[:project_id]).sections
+    @sections = Project.find_by(id: params[:projectId]).sections
     render :index
   end
 

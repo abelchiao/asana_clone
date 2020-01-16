@@ -1,0 +1,1 @@
+json.extract! task, :title, :id, :due_date, :status, :section_id, :progress, :description

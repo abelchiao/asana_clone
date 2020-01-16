@@ -19,7 +19,7 @@ const removeSection = sectionId => ({
   sectionId
 });
 
-export const fetchSections = (projectId) => dispatch => {
+export const fetchSections = projectId => dispatch => {
   return SectionApiUtil.fetchSections(projectId)
     .then(sections => dispatch(receiveSections(sections)))
 };

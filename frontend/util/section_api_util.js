@@ -2,7 +2,7 @@ export const fetchSections = projectId => (
   $.ajax({
     url: '/api/sections',
     method: 'GET',
-    data: { project_id: projectId }
+    data: { projectId: projectId }
   })
 );
 
@@ -35,4 +35,3 @@ export const deleteSection = sectionId => (
     method: 'DELETE',
   })
 );
-
