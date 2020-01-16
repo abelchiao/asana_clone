@@ -1,7 +1,6 @@
 export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
-export const RECEIVE_PROJECT_MEMBERSHIP = 'RECEIVE_PROJECT_MEMBERSHIP';
 
 import * as ProjectApiUtil from '../util/project_api_util';
 

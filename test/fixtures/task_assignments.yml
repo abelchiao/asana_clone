@@ -1,16 +1,17 @@
 # == Schema Information
 #
-# Table name: sections
+# Table name: task_assignments
 #
 #  id         :bigint           not null, primary key
-#  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  project_id :integer          not null
+#  task_id    :integer          not null
+#  user_id    :integer          not null
 #
 # Indexes
 #
-#  index_sections_on_project_id  (project_id)
+#  index_task_assignments_on_task_id              (task_id)
+#  index_task_assignments_on_user_id_and_task_id  (user_id,task_id) UNIQUE
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

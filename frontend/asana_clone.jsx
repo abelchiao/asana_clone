@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import { signup, login } from './actions/session_actions'
+// import { fetchSections, fetchSection, createSection, updateSection, deleteSection } from './util/section_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -18,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   };
+  
+  // window.fetchSections = fetchSections
+  // window.fetchSection = fetchSection
+  // window.createSection = createSection
+  // window.updateSection = updateSection
+  // window.deleteSection = deleteSection
   
   window.signup = signup;
   window.login = login;

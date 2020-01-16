@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  index_project_sections_on_project_id_and_title  (project_id,title) UNIQUE
+#  index_sections_on_project_id  (project_id)
 #
 
 class Section < ApplicationRecord

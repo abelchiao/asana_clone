@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_01_16_080600) do
-=======
-ActiveRecord::Schema.define(version: 2020_01_15_232448) do
->>>>>>> parent of 9f818ba... Add project sections and tasks models
+ActiveRecord::Schema.define(version: 2020_01_16_090111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,20 +42,27 @@ ActiveRecord::Schema.define(version: 2020_01_15_232448) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id", "title"], name: "index_sections_on_project_id_and_title", unique: true
+    t.index ["project_id"], name: "index_sections_on_project_id"
+  end
+
+  create_table "task_assignments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_assignments_on_task_id"
+    t.index ["user_id", "task_id"], name: "index_task_assignments_on_user_id_and_task_id", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "assignee_id"
     t.date "due_date"
-    t.boolean "completion_status", null: false
+    t.boolean "status", default: false, null: false
     t.integer "section_id"
     t.string "progress"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["due_date"], name: "index_tasks_on_due_date"
     t.index ["section_id"], name: "index_tasks_on_section_id"
   end

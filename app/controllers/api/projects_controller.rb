@@ -30,6 +30,7 @@ class Api::ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
+    # render :show
   end
 
   private

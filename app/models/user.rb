@@ -31,10 +31,6 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :Project
 
-  has_many :assigned_tasks,
-    foreign_key: :assignee_id,
-    class_name: :Task
-
   has_many :project_memberships,
     primary_key: :id,
     foreign_key: :member_id,
@@ -45,7 +41,17 @@ class User < ApplicationRecord
   has_many :projects,
     through: :project_memberships,
     source: :project
-    # inverse_of: :members
+
+  has_many :task_assignments,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :TaskAssignment,
+    inverse_of: :user,
+    dependent: :destroy
+
+  has_many :tasks,
+    through: :task_assignments,
+    source: :task
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
