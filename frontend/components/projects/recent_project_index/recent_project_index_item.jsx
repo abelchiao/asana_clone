@@ -15,6 +15,9 @@ class RecentProjectIndexItem extends React.Component {
     const dropdownIcon = document.getElementById(`project-tile-${this.props.project.id}`);
     dropdownIcon.classList.toggle('show');
 
+    // $('.project-tile-dropdown-contents').removeClass('show')
+    // $(`project-tile-${this.props.project.id}`).addClass('show')
+
     window.onclick = () => {
       let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
       for (let i = 0; i < dropdowns.length; i++) {
@@ -40,6 +43,10 @@ class RecentProjectIndexItem extends React.Component {
   handleDelete(e) {
     e.stopPropagation();
     this.props.deleteProject(this.props.project.id);
+
+    // $('.project-tile-dropdown-contents').removeClass('show')
+    // $(`project-tile-${project.id}`).addClass('show')
+
     let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];

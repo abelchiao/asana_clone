@@ -43,4 +43,12 @@ class Project < ApplicationRecord
     through: :project_memberships,
     source: :member
     # inverse_of: :projects
+
+  has_many :sections,
+    foreign_key: :project_id,
+    class_name: :ProjectSection
+
+  has_many :tasks,
+    through: :sections,
+    source: :tasks
 end

@@ -6,6 +6,7 @@ class Api::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @project_sections = @project.sections
     render :show
   end
   

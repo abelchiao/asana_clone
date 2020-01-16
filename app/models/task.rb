@@ -3,7 +3,7 @@
 # Table name: tasks
 #
 #  id                :bigint           not null, primary key
-#  completion_status :boolean          not null
+#  completion_status :boolean          default(FALSE), not null
 #  description       :text
 #  due_date          :date
 #  progress          :string
@@ -21,7 +21,8 @@
 #
 
 class Task < ApplicationRecord
-  validates :completion_status, :title, presence: true
+  validates :title, :assignee_id, presence: true
+  validates :completion_status, inclusion: []
 
   belongs_to :section,
     foreign_key: :section_id,
@@ -30,4 +31,8 @@ class Task < ApplicationRecord
   belongs_to :assignee,
     foreign_key: :assignee_id,
     class_name: :User
+
+  has_one :project,
+    through: :section,
+    source: :project
 end
