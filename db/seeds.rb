@@ -9,6 +9,16 @@
 User.delete_all
 Team.delete_all
 Project.delete_all
+ProjectMembership.delete_all
+Section.delete_all
+Task.delete_all
+
+ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('teams')
+ApplicationRecord.connection.reset_pk_sequence!('projects')
+ApplicationRecord.connection.reset_pk_sequence!('project_memberships')
+ApplicationRecord.connection.reset_pk_sequence!('sections')
+ApplicationRecord.connection.reset_pk_sequence!('tasks')
 
 User.create!(first_name: 'Demo', last_name: 'User', email: 'demo@demo.demo', password: '123456')
 

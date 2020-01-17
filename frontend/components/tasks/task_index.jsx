@@ -6,20 +6,20 @@ class TaskIndex extends React.Component {
     super(props)
   };
 
-  componentDidMount() {
-    const { fetchTasks, sectionId } = this.props;
-    fetchTasks(sectionId);
-  };
+  // componentDidMount() {
+  //   const { fetchTasks, sectionId } = this.props;
+  //   fetchTasks(sectionId);
+  // };
 
   render() {
     if (!this.props.tasks) return null;
     const { tasks } = this.props;
     return (
-      <div>
+      <div className='task-index-parent'>
         Task Index
         {
-          Object.values(tasks).map(task => (
-            <TaskIndexItem task={task} />
+          tasks.map(task => (
+            <TaskIndexItem key={task.id} task={task} />
           ))
         }
       </div>

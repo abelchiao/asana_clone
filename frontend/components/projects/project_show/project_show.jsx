@@ -14,8 +14,13 @@ class ProjectShow extends React.Component {
     this.props.fetchProject(this.props.match.params.projectId)
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
+      this.props.fetchProject(this.props.match.params.projectId);
+    };
+  };
+
   render() {
-    // if (!this.props) return null;
     if (!this.props.project) return null;
 
     const { project, logout, createProject, closeModal } = this.props;
@@ -34,9 +39,8 @@ class ProjectShow extends React.Component {
             />
           </div>
           <div className='project-show-contents'>
-            Project stuff (sections, tasks) go here
             {/* <SectionIndexContainer projectId={project.id} /> */}
-            <SectionIndexContainer />
+            <SectionIndexContainer projectId={this.props.match.params.projectId} />
           </div>
         </div>
       </div>

@@ -96,7 +96,7 @@ class ProjectShowNavBar extends React.Component {
           </div>
         </div>
         <div onClick={this.revealDropdown} className='ps-user-dropdown-parent'>
-          <div className='nb-user-util-icon'>AC</div>
+          <div className='nb-user-util-icon'>DU</div>
           <div
             id='ps-nav-user-dropdown-content'
             className='ps-nav-user-dropdown-content'

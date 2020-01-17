@@ -6,7 +6,8 @@
   /* background-color: #151B26; */
   background-color: #151b26;
   color: #cbd4db;
-  width: 100%;
+  width: 240px;
+  position: fixed;
 }
 
 .side-bar-header {
@@ -160,14 +161,15 @@
   height: 20px;
   width: 12px;
   margin-left: 10px;
-  fill: #fff;
   opacity: 0;
+  fill: rgba(255, 255, 255, .5);
   margin-top: 10px;
   padding: 0 3px;
 }
 
 .side-bar-project-dropdown-icon:hover {
   opacity: 1;
+  fill: #fff;
 }
 
 .side-bar-project-dropdown-contents {
@@ -197,6 +199,12 @@
   background: #d3d7da;
   cursor: pointer;
 }
+
+// .side-bar-project-dropdown-item:hover {
+//   .side-bar-project-dropdown-icon {
+//     opacity: 1;
+//   }
+// }
 
 .show {
   display: block;

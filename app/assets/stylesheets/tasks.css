@@ -1,0 +1,20 @@
+.task-index-parent {
+  box-sizing: border-box;
+  color: green;
+  border: 1px solid green;
+  /* padding: 10px; */
+}
+
+.task-index-item-parent {
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+
+.task-index-item-content {
+  color: purple;
+  border: 1px solid purple;
+  padding: 15px;
+  width: 280px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(21,27,38,.15)
+}

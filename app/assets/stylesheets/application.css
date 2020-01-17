@@ -48,8 +48,10 @@ body {
 }
 
 .side-bar-container {
-  min-width: 280px;
-  max-width: 280px;
+  /* min-width: 30%;
+  max-width: 30%; */
+  min-width: 240px;
+  max-width: 240px;
   min-height: 100vh;
 }
 

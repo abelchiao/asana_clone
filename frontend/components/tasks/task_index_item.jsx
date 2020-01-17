@@ -9,9 +9,11 @@ class TaskIndexItem extends React.Component {
     if (!this.props.task) return null;
     const { task } = this.props;
     return (
-      <div>
-        Task Index Item
-        task: {task.title}
+      <div className='task-index-item-parent'>
+        <div className='task-index-item-content'>
+          Task Index Item
+          task: {task.title}
+        </div>
       </div>
     );
   };

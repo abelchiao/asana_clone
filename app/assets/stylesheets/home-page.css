@@ -24,6 +24,7 @@
 
 .home-content {
   width: 80%;
+  margin-top: 70px;
 }
 
 /* .side-bar-parent {
@@ -32,6 +33,11 @@
 
 .home-navbar {
   width: 100%;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #e8ecee;
+  z-index: 3;
 }
 
 .home-category-header {

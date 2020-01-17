@@ -5,15 +5,25 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
 }
 
 .home-nav-left-items {
   display: flex;
 }
 
+.home-nav-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+}
+
 .session-link {
   padding: 5px;
-  background: rgb(20,170,245);
+  background: rgb(9, 10, 10);
   color: white;
   height: 40px;
   font-size: 14px;

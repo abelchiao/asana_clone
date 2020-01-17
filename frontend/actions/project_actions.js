@@ -4,9 +4,11 @@ export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 
 import * as ProjectApiUtil from '../util/project_api_util';
 
-const receiveProject = project => ({
+const receiveProject = ({project, sections, tasks}) => ({
   type: RECEIVE_PROJECT,
-  project
+  project,
+  sections,
+  tasks
 });
 
 const receiveProjects = projects => ({

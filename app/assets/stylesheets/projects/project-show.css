@@ -13,8 +13,22 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* margin-top: 70px; */
+  overflow-x: auto;
 }
 
 .project-show-navbar {
   width: 100%;
+  /* position: sticky; */
+  top: 0;
+  /* display: inline-block; */
+}
+
+.project-show-contents {
+  height: 100%;
+  overflow-x: scroll;
+}
+
+.section-index-parent {
+  height: 100%;
 }

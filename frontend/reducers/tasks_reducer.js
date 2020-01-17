@@ -1,5 +1,6 @@
 import { RECEIVE_TASKS, RECEIVE_TASK, REMOVE_TASK } from '../actions/task_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_PROJECT } from '../actions/project_actions';
 
 const tasksReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -16,6 +17,9 @@ const tasksReducer = (oldState = {}, action) => {
       return nextState;
     case LOGOUT_CURRENT_USER:
       return {};
+    case RECEIVE_PROJECT:
+      nextState = Object.assign({}, oldState, action.tasks)
+      return nextState;
     default:
       return oldState;
   };

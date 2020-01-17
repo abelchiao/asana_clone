@@ -10,7 +10,7 @@ class SectionIndexItem extends React.Component {
     if (!this.props.section) return null
     const { section } = this.props;
     return (
-      <div>
+      <div className='section-index-item-parent'>
         SectionIndexItem
         <br/>
         section: {section.title}

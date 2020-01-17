@@ -12,7 +12,7 @@ class SideBarProjectIndex extends React.Component {
 
   render() {
     if (!this.props) return null;
-    const { projects, deleteProject, openModal, closeModal } = this.props;
+    const { projects, deleteProject, openModal, closeModal, fetchProject } = this.props;
     return (
       <div className='side-bar-project-index-parent'>
         {
@@ -23,6 +23,7 @@ class SideBarProjectIndex extends React.Component {
               deleteProject={deleteProject}
               openModal={openModal}
               closeModal={closeModal}
+              fetchProject = {fetchProject}
             />
           ))
         }

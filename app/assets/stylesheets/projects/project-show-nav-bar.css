@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  margin-right: 280px;
 }
 
 .nb-user-util-icon {
@@ -56,6 +57,7 @@
 
 .ps-user-dropdown-parent {
   position: relative;
+  z-index: 2
 }
 
 .ps-nav-user-dropdown-content {

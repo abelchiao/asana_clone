@@ -7,25 +7,26 @@ class SectionIndex extends React.Component {
     super(props)
   };
 
-  componentDidMount() {
-    // debugger
-    this.props.fetchSections(this.props.match.params.projectId)
-  }
+  // componentDidMount() {
+  //   this.props.fetchSections(this.props.match.params.projectId)
+  // }
 
   render() {
-    if (!this.props) return null;
+    // debugger
+    // if (!this.props) return null;
     return (
-      <div>
-        Project id: {this.props.match.params.projectId}
-        <br/>
-        SectionIndex
-        <br/>
-        <SectionIndexItem />
-        {
-          Object.values(this.props.sections).map(section => (
-            <SectionIndexItem key={section.id} section={section} />
-          ))
-        }
+      <div className='section-index-parent'>
+        <div className='section-index-header'>
+          Project id: {this.props.match.params.projectId}
+          SectionIndex
+        </div>
+        <div className='section-index-content'>
+          {
+            (this.props.sections).map(section => (
+              <SectionIndexItem key={section.id} section={section} />
+            ))
+          }
+        </div>
       </div>
     );
   };

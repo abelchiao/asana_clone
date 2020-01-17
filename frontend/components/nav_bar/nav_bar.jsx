@@ -24,10 +24,10 @@ class NavBar extends React.Component {
           <svg onClick={this.toggleShowSidebar} id='home-burger' className='nav-burger-icon hidden' viewBox='0 0 32 32'>
             <path d="M31,4H1C0.4,4,0,3.6,0,3s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,4,31,4z M31,16H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,16,31,16z M31,28H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,28,31,28z"></path>
           </svg>
-          <h1>Home</h1>
+          <h1 className='home-nav-title'>Home</h1>
         </div>
         <div onClick={this.revealDropdown} className='home-user-dropdown-parent'>
-          <div className='nb-user-util-icon'>AC</div>
+          <div className='nb-user-util-icon'>DU</div>
           <div
             id='home-nav-user-dropdown-content' 
             className='home-nav-user-dropdown-content' 

@@ -1,0 +1,19 @@
+.section-index-parent {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  color: blue;
+  /* display: flex; */
+  /* padding: 10px; */
+}
+
+.section-index-content {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.section-index-item-parent {
+  box-sizing: border-box;
+  color: red;
+  border: 1px solid red;
+  margin: 5px;
+}
