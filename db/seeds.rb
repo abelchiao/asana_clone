@@ -10,7 +10,7 @@ User.delete_all
 Team.delete_all
 Project.delete_all
 ProjectMembership.delete_all
-Section.delete_all
+# Section.delete_all
 Task.delete_all
 
 ApplicationRecord.connection.reset_pk_sequence!('users')
