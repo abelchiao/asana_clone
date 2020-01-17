@@ -48,10 +48,10 @@ class EditProjectForm extends React.Component {
             onChange={this.update('title')}
           />
           <div className='edit-form-owner-info-container'>
-            <div className='nb-user-util-icon'>AC</div>
+            <div className='nb-user-util-icon'>DU</div>
             <div className='edit-form-owner-info'>
               <div className='edit-form-owner-info-label'>Owned by</div>
-              <div className='edit-form-owner-name'>Abel Chiao</div>
+              <div className='edit-form-owner-name'>Demo User</div>
             </div>
           </div>
           <label className='edit-form-label' htmlFor='edit-form-description'>Description</label>
