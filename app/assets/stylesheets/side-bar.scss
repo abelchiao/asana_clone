@@ -1,4 +1,5 @@
 .side-bar-parent {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -72,7 +73,14 @@
   background-color: #444c5c;
 }
 
-.side-bar-link-icon {
+.side-bar-link-icon-home {
+  fill: #6f7782;
+  height: 20px;
+  width: 20px;
+  margin: 0 10px;
+}
+
+.side-bar-link-icon-tasks {
   fill: #6f7782;
   height: 20px;
   width: 20px;
@@ -80,9 +88,8 @@
 }
 
 .side-bar-link-text {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
-
 }
 
 .side-bar-project-index-section {

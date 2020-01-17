@@ -11,8 +11,7 @@ class TaskIndexItem extends React.Component {
     return (
       <div className='task-index-item-parent'>
         <div className='task-index-item-content'>
-          Task Index Item
-          task: {task.title}
+          {task.title}
         </div>
       </div>
     );

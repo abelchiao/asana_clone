@@ -16,7 +16,6 @@ class TaskIndex extends React.Component {
     const { tasks } = this.props;
     return (
       <div className='task-index-parent'>
-        Task Index
         {
           tasks.map(task => (
             <TaskIndexItem key={task.id} task={task} />

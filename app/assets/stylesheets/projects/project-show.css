@@ -1,34 +1,50 @@
 .project-show-parent {
   display: flex;
   min-height: 100vh;
-  width: 100%;
+  /* width: calc(100vw - 240px); */
 };
 
 .project-show-all {
+  background: #fff;
   display: flex;
-  background: rgb(199, 199, 245)
+  justify-content: center;
+  /* min-height: 100vh; */
+}
+
+
+.project-show-all {
+  display: flex;
+  /* background: rgb(199, 199, 245) */
 }
 
 .project-show-main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 0 auto;
+  width: calc(100vw - 240px);
+  background-color: rgb(224, 238, 255);
   /* margin-top: 70px; */
-  overflow-x: auto;
+  /* overflow-x: auto; */
 }
 
 .project-show-navbar {
+  box-sizing: border-box;
   width: 100%;
-  /* position: sticky; */
+  position: sticky;
   top: 0;
+  box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
+  background: #fff;
   /* display: inline-block; */
 }
 
 .project-show-contents {
-  height: 100%;
-  overflow-x: scroll;
+  /* height: 100%; */
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .section-index-parent {
-  height: 100%;
+  /* height: 100%; */
 }

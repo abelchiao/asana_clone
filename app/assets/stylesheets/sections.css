@@ -1,19 +1,63 @@
 .section-index-parent {
   box-sizing: border-box;
-  border: 1px solid blue;
-  color: blue;
-  /* display: flex; */
-  /* padding: 10px; */
+  width: 100%;
 }
 
 .section-index-content {
   box-sizing: border-box;
   display: flex;
+  padding: 10px;
 }
 
 .section-index-item-parent {
   box-sizing: border-box;
-  color: red;
-  border: 1px solid red;
+  /* color: red;
+  border: 1px solid red; */
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.section-index-item-header {
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  /* background: #fff; */
+}
+
+.task-create-form {
+  display: none;
+  margin-top: 10px;
+}
+
+.show {
+  display: block;
+}
+
+.section-index-delete-icon {
+  /* width: 0.875em;
+  height: 1em; */
+  height: 16px;
+  width: 16px;
+  fill: gray
+}
+
+.reveal-task-form-button {
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
+  padding: 4px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.new-section-form-container {
+  display: flex;
+  flex-direction: column;
+  padding-right: 100px;
 }

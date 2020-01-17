@@ -26,22 +26,25 @@ class ProjectShow extends React.Component {
     const { project, logout, createProject, closeModal } = this.props;
     return (
       <div className='project-show-parent'>
-        <div id='ps-sidebar-container' className='side-bar-container'>
-          <SideBarContainer />
-        </div>
-        <div className='project-show-main'>
-          <div className='project-show-navbar'>
-            <ProjectShowNavBarContainer 
-              project={project} 
-              logout={logout} 
-              createProject={createProject} 
-              closeModal={closeModal}
-            />
+        <div className='project-show-all'>
+          <div id='ps-sidebar-container' className='side-bar-container'>
+            <SideBarContainer />
           </div>
-          <div className='project-show-contents'>
-            {/* <SectionIndexContainer projectId={project.id} /> */}
-            <SectionIndexContainer projectId={this.props.match.params.projectId} />
+          <div className='project-show-main'>
+            <div className='project-show-navbar'>
+              <ProjectShowNavBarContainer 
+                project={project} 
+                logout={logout} 
+                createProject={createProject} 
+                closeModal={closeModal}
+              />
+            </div>
+            <div className='project-show-contents'>
+              {/* <SectionIndexContainer projectId={project.id} /> */}
+              <SectionIndexContainer projectId={this.props.match.params.projectId} />
+            </div>
           </div>
+
         </div>
       </div>
     );

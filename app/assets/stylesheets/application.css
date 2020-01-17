@@ -19,7 +19,7 @@ html body {
   background-repeat: no-repeat;
   /* background: gray; */
   /* background-image: url('../images/water-background.jpg'); */
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -53,6 +53,7 @@ body {
   min-width: 240px;
   max-width: 240px;
   min-height: 100vh;
+  min-width: 240px;
 }
 
 .hidden {
