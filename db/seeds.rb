@@ -10,7 +10,7 @@ User.delete_all
 Team.delete_all
 Project.delete_all
 ProjectMembership.delete_all
-# Section.delete_all
+Section.delete_all
 Task.delete_all
 
 ApplicationRecord.connection.reset_pk_sequence!('users')
@@ -24,8 +24,11 @@ User.create!(first_name: 'Demo', last_name: 'User', email: 'demo@demo.demo', pas
 
 Team.create!(title: 'Engineering', description: 'sajflkajflkjsa')
 
-Project.create!(title: 'UserAuth', owner_id: 1, team_id: 1, description: 'done')
+Project.create!(title: 'General operations', owner_id: 1, team_id: 1, description: 'done')
 Project.create!(title: 'Projects MVP', owner_id: 1, team_id: 1, description: 'asfafafldj')
+Project.create!(title: 'Human resources', owner_id: 1, team_id: 1, description: 'asfafafldj')
+Project.create!(title: 'Marketing campaign', owner_id: 1, team_id: 1, description: 'asfafafldj')
+Project.create!(title: 'Bdev', owner_id: 1, team_id: 1, description: 'asfafafldj')
 
 ProjectMembership.create!(member_id: 1, project_id: 1)
 ProjectMembership.create!(member_id: 1, project_id: 2)
