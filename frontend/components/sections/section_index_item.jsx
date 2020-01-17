@@ -56,15 +56,17 @@ class SectionIndexItem extends React.Component {
     const form = document.getElementById(`create-task-${this.props.section.id}`)
     form.classList.toggle('show')
 
-    $(document).click(() => {
-      if ($(`#create-task-${this.props.sectionId}`).value) {
-        $(`#create-task-${this.props.sectionId}`).submit();
-      }
-    });
+    // $(document).click(() => {
+    //   console.log('hello1')
+    //   if ($(`#create-task-${this.props.sectionId}`).value) {
+    //     console.log('hello')
+    //     $(`#create-task-${this.props.sectionId}`).submit();
+    //   }
+    // });
 
-    $(`#create-task-${this.props.sectionId}`).click(e => {
-      e.stopPropagation();
-    });
+    // $(`#create-task-${this.props.sectionId}`).click(e => {
+    //   e.stopPropagation();
+    // });
   }
 
   render() {
