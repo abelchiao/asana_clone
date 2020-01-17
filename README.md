@@ -5,8 +5,7 @@ An intuitive interface for adding, organizing, and visualizing work to be done m
 [Check out the app here.](https://notsana.herokuapp.com)
 
 ## Features
-![alt text](https://github.com/abelchiao/asana_clone/blob/master/img/project_creation.gif "Logo Title Text 1")
-
+![Project creation demo](img/project_creation.gif)
 
 
 ## Technologies
