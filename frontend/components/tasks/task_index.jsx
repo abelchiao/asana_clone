@@ -13,12 +13,12 @@ class TaskIndex extends React.Component {
 
   render() {
     if (!this.props.tasks) return null;
-    const { tasks } = this.props;
+    const { tasks, deleteTask } = this.props;
     return (
       <div className='task-index-parent'>
         {
           tasks.map(task => (
-            <TaskIndexItem key={task.id} task={task} />
+            <TaskIndexItem key={task.id} task={task} deleteTask={deleteTask} />
           ))
         }
       </div>

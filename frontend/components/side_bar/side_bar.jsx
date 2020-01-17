@@ -60,8 +60,11 @@ class SideBar extends React.Component {
             </div>
           </Link>
           <Link to='/tasks' className='side-bar-link'>
-            <svg className='side-bar-link-icon-tasks' viewBox='0 0 40 40'>
-              <path d="M9.5,18.2c-0.4,0.4-1,0.4-1.4,0l-3.8-3.8C4,14,4,13.4,4.3,13s1-0.4,1.4,0l3.1,3.1l8.6-8.6c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4 L9.5,18.2z"></path>            </svg>
+            <div className='side-bar-link-icon-tasks container'>
+              <svg className='side-bar-link-icon-tasks' viewBox='0 0 40 40'>
+                <path d="M9.5,18.2c-0.4,0.4-1,0.4-1.4,0l-3.8-3.8C4,14,4,13.4,4.3,13s1-0.4,1.4,0l3.1,3.1l8.6-8.6c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4 L9.5,18.2z"></path>            
+              </svg>
+            </div>
             <div className='side-bar-link-text'>
               My Tasks
             </div>

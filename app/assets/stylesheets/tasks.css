@@ -15,11 +15,66 @@
 }
 
 .task-index-item-content {
-  /* color: purple;
-  border: 1px solid purple; */
+  display: flex;
+  justify-content: space-between;
   padding: 15px;
   width: 280px;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
   background: #fff;
+}
+
+.task-index-item-content:hover {
+  cursor: pointer;
+  background: rgb(246, 249, 255);
+}
+
+.task-index-item-dropdown {
+  position: relative;
+}
+
+.task-dropdown-icon {
+  height: 12px;
+  width: 12px;
+  margin-left: 5px;
+}
+
+.task-dropdown-icon:hover {
+  cursor: pointer;
+}
+
+.task-dropdown-contents {
+  display: none;
+  position: absolute;
+  background: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid #e8ecee;
+  border-radius: 4px;
+  right: -5px;
+  top: 20px;
+  width: 150px;
+  z-index: 100;
+}
+
+.show {
+  display: block;
+}
+
+.task-dropdown-item {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  height: 20px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.task-dropdown-item:hover {
+  background: #d3d7da;
+  cursor: pointer;
+}
+
+.section-index-delete-icon:hover {
+  fill: red;
+  cursor: pointer;
 }

@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  padding: 0 10px;
+  padding: 0 15px;
   /* background: #fff; */
 }
 
@@ -54,6 +54,11 @@
   padding: 4px;
   background: #fff;
   border-radius: 4px;
+}
+
+.reveal-task-form-button:hover {
+  cursor: pointer;
+  background: rgb(246, 249, 255)
 }
 
 .new-section-form-container {
