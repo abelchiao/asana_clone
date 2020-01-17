@@ -24,6 +24,18 @@ class SectionIndexItem extends React.Component {
   //   });
   // }
 
+  // componentDidMount() {
+  //   $(document).click(() => {
+  //     if ($(`#create-task-${this.props.sectionId}`).value) {
+  //       $(`#create-task-${this.props.sectionId}`).submit();
+  //     }
+  //   });
+
+  //   $(`#create-task-${this.props.sectionId}`).click(e => {
+  //     e.stopPropagation();
+  //   });
+  // }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.createTask(this.state);
@@ -43,12 +55,14 @@ class SectionIndexItem extends React.Component {
   revealForm() {
     const form = document.getElementById(`create-task-${this.props.section.id}`)
     form.classList.toggle('show')
+
     $(document).click(() => {
       if ($(`#create-task-${this.props.sectionId}`).value) {
-        $(`#create-task-${this.props.sectionId}`).submit;
+        $(`#create-task-${this.props.sectionId}`).submit();
       }
     });
-    $(`#create-task-${this.props.sectionId}`).click(function (e) {
+
+    $(`#create-task-${this.props.sectionId}`).click(e => {
       e.stopPropagation();
     });
   }
