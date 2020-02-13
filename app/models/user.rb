@@ -53,6 +53,15 @@ class User < ApplicationRecord
     through: :task_assignments,
     source: :task
 
+  has_many :project_favorites,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :ProjectFavorite
+
+  has_many :favorite_projects,
+    through: :project_favorites,
+    source: :project
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user && user.is_password?(password) ? user : nil

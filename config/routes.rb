@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :sections, only: [:index, :create, :show, :update, :destroy]
     resources :tasks, only: [:index, :create, :show, :update, :destroy]
     # resources :project_memberships, only: [:create]
+    resources :project_favorites, only: [:create, :destroy]
     resource :session, only: [:new, :create, :destroy]
   end
 

@@ -15,4 +15,13 @@
 #
 
 class ProjectFavorite < ApplicationRecord
+  validates :user_id, uniqueness: { scope: :project_id }
+
+  belongs_to :user,
+    foreign_key: :user_id,
+    class_name: :User
+
+  belongs_to :project,
+    foreign_key: :project_id,
+    class_name: :Project
 end
