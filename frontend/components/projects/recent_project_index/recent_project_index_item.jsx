@@ -65,8 +65,13 @@ class RecentProjectIndexItem extends React.Component {
     this.props.history.push(`/projects/${this.props.project.id}`)
   }
 
+  renderFavoriteIcon() {
+    
+  }
+
   render() {
     const { project } = this.props;
+
     return (
       <div className='project-tile-parent'>
         <div onClick={this.navigateToShow} className='project-tile' to={`/projects/${project.id}`}>
