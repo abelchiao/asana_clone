@@ -40,6 +40,7 @@ class SideBarProjectIndexItem extends React.Component {
         openDropdown.classList.remove('show');
       }
     }
+    
   }
 
   handleEdit(e) {

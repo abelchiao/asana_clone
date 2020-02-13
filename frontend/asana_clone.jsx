@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 // import { signup, login } from './actions/session_actions';
 // import { fetchSections, fetchSection, createSection, updateSection, deleteSection } from './util/section_api_util';
-// import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
+import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
 // import { fetchSections, fetchSection, createSection } from './actions/section_actions';
 // import { fetchProject } from './actions/project_actions';
 import { fetchProject } from './util/project_api_util';
