@@ -32,7 +32,12 @@ class SideBarProjectIndexItem extends React.Component {
 
   handleDelete(e) {
     e.stopPropagation();
-    this.props.deleteProject(this.props.project.id);
+    this.props.deleteProject(this.props.project.id)
+      .then(() => {
+        if (Number(this.props.match.params.projectId) === this.props.project.id) {
+          this.props.history.push('/home');
+        }
+      })
     let dropdowns = document.getElementsByClassName('side-bar-project-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
@@ -40,7 +45,6 @@ class SideBarProjectIndexItem extends React.Component {
         openDropdown.classList.remove('show');
       }
     }
-    
   }
 
   handleEdit(e) {
