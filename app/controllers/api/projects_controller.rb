@@ -1,6 +1,7 @@
 class Api::ProjectsController < ApplicationController
   def index
     @projects = current_user.projects
+    @favorite_projects = current_user.favorite_projects
     render :index
   end
 
