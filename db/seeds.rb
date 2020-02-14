@@ -10,6 +10,7 @@ User.delete_all
 Team.delete_all
 Project.delete_all
 ProjectMembership.delete_all
+ProjectFavorite.delete_all
 Section.delete_all
 Task.delete_all
 
@@ -32,6 +33,12 @@ Project.create!(title: 'Bdev', owner_id: 1, team_id: 1, description: 'asfafafldj
 
 ProjectMembership.create!(member_id: 1, project_id: 1)
 ProjectMembership.create!(member_id: 1, project_id: 2)
+ProjectMembership.create!(member_id: 1, project_id: 3)
+ProjectMembership.create!(member_id: 1, project_id: 4)
+
+ProjectFavorite.create!(user_id: 1, project_id: 1)
+ProjectFavorite.create!(user_id: 1, project_id: 2)
+ProjectFavorite.create!(user_id: 1, project_id: 3)
 
 Section.create!(project_id: 1, title: 'Planning')
 Section.create!(project_id: 1, title: 'Milestones')

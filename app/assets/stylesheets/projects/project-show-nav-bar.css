@@ -140,3 +140,15 @@
 .show {
   display: block;
 }
+
+.ps-nav-favorite-icon {
+  height: 16px;
+  width: 16px;
+  fill: #6f7782;
+  margin-left: 10px;
+}
+
+.ps-nav-favorite-icon:hover {
+  cursor: pointer;
+  fill: rgb(230, 155, 16);
+}

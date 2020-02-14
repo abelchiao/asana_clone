@@ -51,4 +51,12 @@ class Project < ApplicationRecord
   has_many :tasks,
     through: :sections,
     source: :tasks
+
+  has_many :project_favorites,
+    foreign_key: :project_id,
+    class_name: :ProjectFavorite
+
+  has_many :favorite_users,
+    through: :project_favorites,
+    source: :user
 end
