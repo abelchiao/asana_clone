@@ -1,6 +1,6 @@
 export const fetchAssociatedProjects = state => Object.values(state.entities.projects);
 
-export const favoriteSelector = state => {
+export const favoritesSelector = state => {
   return Object.values(state.entities.projects).filter(project => project.favorite === true)
 }
 

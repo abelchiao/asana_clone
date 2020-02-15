@@ -9,7 +9,10 @@ class Api::ProjectFavoritesController < ApplicationController
   end
 
   def destroy
-
+    @project_favorite = ProjectFavorite.find(params[:id])) 
+    # @project_favorite = ProjectFavorite.find_by((user_id: current_user.id, project_id: params[:project_id])) 
+    @project_favorite.destroy
+    render json: @project_favorite
   end
 
   private

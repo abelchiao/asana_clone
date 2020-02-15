@@ -35,6 +35,21 @@ export const deleteProject = projectId => (
   })
 );
 
+export const createProjectFavorite = project_favorite => (
+  $.ajax({
+    url: '/api/project_favorites',
+    method: 'POST',
+    data: { project_favorite }
+  })
+);
+
+export const deleteProjectFavorite = project_favorite => (
+  $.ajax({
+    url: `/api/project_favorites/${projectFavoriteId}`,
+    method: 'DELETE'
+  })
+)
+
 // export const createProjectMembership = project_membership => (
 //   $.ajax({
 //     url: '/api/project_memberships',
