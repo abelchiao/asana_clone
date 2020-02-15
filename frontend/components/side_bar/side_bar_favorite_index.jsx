@@ -1,4 +1,5 @@
 import React from 'react';
+import SideBarFavoriteIndexItem from './side_bar_favorite_index_item';
 
 class SideBarFavoriteIndex extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class SideBarFavoriteIndex extends React.Component {
       <div>
         {
           Object.values(favoriteProjects).map(project => (
-            <div>{project.title}</div>
+            <SideBarFavoriteIndexItem project={project} />
           ))
         }
       </div>

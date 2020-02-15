@@ -3,7 +3,9 @@ import React from 'react';
 class SideBarFavoriteIndexItem extends React.Component {
   render() {
     return (
-      <div>SideBarFavoriteIndexItem</div>
+      <div>
+        <div>{this.props.project.title}</div>
+      </div>
     )
   }
 }
