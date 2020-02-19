@@ -1,5 +1,17 @@
 json.project do
   json.partial! 'api/projects/project', project: @project
+
+  if @favorite_projects.include?(@project)
+    json.set! :favorite, true
+  else
+    json.set! :favorite, false
+  end
+
+  @project_favorites.each do |project_favorite|
+    if project_favorite.id === @project.id
+      json.set! :favorite_id, project_favorite.id
+    end
+  end
 end
 
 json.sections do 

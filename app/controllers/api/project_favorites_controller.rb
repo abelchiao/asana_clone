@@ -1,4 +1,10 @@
 class Api::ProjectFavoritesController < ApplicationController
+  def index
+    @project_favorites = current_user.project_favorites
+    @favorite_projects = current_user.favorite_projects
+    render :index
+  end
+
   def create
     @project_favorite = ProjectFavorite.new(project_favorite_params)
     if @project_favorite.save

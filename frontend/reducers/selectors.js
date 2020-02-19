@@ -1,7 +1,8 @@
 export const fetchAssociatedProjects = state => Object.values(state.entities.projects);
 
 export const favoritesSelector = state => {
-  return Object.values(state.entities.projects).filter(project => project.favorite === true)
+  // return Object.values(state.entities.projects).filter(project => project.favorite === true)
+  return Object.values(state.entities.projects).filter(project => project.favoriteId)
 }
 
 export const sectionSelector = (state, projectId) => {

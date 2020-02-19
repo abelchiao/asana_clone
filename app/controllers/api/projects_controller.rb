@@ -2,11 +2,14 @@ class Api::ProjectsController < ApplicationController
   def index
     @projects = current_user.projects
     @favorite_projects = current_user.favorite_projects
+    @project_favorites = current_user.project_favorites
     render :index
   end
 
   def show
     @project = Project.find(params[:id])
+    @favorite_projects = current_user.favorite_projects
+    @project_favorites = current_user.project_favorites
     render :show
   end
   

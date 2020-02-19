@@ -6,5 +6,10 @@
     else
       json.set! :favorite, false
     end
+    @project_favorites.each do |project_favorite|
+      if project_favorite.id === project.id
+        json.set! :favorite_id, project_favorite.id
+      end
+    end
   end
 end

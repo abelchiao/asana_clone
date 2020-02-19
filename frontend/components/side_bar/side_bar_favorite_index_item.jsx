@@ -30,13 +30,4 @@ class SideBarFavoriteIndexItem extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-
-});
-
-const mapDispatchToProps = dispatch => ({
-
-});
-
-// export default connect(mapStateToProps, mapDispatchToProps)(SideBarFavoriteIndexItem);
 export default withRouter(SideBarFavoriteIndexItem);
