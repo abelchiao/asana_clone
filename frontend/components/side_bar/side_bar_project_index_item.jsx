@@ -62,6 +62,7 @@ class SideBarProjectIndexItem extends React.Component {
   render() {
     if (!this.props) return null;
     const { project } = this.props;
+    
     return (
       <div onClick={this.navigateToShow} className='side-bar-project-index-item'>
         <svg className='side-bar-project-color-icon' viewBox='0 0 24 24'>

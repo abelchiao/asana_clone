@@ -12,7 +12,7 @@ class SideBarFavoriteIndex extends React.Component {
       <div>
         {
           Object.values(favoriteProjects).map(project => (
-            <SideBarFavoriteIndexItem project={project} />
+            <SideBarFavoriteIndexItem key={project.id} project={project} />
           ))
         }
       </div>
