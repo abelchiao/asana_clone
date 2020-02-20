@@ -4,7 +4,11 @@ import SideBarFavoriteIndexItem from './side_bar_favorite_index_item';
 class SideBarFavoriteIndex extends React.Component {
   constructor(props) {
     super(props)
-  }
+  };
+
+  componentDidMount() {
+    this.props.fetchProjects();
+  };
 
   render() {
     const { favoriteProjects } = this.props;
@@ -16,8 +20,8 @@ class SideBarFavoriteIndex extends React.Component {
           ))
         }
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default SideBarFavoriteIndex;
