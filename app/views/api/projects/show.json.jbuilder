@@ -8,10 +8,14 @@ json.project do
   end
 
   @project_favorites.each do |project_favorite|
-    if project_favorite.id === @project.id
+    json.set! :goodbye, 'goodbye'
+    if project_favorite.project_id == @project.id
       json.set! :favorite_id, project_favorite.id
+      json.set! :hello, 'hello'
     end
   end
+
+  json.set! :favorites, @project_favorites
 end
 
 json.sections do 

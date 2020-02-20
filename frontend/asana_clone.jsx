@@ -7,7 +7,8 @@ import Root from './components/root';
 import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
 // import { fetchSections, fetchSection, createSection } from './actions/section_actions';
 // import { fetchProject } from './actions/project_actions';
-import { fetchProject } from './util/project_api_util';
+import { fetchProject, createProjectFavorite, deleteProjectFavorite } from './util/project_api_util';
+import { createFavorite, removeFavorite } from './actions/project_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -49,7 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   // window.fetchProject = fetchProject;
   window.fetchProject = fetchProject
-  
+  window.createProjectFavorite = createProjectFavorite
+  window.deleteProjectFavorite = deleteProjectFavorite
+  window.createFavorite = createFavorite;
+  window.removeFavorite = removeFavorite;
+
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

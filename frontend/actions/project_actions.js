@@ -22,7 +22,6 @@ const removeProject = projectId => ({
 });
 
 
-
 export const createProject = project => dispatch => {
   return ProjectApiUtil.createProject(project)
     .then(project => dispatch(receiveProject(project)))
@@ -47,3 +46,13 @@ export const updateProject = project => dispatch => {
   return ProjectApiUtil.updateProject(project)
     .then(project => dispatch(receiveProject(project)))
 };
+
+export const createFavorite = projectFavorite => dispatch => {
+  return ProjectApiUtil.createProjectFavorite(projectFavorite)
+    .then(project => dispatch(receiveProject(project)))
+};
+
+export const removeFavorite = projectFavoriteId => dispatch => {
+  return ProjectApiUtil.deleteProjectFavorite(projectFavoriteId)
+    .then(project => dispatch(receiveProject(project)))
+}

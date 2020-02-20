@@ -6,19 +6,30 @@ class Api::ProjectFavoritesController < ApplicationController
   end
 
   def create
+    @project = Project.find(params[:project_favorite][:project_id])
     @project_favorite = ProjectFavorite.new(project_favorite_params)
     if @project_favorite.save
-      render '/api/project_favorites/show'
+      @favorite_projects = current_user.favorite_projects
+      @project_favorites = current_user.project_favorites
+      # render json: @project_favorite
+      # render 'api/project_favorites/show'
+      render 'api/projects/show'
     else
       render json: @project_favorite.errors.full_messages, code: 422
     end
   end
 
   def destroy
-    @project_favorite = ProjectFavorite.find(params[:id])) 
+    @project_favorite = ProjectFavorite.find(params[:id])
+    @project = Project.find(@project_favorite.project_id)
+
+    # Need to revisit to remove unnecessary associations
+    @favorite_projects = current_user.favorite_projects
+    @project_favorites = current_user.project_favorites
     # @project_favorite = ProjectFavorite.find_by((user_id: current_user.id, project_id: params[:project_id])) 
     @project_favorite.destroy
-    render json: @project_favorite
+    render 'api/projects/show'
+    # render json: @project_favorite
   end
 
   private

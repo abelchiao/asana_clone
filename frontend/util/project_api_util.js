@@ -43,7 +43,7 @@ export const createProjectFavorite = project_favorite => (
   })
 );
 
-export const deleteProjectFavorite = project_favorite => (
+export const deleteProjectFavorite = projectFavoriteId => (
   $.ajax({
     url: `/api/project_favorites/${projectFavoriteId}`,
     method: 'DELETE'

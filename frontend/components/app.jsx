@@ -18,13 +18,13 @@ const App = () => (
   <div className='app'>
     <Modal />
     <Switch>
-      <ProtectedRoute exact path='/' component={SplashContainer} />
       <AuthRoute path='/login' component={LoginFormContainer} />
       <AuthRoute path='/signup' component={SignupFormContainer} />
       <ProtectedRoute path='/home' component={HomeContainer}/>
       <ProtectedRoute exact path='/projects/:projectId' component={ProjectShowContainer}/>
       <ProtectedRoute path='/projects/new' component={NewProjectPageContainer}/>
       <ProtectedRoute exact path='/projects/update/:projectId' component={EditProjectFormContainer}/>
+      <ProtectedRoute path='/' component={SplashContainer} />
     </Switch>
   </div>
 );
