@@ -93,7 +93,7 @@ class SectionIndexItem extends React.Component {
             id={`create-task-textarea-${section.id}`}
             onChange={this.update('title')}
             value={this.state.title}
-            placeholder='Enter your new task here'
+            placeholder='New task'
             // type="text"
             onBlur={this.handleSubmit}
             // autoFocus

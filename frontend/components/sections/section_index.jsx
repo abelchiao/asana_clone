@@ -75,7 +75,7 @@ class SectionIndex extends React.Component {
                 onChange={this.update('title')}
                 type="text" 
                 value={this.state.title}
-                placeholder='Enter your new section here'
+                placeholder='Section title'
                 onBlur={this.handleSubmit}
               />
               {/* <button type='submit'>Create column</button> */}
