@@ -15,6 +15,8 @@ class Api::ProjectsController < ApplicationController
   
   def create
     @project = Project.new(project_params)
+    @favorite_projects = current_user.favorite_projects
+    @project_favorites = current_user.project_favorites
     if @project.save
       render 'api/projects/show'
     else

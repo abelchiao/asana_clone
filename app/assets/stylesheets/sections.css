@@ -24,6 +24,7 @@
   width: 280px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
   padding: 0 15px;
   /* background: #fff; */
@@ -41,8 +42,8 @@
 .section-index-delete-icon {
   /* width: 0.875em;
   height: 1em; */
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   fill: gray
 }
 

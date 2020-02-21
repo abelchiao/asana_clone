@@ -7,10 +7,19 @@ class SectionIndex extends React.Component {
     super(props)
     this.state = {
       title: '',
-      project_id: this.props.projectId
+      project_id: this.props.match.params.projectId
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
+      this.setState({ 
+        title: '',
+        project_id: this.props.match.params.projectId
+      });
+    };
+  }
 
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value })
@@ -19,6 +28,7 @@ class SectionIndex extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createSection(this.state)
+      .then(this.setState({ title: '' }))
   };
 
   render() {
@@ -38,7 +48,7 @@ class SectionIndex extends React.Component {
           <div className='new-section-form-container'>
             <div className='new-section-form-toggle'>+ Add Column</div>
             <form onSubmit={this.handleSubmit} className='new-section-form'>
-              <input onChange={this.update('title')} type="text"/>
+              <input onChange={this.update('title')} type="text" value={this.state.title} />
               <button type='submit'>Create column</button>
             </form>
           </div>
