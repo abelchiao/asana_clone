@@ -13,7 +13,15 @@ class RecentProjectIndex extends React.Component {
 
   render() {
     if (!this.props.projects) return null;
-    const { projects, deleteProject, openModal, closeModal } = this.props;
+    const { 
+      projects, 
+      deleteProject, 
+      openModal, 
+      closeModal,
+      createFavorite,
+      removeFavorite,
+      currentUser
+    } = this.props;
     return (
       <div className='project-index-container'>
         <div className='project-grid'>
@@ -23,8 +31,11 @@ class RecentProjectIndex extends React.Component {
                 key={project.id} 
                 project={project} 
                 deleteProject={deleteProject}
-                openModal = {openModal}
-                closeModal = {closeModal}
+                openModal={openModal}
+                closeModal={closeModal}
+                createFavorite={createFavorite}
+                removeFavorite={removeFavorite}
+                currentUser={currentUser}
               />
             ))
           }

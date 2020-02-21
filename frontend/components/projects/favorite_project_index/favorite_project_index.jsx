@@ -1,5 +1,5 @@
 import React from 'react'
-import RecentProjectIndexItem from '../recent_project_index/recent_project_index_item';
+import FavoriteProjectIndexItem from '../favorite_project_index/favorite_project_index_item';
 
 class FavoriteProjectIndex extends React.Component {
   constructor(props) {
@@ -12,18 +12,29 @@ class FavoriteProjectIndex extends React.Component {
 
   render() {
     if (!this.props.projects) return null;
-    const { projects, deleteProject, openModal, closeModal } = this.props;
+    const { 
+      projects, 
+      deleteProject, 
+      openModal, 
+      closeModal, 
+      currentUser,
+      createFavorite,
+      removeFavorite
+    } = this.props;
     return (
       <div className='project-index-container'>
         <div className='project-grid'>
           {
             projects.map(project => (
-              <RecentProjectIndexItem
+              <FavoriteProjectIndexItem
                 key={project.id}
                 project={project}
                 deleteProject={deleteProject}
                 openModal={openModal}
                 closeModal={closeModal}
+                currentUser={currentUser}
+                createFavorite={createFavorite}
+                removeFavorite={removeFavorite}
               />
             ))
           }

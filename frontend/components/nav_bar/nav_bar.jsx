@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
   constructor(props) {
     super(props)
+    this.revealDropdown = this.revealDropdown.bind(this);
   }
 
   toggleShowSidebar() {
@@ -13,8 +14,19 @@ class NavBar extends React.Component {
     burger.classList.add('hidden');
   }
 
-  revealDropdown() {
-    document.getElementById('home-nav-user-dropdown-content').classList.toggle('show')
+  revealDropdown(e) {
+    e.stopPropagation();
+    document.getElementById('home-nav-user-dropdown-content')
+      .classList.toggle('show')
+    window.onclick = () => {
+      let dropdowns = document.getElementsByClassName('home-nav-user-dropdown-content');
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
   }
 
   render() {

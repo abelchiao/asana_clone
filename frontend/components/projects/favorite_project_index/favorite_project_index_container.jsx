@@ -1,12 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FavoriteProjectIndex from './favorite_project_index';
-import { fetchProjects, deleteProject } from '../../../actions/project_actions';
+import { 
+  fetchProjects, 
+  deleteProject, 
+  createFavorite, 
+  removeFavorite
+} from '../../../actions/project_actions';
 import { favoritesSelector } from '../../../reducers/selectors';
 import { openModal } from '../../../actions/modal_actions';
 
 
 const mapStateToProps = state => ({
+  currentUser: state.entities.users[state.session.id],
   projects: favoritesSelector(state)
 });
 
@@ -23,7 +29,9 @@ const mapDispatchToProps = dispatch => ({
     </div>
   ),
   openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
-  deleteProject: projectId => dispatch(deleteProject(projectId))
+  deleteProject: projectId => dispatch(deleteProject(projectId)),
+  createFavorite: projectFavorite => dispatch(createFavorite(projectFavorite)),
+  removeFavorite: projectFavoriteId => dispatch(removeFavorite(projectFavoriteId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteProjectIndex);

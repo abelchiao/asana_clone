@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-class RecentProjectIndexItem extends React.Component {
+class FavoriteProjectIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
@@ -14,11 +14,11 @@ class RecentProjectIndexItem extends React.Component {
 
   revealProjectTileDropdown(e) {
     e.stopPropagation();
-    const dropdownIcon = document.getElementById(`project-tile-${this.props.project.id}`);
+    const dropdownIcon = document.getElementById(`favorite-tile-${this.props.project.id}`);
     dropdownIcon.classList.toggle('show');
 
     window.onclick = () => {
-      let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+      let dropdowns = document.getElementsByClassName('favorite-tile-dropdown-contents');
       for (let i = 0; i < dropdowns.length; i++) {
         let openDropdown = dropdowns[i];
         if (openDropdown.classList.contains('show')) {
@@ -42,7 +42,7 @@ class RecentProjectIndexItem extends React.Component {
   handleDelete(e) {
     e.stopPropagation();
     this.props.deleteProject(this.props.project.id);
-    let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    let dropdowns = document.getElementsByClassName('favorite-tile-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
@@ -54,7 +54,7 @@ class RecentProjectIndexItem extends React.Component {
   handleEdit(e) {
     e.stopPropagation();
     this.props.openModal('edit-project', this.props.project.id);
-    let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    let dropdowns = document.getElementsByClassName('favorite-tile-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
@@ -73,7 +73,7 @@ class RecentProjectIndexItem extends React.Component {
       user_id: this.props.currentUser.id,
       project_id: this.props.project.id
     })
-    let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    let dropdowns = document.getElementsByClassName('favorite-tile-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
@@ -85,7 +85,7 @@ class RecentProjectIndexItem extends React.Component {
   handleRemoveFavorite(e) {
     e.stopPropagation();
     this.props.removeFavorite(this.props.project.favoriteId)
-    let dropdowns = document.getElementsByClassName('project-tile-dropdown-contents');
+    let dropdowns = document.getElementsByClassName('favorite-tile-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
@@ -133,8 +133,8 @@ class RecentProjectIndexItem extends React.Component {
                   <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
                 </svg>
                 <div
-                  id={`project-tile-${project.id}`}
-                  className='project-tile-dropdown-contents'
+                  id={`favorite-tile-${project.id}`}
+                  className='favorite-tile-dropdown-contents'
                 >
                   <div onClick={this.handleEdit} className='project-tile-dropdown-item'>
                     Edit project details
@@ -156,4 +156,4 @@ class RecentProjectIndexItem extends React.Component {
 };
 
 
-export default withRouter(RecentProjectIndexItem);
+export default withRouter(FavoriteProjectIndexItem);
