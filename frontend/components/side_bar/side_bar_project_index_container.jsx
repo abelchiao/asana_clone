@@ -12,7 +12,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchProjects: () => dispatch(fetchProjects()),
-  closeModal: () => dispatch(closeModal()),
   openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
   deleteProject: projectId => dispatch(deleteProject(projectId)),
   // fetchProject: projectId => dispatch(fetchProject(projectId))

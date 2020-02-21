@@ -22,8 +22,8 @@ class SideBarProjectIndex extends React.Component {
               project={project}
               deleteProject={deleteProject}
               openModal={openModal}
-              closeModal={closeModal}
-              fetchProject = {fetchProject}
+              // closeModal={closeModal}
+              // fetchProject = {fetchProject}
             />
           ))
         }

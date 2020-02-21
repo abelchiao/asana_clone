@@ -44,7 +44,6 @@ class ProjectShow extends React.Component {
               <SectionIndexContainer projectId={this.props.match.params.projectId} />
             </div>
           </div>
-
         </div>
       </div>
     );

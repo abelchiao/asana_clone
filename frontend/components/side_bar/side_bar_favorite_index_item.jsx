@@ -5,11 +5,72 @@ import { Link, withRouter } from 'react-router-dom';
 class SideBarFavoriteIndexItem extends React.Component {
   constructor(props) {
     super(props)
+    this.handleDelete = this.handleDelete.bind(this);
+    this.revealProjectDropdown = this.revealProjectDropdown.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     this.navigateToShow = this.navigateToShow.bind(this);
+    this.handleRemoveFavorite = this.handleRemoveFavorite.bind(this);
   }
 
   navigateToShow() {
     this.props.history.push(`/projects/${this.props.project.id}`)
+  }
+
+  revealProjectDropdown(e) {
+    e.stopPropagation();
+    const dropdown = document.getElementById(`side-bar-favorite-${this.props.project.id}`);
+    dropdown.classList.toggle('show');
+
+    window.onclick = () => {
+      let dropdowns = document.getElementsByClassName('side-bar-favorite-dropdown-contents');
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  handleDelete(e) {
+    e.stopPropagation();
+    this.props.deleteProject(this.props.project.id)
+      .then(() => {
+        if (Number(this.props.match.params.projectId) === this.props.project.id) {
+          this.props.history.push('/home');
+        }
+      })
+    let dropdowns = document.getElementsByClassName('side-bar-favorite-dropdown-contents');
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+
+  handleEdit(e) {
+    e.stopPropagation();
+    this.props.openModal('edit-project', this.props.project.id);
+    let dropdowns = document.getElementsByClassName('side-bar-favorite-dropdown-contents');
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+
+  handleRemoveFavorite(e) {
+    e.stopPropagation();
+    this.props.removeFavorite(this.props.project.favoriteId);
+    let dropdowns = document.getElementsByClassName('side-bar-favorite-dropdown-contents');
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
   }
 
   render() {
@@ -24,7 +85,25 @@ class SideBarFavoriteIndexItem extends React.Component {
         <div to={`/projects/${project.id}`} className='side-bar-project-name'>
           {project.title}
         </div>
-        {/* <div>{this.props.project.title}</div> */}
+        <div className='side-bar-dropdown-container'>
+          <svg onClick={this.revealProjectDropdown} className='side-bar-project-dropdown-icon' viewBox='0 0 32 32'>
+            <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
+          </svg>
+          <div
+            id={`side-bar-favorite-${project.id}`}
+            className='side-bar-favorite-dropdown-contents'
+          >
+            <div onClick={this.handleRemoveFavorite} className='side-bar-project-dropdown-item'>
+              Remove from favorites
+            </div>
+            <div onClick={this.handleEdit} className='side-bar-project-dropdown-item'>
+              Edit project details
+            </div>
+            <div onClick={this.handleDelete} className='side-bar-project-dropdown-item'>
+              Delete project
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

@@ -11,12 +11,18 @@ class SideBarFavoriteIndex extends React.Component {
   };
 
   render() {
-    const { favoriteProjects } = this.props;
+    const { favoriteProjects, deleteProject, openModal, removeFavorite } = this.props;
     return (
       <div>
         {
           Object.values(favoriteProjects).map(project => (
-            <SideBarFavoriteIndexItem key={project.id} project={project} />
+            <SideBarFavoriteIndexItem 
+              key={project.id}
+              project={project}
+              deleteProject={deleteProject}
+              openModal={openModal}
+              removeFavorite={removeFavorite}
+            />
           ))
         }
       </div>

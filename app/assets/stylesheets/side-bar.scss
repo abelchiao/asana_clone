@@ -9,6 +9,7 @@
   color: #cbd4db;
   width: 240px;
   position: fixed;
+  z-index: 3;
 }
 
 .side-bar-header {
@@ -167,6 +168,7 @@
 
 .side-bar-dropdown-container {
   position: relative;
+  z-index: 1;
 }
 
 .side-bar-project-dropdown-icon {
@@ -184,7 +186,7 @@
   fill: #fff;
 }
 
-.side-bar-project-dropdown-contents {
+.side-bar-project-dropdown-contents, .side-bar-favorite-dropdown-contents {
   display: none;
   position: absolute;
   background: #fff;
@@ -195,6 +197,7 @@
   top: 30px;
   width: 150px;
   z-index: 1;
+  padding: 5px 0;
 }
 
 .side-bar-project-dropdown-item {

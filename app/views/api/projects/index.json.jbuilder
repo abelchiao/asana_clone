@@ -9,7 +9,7 @@
     end
 
     @project_favorites.each do |project_favorite|
-      if project_favorite.project_id == project.id
+      if project_favorite.project_id === project.id
         json.set! :favorite_id, project_favorite.id
       end
     end

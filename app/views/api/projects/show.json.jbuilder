@@ -9,7 +9,7 @@ json.project do
 
   @project_favorites.each do |project_favorite|
     json.set! :goodbye, 'goodbye'
-    if project_favorite.project_id == @project.id
+    if project_favorite.project_id === @project.id
       json.set! :favorite_id, project_favorite.id
       json.set! :hello, 'hello'
     end
