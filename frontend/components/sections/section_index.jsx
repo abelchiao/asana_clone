@@ -36,9 +36,6 @@ class SectionIndex extends React.Component {
     // if (!this.props) return null;
     return (
       <div className='section-index-parent'>
-        
-        <div className='section-index-header'>
-        </div>
         <div className='section-index-content'>
           {
             (this.props.sections).map(section => (
