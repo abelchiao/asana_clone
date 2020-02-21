@@ -3,6 +3,7 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import SideBarContainer from '../side_bar/side_bar_container'
 import { Link } from 'react-router-dom';
 import RecentProjectIndexContainer from '../projects/recent_project_index/recent_project_index_container';
+import FavoriteProjectIndexContainer from '../projects/favorite_project_index/favorite_project_index_container';
 
 class Home extends React.Component {
   constructor(props) {
@@ -21,6 +22,18 @@ class Home extends React.Component {
     }
   }
 
+  toggleFavorites() {
+    if (!document.getElementById('favorite-toggle-section').classList.contains('hidden')) {
+      document.getElementById('favorite-toggle-section').classList.add('hidden');
+      document.getElementById('favorite-down-triangle').classList.add('hidden');
+      document.getElementById('favorite-right-triangle').classList.remove('hidden');
+    } else {
+      document.getElementById('favorite-toggle-section').classList.remove('hidden');
+      document.getElementById('favorite-down-triangle').classList.remove('hidden');
+      document.getElementById('favorite-right-triangle').classList.add('hidden');
+    }
+  }
+
   render() {
     return (
       <div className='home-parent'>
@@ -33,20 +46,41 @@ class Home extends React.Component {
               <NavBarContainer />
             </div>
             <div className='home-content'>
-              <div className='home-category-header'>
-                <div onClick={this.toggleProjects} className='home-projects-category-collapse-toggle'>
-                  <svg id='project-down-triangle' className='home-category-collapse-down-triangle' viewBox='0 0 32 32'>
-                    <path d="M7.207,13.707L16.5,23l9.293-9.293c0.63-0.63,0.184-1.707-0.707-1.707H7.914C7.023,12,6.577,13.077,7.207,13.707z"></path>
-                  </svg>
-                  <svg id='project-right-triangle' className='home-category-collapse-right-triangle hidden' viewBox='0 0 32 32'>
-                    <path d="M13.707,6.707L23,16l-9.293,9.293C13.077,25.923,12,25.477,12,24.586V7.414C12,6.523,13.077,6.077,13.707,6.707z"></path>
-                  </svg>
-                  <h2 className='home-category-title'>Recent projects</h2>
+
+              <div className='home-content-section'>
+                <div className='home-category-header'>
+                  <div onClick={this.toggleFavorites} className='home-favorites-category-collapse-toggle'>
+                    <svg id='favorite-down-triangle' className='home-category-collapse-down-triangle' viewBox='0 0 32 32'>
+                      <path d="M7.207,13.707L16.5,23l9.293-9.293c0.63-0.63,0.184-1.707-0.707-1.707H7.914C7.023,12,6.577,13.077,7.207,13.707z"></path>
+                    </svg>
+                    <svg id='favorite-right-triangle' className='home-category-collapse-right-triangle hidden' viewBox='0 0 32 32'>
+                      <path d="M13.707,6.707L23,16l-9.293,9.293C13.077,25.923,12,25.477,12,24.586V7.414C12,6.523,13.077,6.077,13.707,6.707z"></path>
+                    </svg>
+                    <h2 className='home-category-title'>Favorites</h2>
+                  </div>
+                </div>
+                <div id='favorite-toggle-section'>
+                  <FavoriteProjectIndexContainer />
                 </div>
               </div>
-              <div id='project-toggle-section'>
-                <RecentProjectIndexContainer />
+
+              <div className='home-content-section'>
+                <div className='home-category-header'>
+                  <div onClick={this.toggleProjects} className='home-projects-category-collapse-toggle'>
+                    <svg id='project-down-triangle' className='home-category-collapse-down-triangle' viewBox='0 0 32 32'>
+                      <path d="M7.207,13.707L16.5,23l9.293-9.293c0.63-0.63,0.184-1.707-0.707-1.707H7.914C7.023,12,6.577,13.077,7.207,13.707z"></path>
+                    </svg>
+                    <svg id='project-right-triangle' className='home-category-collapse-right-triangle hidden' viewBox='0 0 32 32'>
+                      <path d="M13.707,6.707L23,16l-9.293,9.293C13.077,25.923,12,25.477,12,24.586V7.414C12,6.523,13.077,6.077,13.707,6.707z"></path>
+                    </svg>
+                    <h2 className='home-category-title'>Recent projects</h2>
+                  </div>
+                </div>
+                <div id='project-toggle-section'>
+                  <RecentProjectIndexContainer />
+                </div>
               </div>
+
             </div>
           </div>
         </div>

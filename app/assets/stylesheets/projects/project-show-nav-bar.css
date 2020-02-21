@@ -141,14 +141,26 @@
   display: block;
 }
 
-.ps-nav-favorite-icon {
+.ps-nav-empty-star {
   height: 16px;
   width: 16px;
   fill: #6f7782;
   margin-left: 10px;
 }
 
-.ps-nav-favorite-icon:hover {
+.ps-nav-empty-star:hover {
   cursor: pointer;
   fill: rgb(230, 155, 16);
+}
+
+.ps-nav-solid-star {
+  height: 16px;
+  width: 16px;
+  fill: rgb(252, 182, 52);
+  margin-left: 10px;
+}
+
+.ps-nav-solid-star:hover {
+  cursor: pointer;
+  fill: rgb(230, 155, 16)
 }
