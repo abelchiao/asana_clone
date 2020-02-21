@@ -91,3 +91,7 @@
   padding: 10px;
   font-size: 14px;
 }
+
+.task-create-input:focus {
+  outline: none;
+}

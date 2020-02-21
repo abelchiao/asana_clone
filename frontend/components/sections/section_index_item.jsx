@@ -53,9 +53,10 @@ class SectionIndexItem extends React.Component {
   };
 
   revealForm() {
-    const form = document.getElementById(`create-task-${this.props.section.id}`)
-    form.classList.toggle('show')
-    form.focus()
+    const form = document.getElementById(`create-task-${this.props.section.id}`);
+    form.classList.toggle('show');
+    const input = document.getElementById(`create-task-textarea-${this.props.section.id}`);
+    input.focus();
 
     // $(document).click(() => {
     //   console.log('hello1')
@@ -89,6 +90,7 @@ class SectionIndexItem extends React.Component {
         >
           <textarea
             className='task-create-input'
+            id={`create-task-textarea-${section.id}`}
             onChange={this.update('title')}
             value={this.state.title}
             placeholder='Enter your new task here'
