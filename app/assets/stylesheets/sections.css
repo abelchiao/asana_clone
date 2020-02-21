@@ -75,7 +75,7 @@
 .new-section-form-toggle {
   border-bottom: 1px solid #585858;
   margin-bottom: 10px;
-  width: 100%;
+  width: 200px;
   display: none;
   /* box-sizing: border-box; */
 }
@@ -89,8 +89,9 @@
   border-radius: 4px;
   border: 1px solid #fff;
   box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
-  padding: 1px;
+  padding: 5px;
   font-size: 14px;
+  width: 200px;
 }
 
 .show {
