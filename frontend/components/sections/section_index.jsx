@@ -31,11 +31,14 @@ class SectionIndex extends React.Component {
     this.props.createSection(this.state)
       .then(this.setState({ title: '' }))
     const form = document.getElementById(`new-section-form-${this.props.projectId}`)
-    if (form.classList.contains('show')) form.classList.remove('show')
-
+    if (form.classList.contains('show')) form.classList.remove('show');
+    const toggle = document.getElementById(`new-section-toggle-${this.props.projectId}`);
+    if (!toggle.classList.contains('show')) toggle.classList.toggle('show');
   };
 
   revealForm() {
+    const toggle = document.getElementById(`new-section-toggle-${this.props.projectId}`);
+    toggle.classList.toggle('show');
     const form = document.getElementById(`new-section-form-${this.props.projectId}`);
     form.classList.toggle('show');
     const input = document.getElementById(`new-section-input-${this.props.projectId}`);
@@ -54,7 +57,11 @@ class SectionIndex extends React.Component {
             ))
           }
           <div className='new-section-form-container'>
-            <div className='new-section-form-toggle' onClick={this.revealForm}>
+            <div 
+              className='new-section-form-toggle show' 
+              id={`new-section-toggle-${this.props.projectId}`}
+              onClick={this.revealForm}
+            >
               + Add Column
             </div>
             <form 
