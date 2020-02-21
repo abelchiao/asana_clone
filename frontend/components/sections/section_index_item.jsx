@@ -55,6 +55,7 @@ class SectionIndexItem extends React.Component {
   revealForm() {
     const form = document.getElementById(`create-task-${this.props.section.id}`)
     form.classList.toggle('show')
+    form.focus()
 
     // $(document).click(() => {
     //   console.log('hello1')
@@ -86,12 +87,16 @@ class SectionIndexItem extends React.Component {
           className='task-create-form' 
           onSubmit={this.handleSubmit}
         >
-          <input 
+          <textarea
+            className='task-create-input'
             onChange={this.update('title')}
-            value={this.state.title} 
-            type="text" 
+            value={this.state.title}
+            placeholder='Enter your new task here'
+            // type="text"
+            onBlur={this.handleSubmit}
+            // autoFocus
           />
-          <button type='submit'>submit</button>
+          {/* <button type='submit'>submit</button> */}
         </form>
         <TaskIndexContainer sectionId={section.id} />
       </div>

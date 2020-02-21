@@ -35,6 +35,7 @@
 .task-create-form {
   display: none;
   margin-top: 10px;
+  width: 100%;
 }
 
 .show {

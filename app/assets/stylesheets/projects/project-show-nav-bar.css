@@ -120,6 +120,7 @@
   top: 25px;
   width: 150px;
   z-index: 1;
+  padding: 5px 0;
 }
 
 .ps-nav-util-dropdown-item {
