@@ -38,6 +38,8 @@ class NewProjectPage extends React.Component {
     let toggleField = document.getElementById('cp-description-field');
     toggleLink.classList.add('hidden');
     toggleField.classList.remove('hidden');
+    const descriptionField = document.getElementById('cp-description')
+    descriptionField.focus();
   }
 
   render() {
@@ -71,6 +73,7 @@ class NewProjectPage extends React.Component {
                   id='cp-title'
                   type="text"
                   onChange={this.update('title')}
+                  autoFocus
                 />
               </div>
               <div className='adl-container'>

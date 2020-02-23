@@ -22,6 +22,10 @@ class EditProjectForm extends React.Component {
       clearTimeout(timer);
       timer = setTimeout(this.handleSubmit, 1000)
     });
+
+    const descriptionField = document.getElementById('edit-form-description');
+    descriptionField.focus();
+    descriptionField.setSelectionRange(descriptionField.value.length, descriptionField.value.length);
   }
 
   handleSubmit() {
