@@ -23,7 +23,11 @@
   width: 100%;
   margin: 0 auto;
   width: calc(100vw - 240px);
-  background-color: rgb(224, 238, 255);
+  /* background-color: rgb(224, 238, 255); */
+  background-image: image-url('serene_background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   /* margin-top: 70px; */
   /* overflow-x: auto; */
 }

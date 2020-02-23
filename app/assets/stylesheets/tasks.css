@@ -90,6 +90,7 @@
   box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
   padding: 10px;
   font-size: 14px;
+  resize: none;
 }
 
 .task-create-input:focus {

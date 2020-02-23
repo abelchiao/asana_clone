@@ -29,6 +29,8 @@
   align-items: center;
   margin-bottom: 10px;
   padding: 0 15px;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(21,27,38,.15)
   /* background: #fff; */
 }
 
