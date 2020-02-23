@@ -8,36 +8,16 @@ class SectionIndexItem extends React.Component {
     this.state = {
       title: '',
       section_id: this.props.section.id,
-      renderForm: false
+      renderForm: false,
+      sectionTitle: this.props.section.title
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitTask = this.handleSubmitTask.bind(this);
     this.handleDeleteSection = this.handleDeleteSection.bind(this);
     this.revealForm = this.revealForm.bind(this);
+    this.handleUpdateSectionTitle = this.handleUpdateSectionTitle.bind(this);
   };
 
-  // componentDidMount() {
-  //   $(document).click(() => {
-  //     const form = $(`#create-task-${this.props.sectionId}`);
-  //     if (form.value) form.submit();
-  //   });
-  //   $(`#create-task-${this.props.sectionId}`).click(function (e) {
-  //     e.stopPropagation();
-  //   });
-  // }
-
-  // componentDidMount() {
-  //   $(document).click(() => {
-  //     if ($(`#create-task-${this.props.sectionId}`).value) {
-  //       $(`#create-task-${this.props.sectionId}`).submit();
-  //     }
-  //   });
-
-  //   $(`#create-task-${this.props.sectionId}`).click(e => {
-  //     e.stopPropagation();
-  //   });
-  // }
-
-  handleSubmit(e) {
+  handleSubmitTask(e) {
     e.preventDefault();
     const { title, section_id } = this.state;
     this.props.createTask({ title, section_id });
@@ -76,15 +56,37 @@ class SectionIndexItem extends React.Component {
   renderSectionTitle() {
     if (!this.state.renderForm) {
       return (
-        <h1 className='section-index-item-title'>{this.props.section.title}</h1> 
+        <div
+          className='section-index-item-title'
+          onClick={() => this.setState({ renderForm: true })}
+        >
+          {this.props.section.title}
+        </div> 
       )
     } else {
       return (
-        <form>
-          <input autoFocus type="text" />
+        <form className='section-index-item-title-form'>
+          <input
+            className='section-index-item-title-input'
+            autoFocus 
+            type="text" 
+            value={this.state.sectionTitle}
+            onChange={this.update('sectionTitle')}
+            onBlur={this.handleUpdateSectionTitle}
+          />
         </form>
       )
     }
+  }
+
+  handleUpdateSectionTitle() {
+    const section = {
+      title: this.state.sectionTitle,
+      id: this.props.section.id
+    }
+    console.log(section)
+    this.props.updateSection(section)
+      .then(() => this.setState({ renderForm: false }))
   }
 
   render() {
@@ -94,10 +96,11 @@ class SectionIndexItem extends React.Component {
       <div className='section-index-item-parent'>
         <div className='section-index-item-header'>
           {this.renderSectionTitle()}
-          {/* <h1 className='section-index-item-title'>{section.title}</h1>  */}
-          <svg onClick={this.handleDeleteSection}className='section-index-delete-icon' viewBox="0 0 448 512">
-            <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
-          </svg>
+          <div>
+            <svg onClick={this.handleDeleteSection}className='section-index-delete-icon' viewBox="0 0 448 512">
+              <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
+            </svg>
+          </div>
         </div>
         <div onClick={this.revealForm} className='reveal-task-form-button'>+</div>
         <form 
@@ -112,7 +115,7 @@ class SectionIndexItem extends React.Component {
             value={this.state.title}
             placeholder='New task'
             // type="text"
-            onBlur={this.handleSubmit}
+            onBlur={this.handleSubmitTask}
             // autoFocus
           />
           {/* <button type='submit'>submit</button> */}

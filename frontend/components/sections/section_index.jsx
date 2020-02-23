@@ -53,7 +53,13 @@ class SectionIndex extends React.Component {
         <div className='section-index-content'>
           {
             (this.props.sections).map(section => (
-              <SectionIndexItem key={section.id} section={section} createTask={this.props.createTask} deleteSection={this.props.deleteSection} />
+              <SectionIndexItem 
+                key={section.id} 
+                section={section} 
+                createTask={this.props.createTask} 
+                deleteSection={this.props.deleteSection}
+                updateSection={this.props.updateSection}
+              />
             ))
           }
           <div className='new-section-form-container'>

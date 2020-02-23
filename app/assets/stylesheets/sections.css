@@ -28,10 +28,34 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  padding: 0 15px;
-  color: #fff;
-  text-shadow: 0 0 3px rgba(21,27,38,.15)
+  /* padding: 0 15px; */
   /* background: #fff; */
+}
+
+.section-index-item-title {
+  color: #fff;
+  text-shadow: 0 0 3px rgba(21,27,38,.15);
+  width: 100%;
+  padding: 6.5px;
+  font-size: 16px;
+}
+
+.section-index-item-title:hover {
+  cursor: pointer;
+}
+
+.section-index-item-title-form {
+  width: 100%;
+}
+
+.section-index-item-title-input {
+  border-radius: 4px;
+  border: 1px solid #fff;
+  box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
+  padding: 5px;
+  font-size: 14px;
+  width: 200px;
+  outline: none;
 }
 
 .task-create-form {
@@ -49,7 +73,8 @@
   height: 1em; */
   height: 12px;
   width: 12px;
-  fill: gray
+  fill: gray;
+  padding: 5px;
 }
 
 .reveal-task-form-button {
@@ -75,17 +100,20 @@
 }
 
 .new-section-form-toggle {
-  border-bottom: 1px solid #585858;
+  /* border-bottom: 1px solid #585858; */
+  border-bottom: 1px solid #fff;
   margin-bottom: 10px;
   width: 200px;
   display: none;
   margin-top: 5px;
+  color: #fff;
+  padding: 6.5px;
   /* box-sizing: border-box; */
 }
 
 .new-section-form-toggle:hover {
   cursor: pointer;
-  border-bottom: 2px solid #585858;
+  border-bottom: 2px solid #fff;
 }
 
 .new-section-input {
@@ -95,6 +123,8 @@
   padding: 5px;
   font-size: 14px;
   width: 280px;
+  margin-top: 6.5px;
+  outline: none;
 }
 
 .show {

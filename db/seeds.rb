@@ -60,7 +60,7 @@ Task.create!(title: 'Interview customers to have them tell their stories on the 
 Task.create!(title: 'Redesign ideas for gallery page', section_id: 2)
 Task.create!(title: 'Prepare swag to give out at conference', section_id: 2)
 Task.create!(title: 'Mobile-specific academy courses', section_id: 3)
-Task.create!(title: 'Update action logging11', section_id: 3)
+Task.create!(title: 'Update action logging', section_id: 3)
 Task.create!(title: 'Should we highlight training material in the app to help users who are confused?', section_id: 3)
 Task.create!(title: 'Performance improvement scoping', section_id: 2)
 Task.create!(title: 'Navigation updates', section_id: 3)
