@@ -17,6 +17,16 @@ class SectionIndexItem extends React.Component {
     this.handleUpdateSectionTitle = this.handleUpdateSectionTitle.bind(this);
   };
 
+  componentDidMount() {
+    const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
+    sectionHeader.onmouseover = function () {
+      this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
+    }
+    sectionHeader.onmouseout = function() {
+      this.parentElement.style = '';
+    }
+  }
+
   handleSubmitTask(e) {
     e.preventDefault();
     const { title, section_id } = this.state;
@@ -93,8 +103,8 @@ class SectionIndexItem extends React.Component {
     if (!this.props.section) return null
     const { section } = this.props;
     return (
-      <div className='section-index-item-parent'>
-        <div className='section-index-item-header'>
+      <div className='section-index-item-parent' id='section-index-item-parent'>
+        <div className='section-index-item-header' id={`section-index-item-header-${section.id}`}>
           {this.renderSectionTitle()}
           <div>
             <svg onClick={this.handleDeleteSection}className='section-index-delete-icon' viewBox="0 0 448 512">

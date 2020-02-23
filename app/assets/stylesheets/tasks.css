@@ -76,11 +76,6 @@
   cursor: pointer;
 }
 
-.section-index-delete-icon:hover {
-  fill: red;
-  cursor: pointer;
-}
-
 .task-create-input {
   width: 100%;
   height: 70px;

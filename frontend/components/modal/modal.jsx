@@ -28,10 +28,13 @@ function Modal({modal, closeModal, currentProject}) {
   );
 };
 
-const mapStateToProps = state => ({
-  modal: state.ui.modal,
-  currentProject: state.entities.projects[state.ui.currentProject]
-});
+const mapStateToProps = state => {
+  if (state.ui.modal === 'edit-project') {}
+  return {
+    modal: state.ui.modal,
+    currentProject: state.entities.projects[state.ui.currentProject]
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal())
