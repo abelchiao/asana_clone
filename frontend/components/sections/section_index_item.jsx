@@ -9,7 +9,8 @@ class SectionIndexItem extends React.Component {
       title: '',
       section_id: this.props.section.id,
       renderForm: false,
-      sectionTitle: this.props.section.title
+      sectionTitle: this.props.section.title,
+      // taskOrder: this.props.section.taskOrder
     }
     this.handleSubmitTask = this.handleSubmitTask.bind(this);
     this.handleDeleteSection = this.handleDeleteSection.bind(this);
@@ -49,18 +50,6 @@ class SectionIndexItem extends React.Component {
     form.classList.toggle('show');
     const input = document.getElementById(`create-task-textarea-${this.props.section.id}`);
     input.focus();
-
-    // $(document).click(() => {
-    //   console.log('hello1')
-    //   if ($(`#create-task-${this.props.sectionId}`).value) {
-    //     console.log('hello')
-    //     $(`#create-task-${this.props.sectionId}`).submit();
-    //   }
-    // });
-
-    // $(`#create-task-${this.props.sectionId}`).click(e => {
-    //   e.stopPropagation();
-    // });
   }
 
   renderSectionTitle() {
@@ -94,7 +83,6 @@ class SectionIndexItem extends React.Component {
       title: this.state.sectionTitle,
       id: this.props.section.id
     }
-    console.log(section)
     this.props.updateSection(section)
       .then(() => this.setState({ renderForm: false }))
   }
@@ -102,7 +90,6 @@ class SectionIndexItem extends React.Component {
   render() {
     if (!this.props.section) return null
     const { section } = this.props;
-    debugger
     return (
       <div className='section-index-item-parent' id='section-index-item-parent'>
         <div className='section-index-item-header' id={`section-index-item-header-${section.id}`}>
@@ -139,7 +126,10 @@ class SectionIndexItem extends React.Component {
           />
           {/* <button type='submit'>submit</button> */}
         </form>
-        <TaskIndexContainer sectionId={section.id} />
+        <TaskIndexContainer 
+          sectionId={section.id} 
+          taskOrder={this.props.section.taskOrder}
+        />
       </div>
     )
   }

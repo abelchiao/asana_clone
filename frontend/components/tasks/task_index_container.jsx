@@ -4,8 +4,8 @@ import { fetchTasks, deleteTask } from '../../actions/task_actions';
 import { taskSelector } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({
-  // tasks: state.entities.tasks
-  tasks: taskSelector(state, ownProps.sectionId)
+  tasks: state.entities.tasks,
+  // tasks: taskSelector(state, ownProps.sectionId)
 });
 
 const mapDispatchToProps = dispatch => ({
