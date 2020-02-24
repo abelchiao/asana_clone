@@ -3,6 +3,7 @@
 # Table name: sections
 #
 #  id         :bigint           not null, primary key
+#  task_order :integer          default([]), is an Array
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

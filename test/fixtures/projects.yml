@@ -2,14 +2,15 @@
 #
 # Table name: projects
 #
-#  id          :bigint           not null, primary key
-#  description :text             default(""), not null
-#  due_date    :date
-#  title       :string           not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  owner_id    :integer          not null
-#  team_id     :integer          not null
+#  id            :bigint           not null, primary key
+#  description   :text             default(""), not null
+#  due_date      :date
+#  section_order :integer          default([]), is an Array
+#  title         :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  owner_id      :integer          not null
+#  team_id       :integer          not null
 #
 # Indexes
 #

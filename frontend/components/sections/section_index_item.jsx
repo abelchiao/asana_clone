@@ -102,6 +102,7 @@ class SectionIndexItem extends React.Component {
   render() {
     if (!this.props.section) return null
     const { section } = this.props;
+    debugger
     return (
       <div className='section-index-item-parent' id='section-index-item-parent'>
         <div className='section-index-item-header' id={`section-index-item-header-${section.id}`}>
