@@ -10,7 +10,8 @@ class SectionIndexItem extends React.Component {
       section_id: this.props.section.id,
       renderForm: false,
       sectionTitle: this.props.section.title,
-      // taskOrder: this.props.section.taskOrder
+      taskOrder: this.props.section.taskOrder,
+      section: this.props.section
     }
     this.handleSubmitTask = this.handleSubmitTask.bind(this);
     this.handleDeleteSection = this.handleDeleteSection.bind(this);
@@ -30,8 +31,18 @@ class SectionIndexItem extends React.Component {
 
   handleSubmitTask(e) {
     e.preventDefault();
+    let updatedTaskOrder = this.state.taskOrder;
     const { title, section_id } = this.state;
-    this.props.createTask({ title, section_id });
+    this.props.createTask({ title, section_id })
+      .then(data => {
+        updatedTaskOrder.unshift(data.task.id)
+        this.setState({
+          taskOrder: updatedTaskOrder
+        })
+        this.props.updateSection({ id: section_id, task_order: updatedTaskOrder});
+      })
+    
+
     const form = document.getElementById(`create-task-${this.props.section.id}`)
     if (form.classList.contains('show')) form.classList.remove('show')
   };
@@ -120,7 +131,6 @@ class SectionIndexItem extends React.Component {
             onChange={this.update('title')}
             value={this.state.title}
             placeholder='New task'
-            // type="text"
             onBlur={this.handleSubmitTask}
             // autoFocus
           />
@@ -128,7 +138,8 @@ class SectionIndexItem extends React.Component {
         </form>
         <TaskIndexContainer 
           sectionId={section.id} 
-          taskOrder={this.props.section.taskOrder}
+          section={section}
+          taskOrder={this.state.taskOrder}
         />
       </div>
     )

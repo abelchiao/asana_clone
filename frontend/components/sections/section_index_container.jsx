@@ -12,7 +12,8 @@ import { createTask } from '../../actions/task_actions';
 const mapStateToProps = (state, ownProps) => ({
   // this may grab sections from other projects
   // sections: state.entities.sections
-  sections: sectionSelector(state, ownProps.projectId)
+  sections: sectionSelector(state, ownProps.projectId),
+  project: state.entities.projects[ownProps.projectId],
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   createTask: task => dispatch(createTask(task)),
   createSection: section => dispatch(createSection(section)),
   deleteSection: sectionId => dispatch(deleteSection(sectionId)),
-  updateSection: section => dispatch(updateSection(section))
+  updateSection: section => dispatch(updateSection(section)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SectionIndex);

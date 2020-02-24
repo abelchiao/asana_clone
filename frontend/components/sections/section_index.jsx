@@ -7,7 +7,8 @@ class SectionIndex extends React.Component {
     super(props)
     this.state = {
       title: '',
-      project_id: this.props.match.params.projectId
+      project_id: this.props.match.params.projectId,
+      project: this.props.project
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revealForm = this.revealForm.bind(this);
@@ -47,6 +48,7 @@ class SectionIndex extends React.Component {
 
   render() {
     if (!this.props) return null;
+    // console.log(this.props)
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>
@@ -58,6 +60,7 @@ class SectionIndex extends React.Component {
                 createTask={this.props.createTask} 
                 deleteSection={this.props.deleteSection}
                 updateSection={this.props.updateSection}
+                project={this.props.project}
               />
             ))
           }

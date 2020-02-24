@@ -5,7 +5,7 @@ class TaskIndex extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      taskOrder: this.props.taskOrder,
+      taskOrder: this.props.section.taskOrder,
       tasks: this.props.tasks
     }
   };
@@ -33,17 +33,17 @@ class TaskIndex extends React.Component {
 
   render() {
     if (!this.props.tasks) return null;
+    console.log('task index props: ', this.props)
     const { deleteTask } = this.props;
     const { taskOrder, tasks } = this.state
-    console.log(this.state.taskOrder)
     return (
       <div className='task-index-parent'>
         {
-          taskOrder.map((taskId, index) => (
+          this.props.section.taskOrder.map((taskId, index) => (
             <TaskIndexItem 
               key={taskId}
               index={index}
-              task={tasks[taskId]}
+              task={this.props.tasks[taskId]}
               deleteTask={deleteTask}
             />
           ))
