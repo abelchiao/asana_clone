@@ -1,1 +1,1 @@
-json.extract! section, :title, :id, :project_id
+json.extract! section, :title, :id, :project_id, :task_order

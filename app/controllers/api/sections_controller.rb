@@ -35,6 +35,6 @@ class Api::SectionsController < ApplicationController
 
   private
   def section_params
-    params.require(:section).permit(:project_id, :title)
+    params.require(:section).permit(:project_id, :title, :task_order)
   end
 end
