@@ -107,12 +107,20 @@ class SectionIndexItem extends React.Component {
         <div className='section-index-item-header' id={`section-index-item-header-${section.id}`}>
           {this.renderSectionTitle()}
           <div>
-            <svg onClick={this.handleDeleteSection}className='section-index-delete-icon' viewBox="0 0 448 512">
+            <svg 
+              onClick={this.handleDeleteSection}
+              className='section-index-delete-icon' 
+              viewBox='0 0 448 512'
+            >
               <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
             </svg>
           </div>
         </div>
-        <div onClick={this.revealForm} className='reveal-task-form-button'>+</div>
+        <div onClick={this.revealForm} className='reveal-task-form-button'>
+          <svg className='new-task-plus-icon' viewBox='0 0 32 32'>
+            <path d="M26,14h-8V6c0-1.1-0.9-2-2-2l0,0c-1.1,0-2,0.9-2,2v8H6c-1.1,0-2,0.9-2,2l0,0c0,1.1,0.9,2,2,2h8v8c0,1.1,0.9,2,2,2l0,0c1.1,0,2-0.9,2-2v-8h8c1.1,0,2-0.9,2-2l0,0C28,14.9,27.1,14,26,14z"></path>
+          </svg>
+        </div>
         <form 
           id={`create-task-${section.id}`}
           className='task-create-form' 

@@ -93,7 +93,10 @@
 
 .reveal-task-form-button:hover {
   cursor: pointer;
-  background: rgb(246, 249, 255)
+  background: rgb(246, 249, 255);
+  .new-task-plus-icon {
+    fill: #14aaf5;
+  }
 }
 
 .new-section-form-container {
@@ -107,7 +110,7 @@
   /* border-bottom: 1px solid #585858; */
   border-bottom: 1px solid #fff;
   margin-bottom: 10px;
-  width: 200px;
+  // width: 200px;
   display: none;
   margin-top: 5px;
   color: #fff;

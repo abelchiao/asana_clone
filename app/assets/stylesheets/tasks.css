@@ -91,3 +91,10 @@
 .task-create-input:focus {
   outline: none;
 }
+
+.new-task-plus-icon {
+  fill: #6f7782;
+  width: 16px;
+  height: 16px;
+}
+
