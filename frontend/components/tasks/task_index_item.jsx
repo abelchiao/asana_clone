@@ -6,11 +6,27 @@ class TaskIndexItem extends React.Component {
     super(props)
     this.handleDelete = this.handleDelete.bind(this);
     this.revealTaskDropdown = this.revealTaskDropdown.bind(this);
+    this.state = {
+      taskOrder: this.props.section.taskOrder
+    }
   };
 
   handleDelete(e) {
     e.stopPropagation();
-    this.props.deleteTask(this.props.task.id);
+    let updatedTaskOrder = this.state.taskOrder
+    this.props.deleteTask(this.props.task.id)
+      .then(data => {
+        updatedTaskOrder.splice(this.props.index, 1)
+        this.setState({
+          taskOrder: updatedTaskOrder
+        })
+        this.props.updateSection({ 
+          id: this.props.section.id, 
+          task_order: updatedTaskOrder 
+        });
+      })
+
+
     let dropdowns = document.getElementsByClassName('task-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
@@ -38,6 +54,8 @@ class TaskIndexItem extends React.Component {
 
   render() {
     if (!this.props.task) return null;
+    console.log('task-index-item props: ', this.props)
+    console.log('task-index-item state: ', this.state)
     const { task } = this.props;
     return (
       <div className='task-index-item-parent'>

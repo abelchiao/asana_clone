@@ -45,6 +45,8 @@ class TaskIndex extends React.Component {
               index={index}
               task={this.props.tasks[taskId]}
               deleteTask={deleteTask}
+              section={this.props.section}
+              updateSection={this.props.updateSection}
             />
           ))
         }
