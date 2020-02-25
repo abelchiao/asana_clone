@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskIndexContainer from '../tasks/task_index_container';
 import { withRouter } from 'react-router-dom';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class SectionIndexItem extends React.Component {
   constructor(props) {
@@ -36,14 +37,23 @@ class SectionIndexItem extends React.Component {
     this.props.createTask({ title, section_id })
       .then(data => {
         updatedTaskOrder.unshift(data.task.id)
-        this.setState({
-          taskOrder: updatedTaskOrder
+        this.setState({ taskOrder: updatedTaskOrder }, () => {
+          this.props.updateSection({
+            id: section_id,
+            task_order: updatedTaskOrder
+           }).then(data => {
+             this.setState({
+               section: data.section
+             })
+           })
+
         })
-        this.props.updateSection({ id: section_id, task_order: updatedTaskOrder});
+        // this.props.updateSection({ id: section_id, task_order: updatedTaskOrder});
       })
     
 
     const form = document.getElementById(`create-task-${this.props.section.id}`)
+    this.setState({ title: '' })
     if (form.classList.contains('show')) form.classList.remove('show')
   };
 
@@ -98,6 +108,57 @@ class SectionIndexItem extends React.Component {
       .then(() => this.setState({ renderForm: false }))
   }
 
+  onDragEnd = result => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    // Need to change this when dragging between columns
+    const section = this.state.section
+    const newTaskOrder = Array.from(section.taskOrder)
+    newTaskOrder.splice(source.index, 1);
+    newTaskOrder.splice(destination.index, 0, draggableId);
+
+    const newSection = {
+      ...section,
+      taskOrder: newTaskOrder,
+    };
+
+    const newState = {
+      ...this.state,
+      section: newSection,
+    };
+
+    // const newState = {
+    //   ...this.state,
+    //   section: {
+    //     ...this.state.section,
+    //     section: newSection
+    //   },
+    // };
+
+    this.setState(newState, () => {
+      this.props.updateSection({
+        id: this.state.section.id,
+        task_order: newTaskOrder
+      })
+    });
+
+    // this.props.updateSection({
+    //   id: this.state.section.id,
+    //   task_order: newTaskOrder
+    // })
+  };
+
   render() {
     if (!this.props.section) return null
     const { section } = this.props;
@@ -136,11 +197,13 @@ class SectionIndexItem extends React.Component {
           />
           {/* <button type='submit'>submit</button> */}
         </form>
-        <TaskIndexContainer 
-          sectionId={section.id} 
-          section={section}
-          taskOrder={this.state.taskOrder}
-        />
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <TaskIndexContainer 
+            sectionId={section.id} 
+            section={this.state.section}
+            taskOrder={this.state.section.taskOrder}
+          />
+        </DragDropContext>
       </div>
     )
   }

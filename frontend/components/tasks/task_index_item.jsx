@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 
 class TaskIndexItem extends React.Component {
   constructor(props) {
@@ -25,7 +25,6 @@ class TaskIndexItem extends React.Component {
           task_order: updatedTaskOrder 
         });
       })
-
 
     let dropdowns = document.getElementsByClassName('task-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
@@ -54,37 +53,49 @@ class TaskIndexItem extends React.Component {
 
   render() {
     if (!this.props.task) return null;
-    console.log('task-index-item props: ', this.props)
-    console.log('task-index-item state: ', this.state)
+    // console.log('task-index-item props: ', this.props)
+    // console.log('task-index-item state: ', this.state)
     const { task } = this.props;
     return (
-      <div className='task-index-item-parent'>
-        <div className='task-index-item-content'>
-          <div>
-            {task.title}
-          </div>
-          <div className='task-index-item-dropdown'>
-            <svg 
-              onClick={this.revealTaskDropdown} 
-              className='task-dropdown-icon' 
-              viewBox='0 0 32 32'
-            >
-              <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
-            </svg>
-            <div
-              id={`task-item-${task.id}`}
-              className='task-dropdown-contents'
-            >
-              <div className='task-dropdown-item'>
-                Edit task details
+      <Draggable
+        draggableId={this.props.task.id.toString()}
+        index={this.props.index}
+      >
+        {(provided) => (
+          <div 
+            className='task-index-item-parent'
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <div className='task-index-item-content'>
+              <div>
+                {task.title}
               </div>
-              <div onClick={this.handleDelete} className='task-dropdown-item'>
-                Delete task
-              </div>
+              <div className='task-index-item-dropdown'>
+                <svg 
+                  onClick={this.revealTaskDropdown} 
+                  className='task-dropdown-icon' 
+                  viewBox='0 0 32 32'
+                >
+                  <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
+                </svg>
+                <div
+                  id={`task-item-${task.id}`}
+                  className='task-dropdown-contents'
+                >
+                  <div className='task-dropdown-item'>
+                    Edit task details
+                  </div>
+                  <div onClick={this.handleDelete} className='task-dropdown-item'>
+                    Delete task
+                  </div>
+                </div>
             </div>
+          </div>
         </div>
-      </div>
-    </div>
+        )}
+      </Draggable>
     );
   };
 };
