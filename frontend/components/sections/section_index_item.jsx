@@ -219,8 +219,8 @@ class SectionIndexItem extends React.Component {
         {/* <DragDropContext onDragEnd={this.onDragEnd}> */}
           <TaskIndexContainer 
             sectionId={section.id} 
-            section={this.state.section}
-            taskOrder={this.state.section.taskOrder}
+            section={this.props.section}
+            taskOrder={this.props.section.taskOrder}
           />
         {/* </DragDropContext> */}
       </div>
