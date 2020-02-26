@@ -34,7 +34,6 @@ class LoginForm extends React.Component {
   }
 
   navigateToSignup() {
-    // console.log("LSKDJF")
     // this.props.clearErrors()
     // //   .then(() => this.props.history.push('/signup'))
     this.props.history.push('/signup');

@@ -48,7 +48,6 @@ class SectionIndex extends React.Component {
 
   render() {
     if (!this.props) return null;
-    // console.log(this.props)
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>

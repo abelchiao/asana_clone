@@ -138,25 +138,12 @@ class SectionIndexItem extends React.Component {
       section: newSection,
     };
 
-    // const newState = {
-    //   ...this.state,
-    //   section: {
-    //     ...this.state.section,
-    //     section: newSection
-    //   },
-    // };
-
     this.setState(newState, () => {
       this.props.updateSection({
         id: this.state.section.id,
         task_order: newTaskOrder
       })
     });
-
-    // this.props.updateSection({
-    //   id: this.state.section.id,
-    //   task_order: newTaskOrder
-    // })
   };
 
   render() {

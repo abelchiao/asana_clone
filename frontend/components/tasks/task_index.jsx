@@ -34,7 +34,6 @@ class TaskIndex extends React.Component {
 
   render() {
     if (!this.props.tasks) return null;
-    // console.log('task index props: ', this.props)
     const { deleteTask } = this.props;
     const { taskOrder, tasks } = this.state
     return (
