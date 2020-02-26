@@ -1,11 +1,9 @@
 .task-index-parent {
   box-sizing: border-box;
-  /* color: green;
-  border-top: 1px solid green;
-  border-bottom: 1px solid green; */
   overflow: auto;
   margin-top: 10px;
   height: 100%;
+  min-width: 280px;
   /* padding: 10px; */
 }
 

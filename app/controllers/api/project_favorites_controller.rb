@@ -8,6 +8,7 @@ class Api::ProjectFavoritesController < ApplicationController
   def create
     @project = Project.find(params[:project_favorite][:project_id])
     @project_favorite = ProjectFavorite.new(project_favorite_params)
+    @sections = current_user.project_sections
     if @project_favorite.save
       @favorite_projects = current_user.favorite_projects
       @project_favorites = current_user.project_favorites
@@ -22,7 +23,7 @@ class Api::ProjectFavoritesController < ApplicationController
   def destroy
     @project_favorite = ProjectFavorite.find(params[:id])
     @project = Project.find(@project_favorite.project_id)
-
+    @sections = current_user.project_sections
     # Need to revisit to remove unnecessary associations
     @favorite_projects = current_user.favorite_projects
     @project_favorites = current_user.project_favorites

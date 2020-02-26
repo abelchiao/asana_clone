@@ -6,13 +6,19 @@ import { DragDropContext } from 'react-beautiful-dnd';
 class SectionIndexItem extends React.Component {
   constructor(props) {
     super(props)
+    // debugger
+    // console.log('constructor props: ', props)
+    // console.log('constructor this props: ', this.props)
+
     this.state = {
       title: '',
-      section_id: this.props.section.id,
       renderForm: false,
+      // renderComponent: false,
+      // section_id: this.props.section.id,
       sectionTitle: this.props.section.title,
       taskOrder: this.props.section.taskOrder,
-      section: this.props.section
+      section: this.props.section,
+      sectionOrder: this.props.project.sectionOrder
     }
     this.handleSubmitTask = this.handleSubmitTask.bind(this);
     this.handleDeleteSection = this.handleDeleteSection.bind(this);
@@ -21,6 +27,14 @@ class SectionIndexItem extends React.Component {
   };
 
   componentDidMount() {
+    // this.setState({
+    //   // renderComponent: true,
+    //   section_id: this.props.section.id,
+    //   sectionTitle: this.props.section.title,
+    //   taskOrder: this.props.section.taskOrder,
+    //   section: this.props.section,
+    //   sectionOrder: this.props.project.sectionOrder
+    // })
     const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
     sectionHeader.onmouseover = function () {
       this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
@@ -28,18 +42,23 @@ class SectionIndexItem extends React.Component {
     sectionHeader.onmouseout = function() {
       this.parentElement.style = '';
     }
+    console.log('inside component did mount')
+    console.log('component did mount section props: ', this.props.section)
   }
 
   handleSubmitTask(e) {
     e.preventDefault();
     let updatedTaskOrder = this.state.taskOrder;
-    const { title, section_id } = this.state;
-    this.props.createTask({ title, section_id })
+    // const { title, section_id } = this.state;
+    this.props.createTask({ 
+      title: this.state.title, 
+      section_id: this.props.section.id
+    })
       .then(data => {
         updatedTaskOrder.unshift(data.task.id)
         this.setState({ taskOrder: updatedTaskOrder }, () => {
           this.props.updateSection({
-            id: section_id,
+            id: this.props.section.id,
             task_order: updatedTaskOrder
            }).then(data => {
              this.setState({
@@ -59,7 +78,18 @@ class SectionIndexItem extends React.Component {
 
   handleDeleteSection(e) {
     e.preventDefault();
-    this.props.deleteSection(this.props.section.id);
+    let updatedSectionOrder = this.state.sectionOrder
+    this.props.deleteSection(this.props.section.id)
+      .then(data => {
+        updatedSectionOrder.splice(this.props.index, 1)
+        this.setState({
+          sectionOrder: updatedSectionOrder
+        })
+        this.props.updateProject({
+          id: this.props.project.id,
+          section_order: updatedSectionOrder
+        });
+      })
   }
 
   update(field) {
@@ -108,59 +138,48 @@ class SectionIndexItem extends React.Component {
       .then(() => this.setState({ renderForm: false }))
   }
 
-  onDragEnd = result => {
-    const { destination, source, draggableId } = result;
+  // onDragEnd = result => {
+  //   const { destination, source, draggableId } = result;
 
-    if (!destination) {
-      return;
-    }
+  //   if (!destination) {
+  //     return;
+  //   }
 
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
+  //   if (
+  //     destination.droppableId === source.droppableId &&
+  //     destination.index === source.index
+  //   ) {
+  //     return;
+  //   }
 
-    // Need to change this when dragging between columns
-    const section = this.state.section
-    const newTaskOrder = Array.from(section.taskOrder)
-    newTaskOrder.splice(source.index, 1);
-    newTaskOrder.splice(destination.index, 0, draggableId);
+  //   // Need to change this when dragging between columns
+  //   const section = this.state.section
+  //   const newTaskOrder = Array.from(section.taskOrder)
+  //   newTaskOrder.splice(source.index, 1);
+  //   newTaskOrder.splice(destination.index, 0, draggableId);
 
-    const newSection = {
-      ...section,
-      taskOrder: newTaskOrder,
-    };
+  //   const newSection = {
+  //     ...section,
+  //     taskOrder: newTaskOrder,
+  //   };
 
-    const newState = {
-      ...this.state,
-      section: newSection,
-    };
-
-    // const newState = {
-    //   ...this.state,
-    //   section: {
-    //     ...this.state.section,
-    //     section: newSection
-    //   },
-    // };
-
-    this.setState(newState, () => {
-      this.props.updateSection({
-        id: this.state.section.id,
-        task_order: newTaskOrder
-      })
-    });
-
-    // this.props.updateSection({
-    //   id: this.state.section.id,
-    //   task_order: newTaskOrder
-    // })
-  };
+  //   const newState = {
+  //     ...this.state,
+  //     section: newSection,
+  //   };
+    
+  //   this.setState(newState, () => {
+  //     this.props.updateSection({
+  //       id: this.state.section.id,
+  //       task_order: newTaskOrder
+  //     })
+  //   });
+  // };
 
   render() {
     if (!this.props.section) return null
+    // if (!this.state.renderComponent) return null
+    // if (!this.state.section_id) return null
     const { section } = this.props;
     return (
       <div className='section-index-item-parent' id='section-index-item-parent'>
@@ -197,13 +216,13 @@ class SectionIndexItem extends React.Component {
           />
           {/* <button type='submit'>submit</button> */}
         </form>
-        <DragDropContext onDragEnd={this.onDragEnd}>
+        {/* <DragDropContext onDragEnd={this.onDragEnd}> */}
           <TaskIndexContainer 
             sectionId={section.id} 
             section={this.state.section}
             taskOrder={this.state.section.taskOrder}
           />
-        </DragDropContext>
+        {/* </DragDropContext> */}
       </div>
     )
   }

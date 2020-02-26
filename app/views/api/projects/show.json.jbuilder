@@ -19,7 +19,7 @@ json.project do
 end
 
 json.sections do 
-  @project.sections.each do |section|
+  @sections.each do |section|
     json.set! section.id do
       json.partial! 'api/sections/section', section: section
     end

@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionIndexItem from './section_index_item';
 import { withRouter } from 'react-router-dom';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class SectionIndex extends React.Component {
   constructor(props) {
@@ -8,7 +9,10 @@ class SectionIndex extends React.Component {
     this.state = {
       title: '',
       project_id: this.props.match.params.projectId,
-      project: this.props.project
+      project: this.props.project,
+      sections: this.props.sections,
+      // sections: this.props.sections,
+      sectionOrder: this.props.project.sectionOrder
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revealForm = this.revealForm.bind(this);
@@ -20,6 +24,7 @@ class SectionIndex extends React.Component {
         title: '',
         project_id: this.props.match.params.projectId
       });
+      // this.props.fetchProject(this.props.match.params.projectId)
     };
   }
 
@@ -29,8 +34,18 @@ class SectionIndex extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let updatedSectionOrder = this.state.sectionOrder
     this.props.createSection(this.state)
-      .then(this.setState({ title: '' }))
+      .then(data => {
+        updatedSectionOrder.push(data.section.id)
+        this.setState({ sectionOrder: updatedSectionOrder }, () => {
+          this.props.updateProject({
+            id: this.props.project.id,
+            section_order: updatedSectionOrder
+          })
+        })
+      })
+    this.setState({ title: '' })
     const form = document.getElementById(`new-section-form-${this.props.projectId}`)
     if (form.classList.contains('show')) form.classList.remove('show');
     const toggle = document.getElementById(`new-section-toggle-${this.props.projectId}`);
@@ -46,24 +61,89 @@ class SectionIndex extends React.Component {
     input.focus();
   };
 
+  onDragEnd = result => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const start = this.state.sections[source.droppableId];
+    const finish = this.state.sections[destination.droppableId];
+    console.log(start)
+    if (start === finish) {
+      const newTaskOrder = Array.from(start.taskOrder)
+      newTaskOrder.splice(source.index, 1);
+      newTaskOrder.splice(destination.index, 0, draggableId);
+
+      console.log('start: ', start)
+      const newSection = {
+        ...start,
+        taskOrder: newTaskOrder,
+      };
+
+      console.log('new section: ', newSection)
+      const newState = {
+        ...this.state,
+        sections: {
+          ...this.state.sections,
+          [newSection.id]: newSection,
+        },
+      };
+
+      this.setState(newState, () => {
+        this.props.updateSection({
+          id: start.id,
+          task_order: newTaskOrder
+        })
+      });
+    }
+  }
+
   render() {
     if (!this.props) return null;
-    // console.log(this.props)
+    console.log('section-index-sections: ', this.props.sections)
+    console.log('section-index-sectionOrder: ', this.props.sectionOrder)
+    // console.log('section-index props: ', this.props)
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>
-          {
-            (this.props.sections).map(section => (
-              <SectionIndexItem 
-                key={section.id} 
-                section={section} 
-                createTask={this.props.createTask} 
-                deleteSection={this.props.deleteSection}
-                updateSection={this.props.updateSection}
-                project={this.props.project}
-              />
-            ))
-          }
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            {/* {
+              this.props.sections.map((section, index) => (
+                <SectionIndexItem 
+                  key={section.id} 
+                  section={section} 
+                  createTask={this.props.createTask} 
+                  deleteSection={this.props.deleteSection}
+                  updateSection={this.props.updateSection}
+                  project={this.props.project}
+                  index={index}
+                />
+              ))
+            } */}
+            {
+              this.props.sectionOrder.map((sectionId, index) => (
+                <SectionIndexItem 
+                  key={sectionId} 
+                  section={this.props.sections[sectionId]} 
+                  createTask={this.props.createTask} 
+                  deleteSection={this.props.deleteSection}
+                  updateSection={this.props.updateSection}
+                  project={this.props.project}
+                  index={index}
+                  updateProject={this.props.updateProject}
+                />
+              ))
+            }
+          </DragDropContext>
           <div className='new-section-form-container'>
             <div 
               className='new-section-form-toggle show' 

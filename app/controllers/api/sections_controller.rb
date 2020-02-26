@@ -1,8 +1,13 @@
 class Api::SectionsController < ApplicationController
   def index
-    @sections = Project.find_by(id: params[:projectId]).sections
+    @sections = current_user.project_sections
     render :index
   end
+
+  # def index
+  #   @sections = Project.find_by(id: params[:projectId]).sections
+  #   render :index
+  # end
 
   def show
     @section = Section.find(params[:id])

@@ -62,6 +62,10 @@ class User < ApplicationRecord
     through: :project_favorites,
     source: :project
 
+  has_many :project_sections,
+    through: :projects,
+    source: :sections
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user && user.is_password?(password) ? user : nil

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import ProjectShow from './project_show';
 import { fetchProject } from '../../../actions/project_actions';
 import { logout } from '../../../actions/session_actions';
-import { openModal, closeModal } from '../../../actions/modal_actions';
-
+import { openModal } from '../../../actions/modal_actions';
+// import { fetchSections } from '../../../actions/section_actions'
 
 const mapStateToProps = (state, ownProps) => ({
-  project: state.entities.projects[ownProps.match.params.projectId]
+  project: state.entities.projects[ownProps.match.params.projectId],
+  // sections: state.entities.sections
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
       New Project
     </div>
   ),
-  closeModal: () => dispatch(closeModal())
+  // fetchSections: projectId => dispatch(fetchSections(projectId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectShow)
