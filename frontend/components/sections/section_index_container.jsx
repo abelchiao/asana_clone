@@ -6,7 +6,8 @@ import {
   fetchSections, 
   createSection, 
   deleteSection,
-  updateSection
+  updateSection,
+  fetchSection
 } from '../../actions/section_actions';
 import { createTask } from '../../actions/task_actions';
 
@@ -24,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
   deleteSection: sectionId => dispatch(deleteSection(sectionId)),
   updateSection: section => dispatch(updateSection(section)),
   updateProject: project => dispatch(updateProject(project)),
-  // fetchProject: projectId => dispatch(fetchProject(projectId)),
+  fetchSection: sectionId => dispatch(fetchSection(sectionId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SectionIndex);

@@ -8,7 +8,7 @@ import { openModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   project: state.entities.projects[ownProps.match.params.projectId],
-  // sections: state.entities.sections
+  sections: state.entities.sections
 });
 
 const mapDispatchToProps = dispatch => ({

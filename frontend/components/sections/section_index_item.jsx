@@ -9,16 +9,17 @@ class SectionIndexItem extends React.Component {
     // debugger
     // console.log('constructor props: ', props)
     // console.log('constructor this props: ', this.props)
-
+    console.log('section-index-item constructor')
     this.state = {
       title: '',
       renderForm: false,
       // renderComponent: false,
       // section_id: this.props.section.id,
-      sectionTitle: this.props.section.title,
-      taskOrder: this.props.section.taskOrder,
-      section: this.props.section,
-      sectionOrder: this.props.project.sectionOrder
+      // sectionTitle: this.props.section.title,
+      sectionTitle: '',
+      // taskOrder: this.props.section.taskOrder,
+      // section: this.props.section,
+      // sectionOrder: this.props.project.sectionOrder
     }
     this.handleSubmitTask = this.handleSubmitTask.bind(this);
     this.handleDeleteSection = this.handleDeleteSection.bind(this);
@@ -26,24 +27,29 @@ class SectionIndexItem extends React.Component {
     this.handleUpdateSectionTitle = this.handleUpdateSectionTitle.bind(this);
   };
 
+  // componentWillMount() {
+  //   this.setState({
+  //     // sectionTitle: this.props.section.title
+  //   })
+  // }
+
   componentDidMount() {
-    // this.setState({
-    //   // renderComponent: true,
-    //   section_id: this.props.section.id,
-    //   sectionTitle: this.props.section.title,
-    //   taskOrder: this.props.section.taskOrder,
-    //   section: this.props.section,
-    //   sectionOrder: this.props.project.sectionOrder
-    // })
-    const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
-    sectionHeader.onmouseover = function () {
-      this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
-    }
-    sectionHeader.onmouseout = function() {
-      this.parentElement.style = '';
-    }
-    console.log('inside component did mount')
-    console.log('component did mount section props: ', this.props.section)
+    this.props.fetchSection(this.props.sectionId)
+      .then(data => {
+        this.setState({
+          sectionTitle: data.section.title,
+          taskOrder: data.section.taskOrder
+        })
+        const sectionHeader = document.getElementById(`section-index-item-header-${this.props.sectionId}`);
+        sectionHeader.onmouseover = function () {
+          this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
+        }
+        sectionHeader.onmouseout = function() {
+          this.parentElement.style = '';
+        }
+      })
+    // console.log('inside component did mount')
+    // console.log('component did mount section props: ', this.props.section)
   }
 
   handleSubmitTask(e) {

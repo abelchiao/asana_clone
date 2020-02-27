@@ -13,6 +13,7 @@ class ProjectShow extends React.Component {
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId)
     // this.props.fetchSections(this.props.match.params.projectId)
+    console.log('project-show component did mount')
   }
 
   componentDidUpdate(prevProps) {
@@ -23,8 +24,10 @@ class ProjectShow extends React.Component {
 
   render() {
     if (!this.props.project) return null;
+    if (!this.props.sections) return null;
     // console.log('project show props: ', this.props)
     const { project, logout, createProject, closeModal } = this.props;
+    console.log('project show render')
     return (
       <div className='project-show-parent'>
         <div className='project-show-all'>

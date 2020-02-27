@@ -1,5 +1,6 @@
 import React from 'react';
-import SectionIndexItem from './section_index_item';
+// import SectionIndexItem from './section_index_item';
+import SectionIndexItemContainer from './section_index_item_container';
 import { withRouter } from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
 
@@ -109,8 +110,8 @@ class SectionIndex extends React.Component {
 
   render() {
     if (!this.props) return null;
-    console.log('section-index-sections: ', this.props.sections)
-    console.log('section-index-sectionOrder: ', this.props.sectionOrder)
+    // console.log('section-index-sections: ', this.props.sections)
+    // console.log('section-index-sectionOrder: ', this.props.sectionOrder)
     // console.log('section-index props: ', this.props)
     return (
       <div className='section-index-parent'>
@@ -131,15 +132,17 @@ class SectionIndex extends React.Component {
             } */}
             {
               this.props.sectionOrder.map((sectionId, index) => (
-                <SectionIndexItem 
-                  key={sectionId} 
-                  section={this.props.sections[sectionId]} 
+                <SectionIndexItemContainer 
+                  key={sectionId}
+                  sectionId={sectionId}
+                  // section={this.props.sections[sectionId]}
                   createTask={this.props.createTask} 
                   deleteSection={this.props.deleteSection}
                   updateSection={this.props.updateSection}
                   project={this.props.project}
                   index={index}
                   updateProject={this.props.updateProject}
+                  // fetchSection={this.props.fetchSection}
                 />
               ))
             }
