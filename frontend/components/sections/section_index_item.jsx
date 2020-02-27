@@ -9,16 +9,20 @@ class SectionIndexItem extends React.Component {
     // debugger
     // console.log('constructor props: ', props)
     // console.log('constructor this props: ', this.props)
+    let sectionTitle = this.props.section ? this.props.section.title : '';
+    let taskOrder = this.props.section ? this.props.section.taskOrder : [];
+    let section = this.props.section ? this.props.section : {};
+    let sectionOrder = this.props.project ? this.props.project.sectionOrder : [];
 
     this.state = {
       title: '',
       renderForm: false,
       // renderComponent: false,
       // section_id: this.props.section.id,
-      sectionTitle: this.props.section.title,
-      taskOrder: this.props.section.taskOrder,
-      section: this.props.section,
-      sectionOrder: this.props.project.sectionOrder
+      sectionTitle: sectionTitle,
+      taskOrder: taskOrder,
+      section: section,
+      sectionOrder: sectionOrder
     }
     this.handleSubmitTask = this.handleSubmitTask.bind(this);
     this.handleDeleteSection = this.handleDeleteSection.bind(this);
@@ -35,6 +39,7 @@ class SectionIndexItem extends React.Component {
     //   section: this.props.section,
     //   sectionOrder: this.props.project.sectionOrder
     // })
+    if (!this.props.section) return;
     const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
     sectionHeader.onmouseover = function () {
       this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
