@@ -6,12 +6,14 @@ import { DragDropContext } from 'react-beautiful-dnd';
 class SectionIndex extends React.Component {
   constructor(props) {
     super(props)
+    // let sections = this.props.sections ? this.props.sections : {};
+
     this.state = {
       title: '',
       project_id: this.props.match.params.projectId,
       project: this.props.project,
+      // sections: sections,
       sections: this.props.sections,
-      // sections: this.props.sections,
       sectionOrder: this.props.project.sectionOrder
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +28,12 @@ class SectionIndex extends React.Component {
       });
       // this.props.fetchProject(this.props.match.params.projectId)
     };
+    
+    if (prevProps.sections !== this.props.sections) {
+      this.setState({
+        sections: this.props.sections
+      })
+    }
   }
 
   update(field) {
@@ -77,7 +85,9 @@ class SectionIndex extends React.Component {
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-    console.log(start)
+    console.log('start: ', start)
+    console.log('sections state: ', this.state.sections)
+    console.log('source droppaple id: ', source.droppableId)
     if (start === finish) {
       const newTaskOrder = Array.from(start.taskOrder)
       newTaskOrder.splice(source.index, 1);
@@ -104,7 +114,45 @@ class SectionIndex extends React.Component {
           task_order: newTaskOrder
         })
       });
+      return;
     }
+
+    const startTaskOrder = Array.from(start.taskOrder);
+    startTaskOrder.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      taskOrder: startTaskOrder,
+    };
+
+    const finishTaskOrder = Array.from(finish.taskOrder);
+    finishTaskOrder.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      taskOrder: finishTaskOrder,
+    };
+
+    const newState = {
+      ...this.state,
+      sections: {
+        ...this.state.sections,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
+      },
+    };
+
+    this.setState(newState);
+
+    this.setState(newState, () => {
+      this.props.updateSection({
+        id: start.id,
+        task_order: startTaskOrder
+      }).then(
+        this.props.updateSection({
+          id: finish.id,
+          task_order: finishTaskOrder
+        })
+      );
+    });
   }
 
   render() {
@@ -132,8 +180,8 @@ class SectionIndex extends React.Component {
             {
               this.props.sectionOrder.map((sectionId, index) => (
                 <SectionIndexItem 
-                  key={sectionId} 
-                  section={this.props.sections[sectionId]} 
+                  key={sectionId}
+                  section={this.state.sections[sectionId]} 
                   createTask={this.props.createTask} 
                   deleteSection={this.props.deleteSection}
                   updateSection={this.props.updateSection}
