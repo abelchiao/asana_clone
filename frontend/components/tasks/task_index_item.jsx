@@ -22,17 +22,52 @@ class TaskIndexItem extends React.Component {
   handleDelete(e) {
     e.stopPropagation();
     let updatedTaskOrder = this.state.taskOrder
-    this.props.deleteTask(this.props.task.id)
-      .then(data => {
-        updatedTaskOrder.splice(this.props.index, 1)
-        this.setState({
-          taskOrder: updatedTaskOrder
+    updatedTaskOrder.splice(this.props.index, 1)
+    this.setState({ taskOrder: updatedTaskOrder }, () => {
+      this.props.deleteTask(this.props.task.id)
+        .then(data => {
+          console.log('deletion section id: ', this.props.section.id)
+          console.log('deletion task order: ', updatedTaskOrder)
+          console.log('state task order: ', this.state.taskOrder)
+          // if (updatedTaskOrder.length === 0) {
+          //   this.props.updateSection({
+          //     id: this.props.section.id,
+          //     task_order: ['null']
+          //   })
+          // } else {
+            this.props.updateSection({
+              id: this.props.section.id,
+              task_order: this.state.taskOrder
+            })
+          // }
         })
-        this.props.updateSection({ 
-          id: this.props.section.id, 
-          task_order: updatedTaskOrder 
-        });
-      })
+    })
+
+    // this.props.deleteTask(this.props.task.id)
+    //   .then(data => {
+    //     updatedTaskOrder.splice(this.props.index, 1)
+    //     this.setState({
+    //       taskOrder: updatedTaskOrder
+    //     })
+    //     console.log('inside handle delete updatedTaskOrder: ', updatedTaskOrder)
+    //     this.props.updateSection({ 
+    //       id: this.props.section.id, 
+    //       task_order: updatedTaskOrder 
+    //     });
+    //   })
+
+    // this.props.deleteTask(this.props.task.id)
+    //   .then(data => {
+    //     updatedTaskOrder.splice(this.props.index, 1)
+    //     this.setState({
+    //       taskOrder: updatedTaskOrder
+    //     })
+    //     console.log('inside handle delete updatedTaskOrder: ', updatedTaskOrder)
+    //     this.props.updateSection({ 
+    //       id: this.props.section.id, 
+    //       task_order: updatedTaskOrder 
+    //     });
+    //   })
 
     let dropdowns = document.getElementsByClassName('task-dropdown-contents');
     for (let i = 0; i < dropdowns.length; i++) {
