@@ -4,17 +4,23 @@ import { Draggable } from 'react-beautiful-dnd';
 class TaskIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    this.handleDelete = this.handleDelete.bind(this);
-    this.revealTaskDropdown = this.revealTaskDropdown.bind(this);
+    // let taskOrder = this.props.section.taskOrder ? this.props.section.taskOrder : [];
+
     this.state = {
+      // taskOrder: taskOrder
       taskOrder: this.props.section.taskOrder
     }
+    
+    this.handleDelete = this.handleDelete.bind(this);
+    this.revealTaskDropdown = this.revealTaskDropdown.bind(this);
   };
 
   componentDiDUpdate(prevProps) {
     if (prevProps.task !== this.props.task) {
+    // if (prevProps.section !== this.props.section) {
       this.setState({
         sections: this.props.sections
+        // taskOrder: this.props.section.taskOrder
       })
     }
   }
@@ -26,22 +32,12 @@ class TaskIndexItem extends React.Component {
     this.setState({ taskOrder: updatedTaskOrder }, () => {
       this.props.deleteTask(this.props.task.id)
         .then(data => {
-          console.log('deletion section id: ', this.props.section.id)
-          console.log('deletion task order: ', updatedTaskOrder)
-          console.log('state task order: ', this.state.taskOrder)
-          // if (updatedTaskOrder.length === 0) {
-          //   this.props.updateSection({
-          //     id: this.props.section.id,
-          //     task_order: ['null']
-          //   })
-          // } else {
-            this.props.updateSection({
-              id: this.props.section.id,
-              task_order: this.state.taskOrder
-            })
-          // }
-        })
-    })
+          this.props.updateSection({
+            id: this.props.section.id,
+            task_order: this.state.taskOrder
+          });
+        });
+    });
 
     // this.props.deleteTask(this.props.task.id)
     //   .then(data => {

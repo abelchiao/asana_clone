@@ -5,18 +5,21 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 class TaskIndex extends React.Component {
   constructor(props) {
     super(props)
+    // let taskOrder = this.props.taskOrder ? this.props.taskOrder : [];
+
     this.state = {
+      // taskOrder: taskOrder,
+      // tasks: this.props.tasks,
       taskOrder: this.props.section.taskOrder,
-      tasks: this.props.tasks
+      tasks: this.props.tasks,
     }
   };
 
   componentDidUpdate(prevProps) {
     if (prevProps.taskOrder !== this.props.taskOrder) {
-      console.log('task-index CDU - prevProps !== this.props')
-      console.log('prevProps: ', prevProps)
-      console.log('this.props: ', this.props)
-      // this.props.fetchTasks(this.props.sectionId)
+      // this.setState({
+      //   taskOrder: this.props.taskOrder
+      // })
     }
   }
 

@@ -8,7 +8,7 @@ import {
   deleteSection,
   updateSection
 } from '../../actions/section_actions';
-import { createTask } from '../../actions/task_actions';
+import { createTask, updateTask } from '../../actions/task_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   // this may grab sections from other projects
@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   fetchSections: projectId => dispatch(fetchSections(projectId)),
   createTask: task => dispatch(createTask(task)),
+  updateTask: task => dispatch(updateTask(task)),
   createSection: section => dispatch(createSection(section)),
   deleteSection: sectionId => dispatch(deleteSection(sectionId)),
   updateSection: section => dispatch(updateSection(section)),

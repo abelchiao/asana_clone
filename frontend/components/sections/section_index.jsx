@@ -152,13 +152,17 @@ class SectionIndex extends React.Component {
         id: finish.id,
         task_order: finishTaskOrder
       });
+      this.props.updateTask({
+        id: draggableId,
+        section_id: finish.id
+      })
     });
   };
 
   render() {
     if (!this.props) return null;
-    console.log('this.props.sectionOrder: ', this.props.sectionOrder)
-    console.log('this.state.sectionOrder: ', this.state.sectionOrder)
+    // console.log('this.props.sectionOrder: ', this.props.sectionOrder)
+    // console.log('this.state.sectionOrder: ', this.state.sectionOrder)
     // console.log('section-index-sections: ', this.props.sections)
     // console.log('section-index-sectionOrder: ', this.props.sectionOrder)
     // console.log('section-index props: ', this.props)
