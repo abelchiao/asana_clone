@@ -52,6 +52,7 @@ class SectionIndexItem extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (!this.props.section) return;
     if (prevProps.section !== this.props.section) {
       this.setState({
         sectionTitle: this.props.section.title,
