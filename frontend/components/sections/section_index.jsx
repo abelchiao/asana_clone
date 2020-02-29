@@ -24,7 +24,8 @@ class SectionIndex extends React.Component {
     if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
       this.setState({ 
         title: '',
-        project_id: this.props.match.params.projectId
+        project_id: this.props.match.params.projectId,
+        sectionOrder: this.props.sectionOrder
       });
       // this.props.fetchProject(this.props.match.params.projectId)
     };
@@ -85,21 +86,21 @@ class SectionIndex extends React.Component {
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-    console.log('start: ', start)
-    console.log('sections state: ', this.state.sections)
-    console.log('source droppaple id: ', source.droppableId)
+    // console.log('start: ', start)
+    // console.log('sections state: ', this.state.sections)
+    // console.log('source droppaple id: ', source.droppableId)
     if (start === finish) {
       const newTaskOrder = Array.from(start.taskOrder)
       newTaskOrder.splice(source.index, 1);
       newTaskOrder.splice(destination.index, 0, draggableId);
 
-      console.log('start: ', start)
+      // console.log('start: ', start)
       const newSection = {
         ...start,
         taskOrder: newTaskOrder,
       };
 
-      console.log('new section: ', newSection)
+      // console.log('new section: ', newSection)
       const newState = {
         ...this.state,
         sections: {
@@ -140,25 +141,26 @@ class SectionIndex extends React.Component {
       },
     };
 
-    this.setState(newState);
+    // this.setState(newState);
 
     this.setState(newState, () => {
       this.props.updateSection({
         id: start.id,
         task_order: startTaskOrder
-      }).then(
-        this.props.updateSection({
-          id: finish.id,
-          task_order: finishTaskOrder
-        })
-      );
+      });
+      this.props.updateSection({
+        id: finish.id,
+        task_order: finishTaskOrder
+      });
     });
-  }
+  };
 
   render() {
     if (!this.props) return null;
-    console.log('section-index-sections: ', this.props.sections)
-    console.log('section-index-sectionOrder: ', this.props.sectionOrder)
+    console.log('this.props.sectionOrder: ', this.props.sectionOrder)
+    console.log('this.state.sectionOrder: ', this.state.sectionOrder)
+    // console.log('section-index-sections: ', this.props.sections)
+    // console.log('section-index-sectionOrder: ', this.props.sectionOrder)
     // console.log('section-index props: ', this.props)
     return (
       <div className='section-index-parent'>

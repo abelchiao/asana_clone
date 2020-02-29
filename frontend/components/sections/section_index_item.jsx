@@ -47,8 +47,19 @@ class SectionIndexItem extends React.Component {
     sectionHeader.onmouseout = function() {
       this.parentElement.style = '';
     }
-    console.log('inside component did mount')
-    console.log('component did mount section props: ', this.props.section)
+    // console.log('inside component did mount')
+    // console.log('component did mount section props: ', this.props.section)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.section !== this.props.section) {
+      this.setState({
+        sectionTitle: this.props.section.title,
+        taskOrder: this.props.section.taskOrder,
+        section: this.props.section,
+        sectionOrder: this.props.project.sectionOrder
+      })
+    }
   }
 
   handleSubmitTask(e) {

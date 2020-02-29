@@ -11,6 +11,14 @@ class TaskIndexItem extends React.Component {
     }
   };
 
+  componentDiDUpdate(prevProps) {
+    if (prevProps.task !== this.props.task) {
+      this.setState({
+        sections: this.props.sections
+      })
+    }
+  }
+
   handleDelete(e) {
     e.stopPropagation();
     let updatedTaskOrder = this.state.taskOrder
@@ -56,8 +64,9 @@ class TaskIndexItem extends React.Component {
     const { task } = this.props;
     return (
       <Draggable
-        draggableId={this.props.task.id.toString()}
+        draggableId={this.props.taskId.toString()}
         index={this.props.index}
+        id={this.props.task.id}
       >
         {(provided) => (
           <div 

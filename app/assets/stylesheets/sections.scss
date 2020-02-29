@@ -102,7 +102,7 @@
 .new-section-form-container {
   display: flex;
   flex-direction: column;
-  padding-right: 100px;
+  // padding-right: 100px;
   margin: 8px 5px;
 }
 
@@ -110,11 +110,12 @@
   /* border-bottom: 1px solid #585858; */
   border-bottom: 1px solid #fff;
   margin-bottom: 10px;
-  // width: 200px;
+  width: 115px;
   display: none;
   margin-top: 5px;
   color: #fff;
   padding: 6.5px;
+  margin-right: 100px;
   /* box-sizing: border-box; */
 }
 

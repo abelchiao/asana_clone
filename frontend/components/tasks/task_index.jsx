@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskIndexItem from './task_index_item';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 class TaskIndex extends React.Component {
   constructor(props) {
@@ -10,6 +10,15 @@ class TaskIndex extends React.Component {
       tasks: this.props.tasks
     }
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.taskOrder !== this.props.taskOrder) {
+      console.log('task-index CDU - prevProps !== this.props')
+      console.log('prevProps: ', prevProps)
+      console.log('this.props: ', this.props)
+      // this.props.fetchTasks(this.props.sectionId)
+    }
+  }
 
   // componentDidMount() {
   //   const { fetchTasks, sectionId } = this.props;
@@ -46,14 +55,26 @@ class TaskIndex extends React.Component {
           >
             {
               this.props.taskOrder.map((taskId, index) => (
-                <TaskIndexItem 
-                  key={taskId}
-                  index={index}
-                  task={this.props.tasks[taskId]}
-                  deleteTask={deleteTask}
-                  section={this.props.section}
-                  updateSection={this.props.updateSection}
-                />
+                // <Draggable
+                //   draggableId={taskId.toString()}
+                //   index={index}
+                //   key={taskId}
+                // >
+                //   {(provided) => (
+                    <TaskIndexItem 
+                      key={taskId}
+                      index={index}
+                      taskId={taskId}
+                      task={this.props.tasks[taskId]}
+                      deleteTask={deleteTask}
+                      section={this.props.section}
+                      updateSection={this.props.updateSection}
+                      // {...provided.draggableProps}
+                      // {...provided.dragHandleProps}
+                      // ref={provided.innerRef}
+                    />
+                  // )}
+                // </Draggable>
               ))
             }
             {provided.placeholder}
