@@ -5,21 +5,21 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 class TaskIndex extends React.Component {
   constructor(props) {
     super(props)
-    // let taskOrder = this.props.taskOrder ? this.props.taskOrder : [];
+    let taskOrder = this.props.taskOrder ? this.props.taskOrder : [];
 
     this.state = {
-      // taskOrder: taskOrder,
+      taskOrder: taskOrder,
       // tasks: this.props.tasks,
-      taskOrder: this.props.section.taskOrder,
+      // taskOrder: this.props.section.taskOrder,
       tasks: this.props.tasks,
     }
   };
 
   componentDidUpdate(prevProps) {
     if (prevProps.taskOrder !== this.props.taskOrder) {
-      // this.setState({
-      //   taskOrder: this.props.taskOrder
-      // })
+      this.setState({
+        taskOrder: this.props.taskOrder
+      })
     }
   }
 
@@ -57,7 +57,8 @@ class TaskIndex extends React.Component {
             {...provided.droppableProps}
           >
             {
-              this.props.taskOrder.map((taskId, index) => (
+              // this.state.taskOrder.map((taskId, index) => (
+              this.state.taskOrder.map((taskId, index) => (
                 // <Draggable
                 //   draggableId={taskId.toString()}
                 //   index={index}
