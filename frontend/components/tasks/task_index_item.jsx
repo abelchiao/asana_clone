@@ -97,7 +97,7 @@ class TaskIndexItem extends React.Component {
     const { task } = this.props;
     // console.log('task-index-item props: ', this.props)
     console.log('task-index-item taskId prop: ', this.props.taskId)
-    console.log('task-index-item taskId prop: ', this.props.taskId.toString())
+    console.log('task-index-item taskId prop stringified: ', this.props.taskId.toString())
     return (
       <Draggable
         // draggableId={this.props.dndId}

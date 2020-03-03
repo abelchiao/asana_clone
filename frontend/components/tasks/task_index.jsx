@@ -6,12 +6,13 @@ class TaskIndex extends React.Component {
   constructor(props) {
     super(props)
     let taskOrder = this.props.taskOrder ? this.props.taskOrder : [];
+    let tasks = this.props.tasks? this.props.tasks : {};
 
     this.state = {
       taskOrder: taskOrder,
       // tasks: this.props.tasks,
       // taskOrder: this.props.section.taskOrder,
-      tasks: this.props.tasks,
+      tasks: tasks,
     }
   };
 
@@ -49,7 +50,7 @@ class TaskIndex extends React.Component {
     const { deleteTask } = this.props;
     const { taskOrder, tasks } = this.state
     // console.log('task-index props: ', this.props)
-    console.log('task-index task order: ', this.state.taskOrder)
+    // console.log('task-index task order: ', this.state.taskOrder)
     return (
       <Droppable droppableId={this.props.section.id.toString()}>
         {provided => (

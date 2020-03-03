@@ -6,15 +6,15 @@ import { DragDropContext } from 'react-beautiful-dnd';
 class SectionIndex extends React.Component {
   constructor(props) {
     super(props)
-    // let sections = this.props.sections ? this.props.sections : {};
+    let sections = this.props.sections ? this.props.sections : {};
 
     this.state = {
       title: '',
       project_id: this.props.match.params.projectId,
       project: this.props.project,
       // sections: sections,
-      sections: this.props.sections,
-      sectionOrder: this.props.project.sectionOrder
+      sections: sections,
+      sectionOrder: this.props.sectionOrder
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revealForm = this.revealForm.bind(this);
@@ -33,6 +33,12 @@ class SectionIndex extends React.Component {
     if (prevProps.sections !== this.props.sections) {
       this.setState({
         sections: this.props.sections
+      })
+    }
+
+    if (prevProps.sectionOrder !== this.props.sectionOrder) {
+      this.setState({
+        sectionOrder: this.props.sectionOrder
       })
     }
   }
@@ -155,16 +161,17 @@ class SectionIndex extends React.Component {
         id: finish.id,
         task_order: finishTaskOrder
       });
-      // this.props.updateTask({
-      //   id: draggableId,
-      //   section_id: finish.id
-      // })
+      this.props.updateTask({
+        id: draggableId,
+        section_id: finish.id
+      })
     });
     // console.log('section-index-props: ', this.props)
   };
 
   render() {
     if (!this.props) return null;
+    if (!this.props.sections) return null;
     // console.log('this.props.sectionOrder: ', this.props.sectionOrder)
     // console.log('this.state.sectionOrder: ', this.state.sectionOrder)
     // console.log('section-index-sections: ', this.props.sections)
@@ -188,10 +195,11 @@ class SectionIndex extends React.Component {
               ))
             } */}
             {
-              this.props.sectionOrder.map((sectionId, index) => (
+              this.state.sectionOrder.map((sectionId, index) => (
                 <SectionIndexItem 
                   key={sectionId}
-                  section={this.state.sections[sectionId]} 
+                  // keying into this.state.sections results in draggables getting "stuck" after drop
+                  section={this.props.sections[sectionId]} 
                   createTask={this.props.createTask} 
                   deleteSection={this.props.deleteSection}
                   updateSection={this.props.updateSection}
