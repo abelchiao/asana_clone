@@ -48,6 +48,8 @@ class TaskIndex extends React.Component {
     if (!this.props.tasks) return null;
     const { deleteTask } = this.props;
     const { taskOrder, tasks } = this.state
+    // console.log('task-index props: ', this.props)
+    console.log('task-index task order: ', this.state.taskOrder)
     return (
       <Droppable droppableId={this.props.section.id.toString()}>
         {provided => (
@@ -69,6 +71,7 @@ class TaskIndex extends React.Component {
                       key={taskId}
                       index={index}
                       taskId={taskId}
+                      // dndId={`draggable-${taskId}`}
                       task={this.props.tasks[taskId]}
                       deleteTask={deleteTask}
                       section={this.props.section}

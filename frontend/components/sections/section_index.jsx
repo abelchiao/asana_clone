@@ -86,9 +86,12 @@ class SectionIndex extends React.Component {
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-    // console.log('start: ', start)
-    // console.log('sections state: ', this.state.sections)
-    // console.log('source droppaple id: ', source.droppableId)
+    console.log('start: ', start)
+    console.log('finish: ', finish)
+    console.log('sections state: ', this.state.sections)
+    console.log('source droppaple id: ', source.droppableId)
+    console.log('destination droppable id: ', destination.droppableId)
+    console.log('draggable id type: ', typeof(draggableId))
     if (start === finish) {
       const newTaskOrder = Array.from(start.taskOrder)
       newTaskOrder.splice(source.index, 1);
@@ -152,11 +155,12 @@ class SectionIndex extends React.Component {
         id: finish.id,
         task_order: finishTaskOrder
       });
-      this.props.updateTask({
-        id: draggableId,
-        section_id: finish.id
-      })
+      // this.props.updateTask({
+      //   id: draggableId,
+      //   section_id: finish.id
+      // })
     });
+    // console.log('section-index-props: ', this.props)
   };
 
   render() {
