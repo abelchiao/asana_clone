@@ -1,7 +1,8 @@
 import React from 'react';
 import TaskIndexContainer from '../tasks/task_index_container';
+import TaskIndexItem from '../tasks/task_index_item';
 import { withRouter } from 'react-router-dom';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class SectionIndexItem extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class SectionIndexItem extends React.Component {
     // console.log('constructor props: ', props)
     // console.log('constructor this props: ', this.props)
     let sectionTitle = this.props.section ? this.props.section.title : '';
-    let taskOrder = this.props.section ? this.props.section.taskOrder : [];
+    // let taskOrder = this.props.section ? this.props.section.taskOrder : [];
+    let taskOrder = this.props.taskOrder ? this.props.taskOrder : [];
     let section = this.props.section ? this.props.section : {};
     let sectionOrder = this.props.project ? this.props.project.sectionOrder : [];
 
@@ -53,12 +55,19 @@ class SectionIndexItem extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!this.props.section) return;
+
     if (prevProps.section !== this.props.section) {
       this.setState({
         sectionTitle: this.props.section.title,
-        taskOrder: this.props.section.taskOrder,
+        // taskOrder: this.props.section.taskOrder,
         section: this.props.section,
         sectionOrder: this.props.project.sectionOrder
+      })
+    }
+
+    if (prevProps.taskOrder !== this.props.taskOrder) {
+      this.setState({
+        taskOrder: this.props.taskOrder
       })
     }
   }
@@ -155,49 +164,11 @@ class SectionIndexItem extends React.Component {
       .then(() => this.setState({ renderForm: false }))
   }
 
-  // onDragEnd = result => {
-  //   const { destination, source, draggableId } = result;
-
-  //   if (!destination) {
-  //     return;
-  //   }
-
-  //   if (
-  //     destination.droppableId === source.droppableId &&
-  //     destination.index === source.index
-  //   ) {
-  //     return;
-  //   }
-
-  //   // Need to change this when dragging between columns
-  //   const section = this.state.section
-  //   const newTaskOrder = Array.from(section.taskOrder)
-  //   newTaskOrder.splice(source.index, 1);
-  //   newTaskOrder.splice(destination.index, 0, draggableId);
-
-  //   const newSection = {
-  //     ...section,
-  //     taskOrder: newTaskOrder,
-  //   };
-
-  //   const newState = {
-  //     ...this.state,
-  //     section: newSection,
-  //   };
-    
-  //   this.setState(newState, () => {
-  //     this.props.updateSection({
-  //       id: this.state.section.id,
-  //       task_order: newTaskOrder
-  //     })
-  //   });
-  // };
-
   render() {
     if (!this.props.section) return null
     // if (!this.state.renderComponent) return null
     // if (!this.state.section_id) return null
-    const { section } = this.props;
+    const { section, deleteTask, taskOrder } = this.props;
     // console.log('section-index-item props: ', this.props)
     return (
       <div className='section-index-item-parent' id='section-index-item-parent'>
@@ -230,16 +201,43 @@ class SectionIndexItem extends React.Component {
             value={this.state.title}
             placeholder='New task'
             onBlur={this.handleSubmitTask}
-            // autoFocus
           />
-          {/* <button type='submit'>submit</button> */}
         </form>
+
+        {/* Formerly TaskIndex */}
+        <Droppable droppableId={this.props.section.id.toString()}>
+          {provided => (
+            <div
+              className='task-index-parent'
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {
+                // this.state.taskOrder.map((taskId, index) => (
+                // this.props.taskOrder.map((taskId, index) => (
+                this.props.section.taskOrder.map((taskId, index) => (
+                  <TaskIndexItem
+                    key={taskId}
+                    index={index}
+                    taskId={taskId}
+                    task={this.props.tasks[taskId]}
+                    deleteTask={deleteTask}
+                    section={this.props.section}
+                    updateSection={this.props.updateSection}
+                  />
+                ))
+              }
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+
         {/* <DragDropContext onDragEnd={this.onDragEnd}> */}
-          <TaskIndexContainer 
+          {/* <TaskIndexContainer 
             sectionId={section.id} 
             section={section}
-            taskOrder={section.taskOrder}
-          />
+            taskOrder={taskOrder}
+          /> */}
         {/* </DragDropContext> */}
       </div>
     )

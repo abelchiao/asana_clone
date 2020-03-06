@@ -5,10 +5,12 @@ class TaskIndexItem extends React.Component {
   constructor(props) {
     super(props)
     // let taskOrder = this.props.section.taskOrder ? this.props.section.taskOrder : [];
+    let taskId = this.props.taskId ? this.props.taskId.toString() : ''
 
     this.state = {
       // taskOrder: taskOrder
-      taskOrder: this.props.section.taskOrder
+      taskOrder: this.props.section.taskOrder,
+      taskId: taskId
     }
     
     this.handleDelete = this.handleDelete.bind(this);
@@ -21,6 +23,12 @@ class TaskIndexItem extends React.Component {
       this.setState({
         sections: this.props.sections
         // taskOrder: this.props.section.taskOrder
+      })
+    }
+
+    if (prevProps.taskId !== this.props.taskId) {
+      this.setState({
+        taskId: this.props.taskId
       })
     }
   }
@@ -96,14 +104,17 @@ class TaskIndexItem extends React.Component {
     if (!this.props.taskId) return null;
     const { task } = this.props;
     // console.log('task-index-item props: ', this.props)
-    console.log('task-index-item taskId prop: ', this.props.taskId)
-    console.log('task-index-item taskId prop stringified: ', this.props.taskId.toString())
+    // console.log('task-index-item taskId prop: ', this.props.taskId)
+    // console.log('task-index-item taskId prop stringified: ', this.props.taskId.toString())
     return (
       <Draggable
         // draggableId={this.props.dndId}
-        draggableId={this.props.taskId.toString()}
+        // draggableId={this.props.taskId.toString()}
+
+        // testing
+        draggableId={this.state.taskId}
         index={this.props.index}
-        index={this.props.index}
+        // index={this.props.index}
         id={this.props.task.id}
       >
         {(provided) => (

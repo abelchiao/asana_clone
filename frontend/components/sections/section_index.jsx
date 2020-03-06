@@ -1,5 +1,6 @@
 import React from 'react';
-import SectionIndexItem from './section_index_item';
+// import SectionIndexItem from './section_index_item';
+import SectionIndexItemContainer from './section_index_item_container';
 import { withRouter } from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
 
@@ -150,23 +151,34 @@ class SectionIndex extends React.Component {
       },
     };
 
-    // this.setState(newState);
-
-    this.setState(newState, () => {
-      this.props.updateSection({
-        id: start.id,
-        task_order: startTaskOrder
-      });
-      this.props.updateSection({
-        id: finish.id,
-        task_order: finishTaskOrder
-      });
-      this.props.updateTask({
-        id: draggableId,
-        section_id: finish.id
-      })
+    this.setState(newState);
+    this.props.updateSection({
+      id: start.id,
+      task_order: startTaskOrder
     });
-    // console.log('section-index-props: ', this.props)
+    this.props.updateSection({
+      id: finish.id,
+      task_order: finishTaskOrder
+    });
+    this.props.updateTask({
+      id: draggableId,
+      section_id: finish.id
+    })
+
+    // this.setState(newState, () => {
+    //   this.props.updateSection({
+    //     id: start.id,
+    //     task_order: startTaskOrder
+    //   });
+    //   this.props.updateSection({
+    //     id: finish.id,
+    //     task_order: finishTaskOrder
+    //   });
+    //   this.props.updateTask({
+    //     id: draggableId,
+    //     section_id: finish.id
+    //   })
+    // });
   };
 
   render() {
@@ -196,10 +208,16 @@ class SectionIndex extends React.Component {
             } */}
             {
               this.state.sectionOrder.map((sectionId, index) => (
-                <SectionIndexItem 
+                <SectionIndexItemContainer 
                   key={sectionId}
+                  sectionId={sectionId}
                   // keying into this.state.sections results in draggables getting "stuck" after drop
-                  section={this.props.sections[sectionId]} 
+                  section={this.props.sections[sectionId]}
+                  // section={this.state.sections[sectionId]}
+
+                  // testing
+                  taskOrder={this.state.sections[sectionId].taskOrder}
+
                   createTask={this.props.createTask} 
                   deleteSection={this.props.deleteSection}
                   updateSection={this.props.updateSection}

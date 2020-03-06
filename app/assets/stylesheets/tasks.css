@@ -1,6 +1,6 @@
 .task-index-parent {
   box-sizing: border-box;
-  overflow: auto;
+  /* overflow: auto; */
   margin-top: 10px;
   height: 100%;
   min-width: 280px;
