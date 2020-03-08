@@ -17,21 +17,21 @@ class TaskIndexItem extends React.Component {
     this.revealTaskDropdown = this.revealTaskDropdown.bind(this);
   };
 
-  componentDiDUpdate(prevProps) {
-    if (prevProps.task !== this.props.task) {
-    // if (prevProps.section !== this.props.section) {
-      this.setState({
-        sections: this.props.sections
-        // taskOrder: this.props.section.taskOrder
-      })
-    }
+  // componentDiDUpdate(prevProps) {
+  //   if (prevProps.task !== this.props.task) {
+  //   // if (prevProps.section !== this.props.section) {
+  //     this.setState({
+  //       sections: this.props.sections
+  //       // taskOrder: this.props.section.taskOrder
+  //     })
+  //   }
 
-    if (prevProps.taskId !== this.props.taskId) {
-      this.setState({
-        taskId: this.props.taskId
-      })
-    }
-  }
+  //   if (prevProps.taskId !== this.props.taskId) {
+  //     this.setState({
+  //       taskId: this.props.taskId
+  //     })
+  //   }
+  // }
 
   handleDelete(e) {
     e.stopPropagation();
@@ -112,17 +112,19 @@ class TaskIndexItem extends React.Component {
         // draggableId={this.props.taskId.toString()}
 
         // testing
-        draggableId={this.state.taskId}
+        draggableId={this.props.task.id.toString()}
+        // draggableId={`${this.props.task.id}`}
+        // key={this.props.task.id}
         index={this.props.index}
         // index={this.props.index}
-        id={this.props.task.id}
+        // id={this.props.task.id}
       >
         {(provided) => (
           <div 
             className='task-index-item-parent'
+            ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            ref={provided.innerRef}
           >
             <div className='task-index-item-content'>
               <div>

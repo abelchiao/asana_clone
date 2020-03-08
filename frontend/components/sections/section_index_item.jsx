@@ -33,14 +33,6 @@ class SectionIndexItem extends React.Component {
   };
 
   componentDidMount() {
-    // this.setState({
-    //   // renderComponent: true,
-    //   section_id: this.props.section.id,
-    //   sectionTitle: this.props.section.title,
-    //   taskOrder: this.props.section.taskOrder,
-    //   section: this.props.section,
-    //   sectionOrder: this.props.project.sectionOrder
-    // })
     if (!this.props.section) return;
     const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
     sectionHeader.onmouseover = function () {
@@ -53,24 +45,24 @@ class SectionIndexItem extends React.Component {
     // console.log('component did mount section props: ', this.props.section)
   }
 
-  componentDidUpdate(prevProps) {
-    if (!this.props.section) return;
+  // componentDidUpdate(prevProps) {
+  //   if (!this.props.section) return;
 
-    if (prevProps.section !== this.props.section) {
-      this.setState({
-        sectionTitle: this.props.section.title,
-        // taskOrder: this.props.section.taskOrder,
-        section: this.props.section,
-        sectionOrder: this.props.project.sectionOrder
-      })
-    }
+  //   if (prevProps.section !== this.props.section) {
+  //     this.setState({
+  //       sectionTitle: this.props.section.title,
+  //       // taskOrder: this.props.section.taskOrder,
+  //       section: this.props.section,
+  //       sectionOrder: this.props.project.sectionOrder
+  //     })
+  //   }
 
-    if (prevProps.taskOrder !== this.props.taskOrder) {
-      this.setState({
-        taskOrder: this.props.taskOrder
-      })
-    }
-  }
+  //   if (prevProps.taskOrder !== this.props.taskOrder) {
+  //     this.setState({
+  //       taskOrder: this.props.taskOrder
+  //     })
+  //   }
+  // }
 
   handleSubmitTask(e) {
     e.preventDefault();
@@ -166,6 +158,8 @@ class SectionIndexItem extends React.Component {
 
   render() {
     if (!this.props.section) return null
+    console.log('SII sectionId, taskOrder: ', this.props.section.id, this.props.section.taskOrder)
+    // debugger
     // if (!this.state.renderComponent) return null
     // if (!this.state.section_id) return null
     const { section, deleteTask, taskOrder } = this.props;
@@ -217,7 +211,7 @@ class SectionIndexItem extends React.Component {
                 // this.props.taskOrder.map((taskId, index) => (
                 this.props.section.taskOrder.map((taskId, index) => (
                   <TaskIndexItem
-                    key={taskId}
+                    key={taskId.toString()}
                     index={index}
                     taskId={taskId}
                     task={this.props.tasks[taskId]}

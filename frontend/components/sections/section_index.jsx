@@ -21,6 +21,15 @@ class SectionIndex extends React.Component {
     this.revealForm = this.revealForm.bind(this);
   };
 
+  componentDidMount() {
+    this.props.fetchSections(this.props.match.params.projectId).then(result => {
+      this.setState({
+        sections: result.sections
+      })
+      console.log('section-index CDM, sections state: ', this.state.sections)
+    })
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
       this.setState({ 
@@ -31,17 +40,18 @@ class SectionIndex extends React.Component {
       // this.props.fetchProject(this.props.match.params.projectId)
     };
     
-    if (prevProps.sections !== this.props.sections) {
-      this.setState({
-        sections: this.props.sections
-      })
-    }
+    // Removing these fixes the task "sticking" issue
+    // if (prevProps.sections !== this.props.sections) {
+    //   this.setState({
+    //     sections: this.props.sections
+    //   })
+    // }
 
-    if (prevProps.sectionOrder !== this.props.sectionOrder) {
-      this.setState({
-        sectionOrder: this.props.sectionOrder
-      })
-    }
+    // if (prevProps.sectionOrder !== this.props.sectionOrder) {
+    //   this.setState({
+    //     sectionOrder: this.props.sectionOrder
+    //   })
+    // }
   }
 
   update(field) {
@@ -93,12 +103,18 @@ class SectionIndex extends React.Component {
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-    console.log('start: ', start)
-    console.log('finish: ', finish)
-    console.log('sections state: ', this.state.sections)
-    console.log('source droppaple id: ', source.droppableId)
-    console.log('destination droppable id: ', destination.droppableId)
-    console.log('draggable id type: ', typeof(draggableId))
+    console.log('start')
+    console.log(JSON.stringify(start))
+    // console.log(JSON.stringify(start.taskOrder))
+    console.log('finish')
+    console.log(JSON.stringify(finish))
+    // console.log(JSON.stringify(finish.taskOrder))
+    // console.log('start: ', start)
+    // console.log('finish: ', finish)
+    // console.log('sections state: ', this.state.sections)
+    // console.log('source droppaple id: ', source.droppableId)
+    // console.log('destination droppable id: ', destination.droppableId)
+    // console.log('draggable id type: ', typeof(draggableId))
     if (start === finish) {
       const newTaskOrder = Array.from(start.taskOrder)
       newTaskOrder.splice(source.index, 1);
@@ -136,7 +152,7 @@ class SectionIndex extends React.Component {
     };
 
     const finishTaskOrder = Array.from(finish.taskOrder);
-    finishTaskOrder.splice(destination.index, 0, draggableId);
+    finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));
     const newFinish = {
       ...finish,
       taskOrder: finishTaskOrder,
@@ -151,7 +167,7 @@ class SectionIndex extends React.Component {
       },
     };
 
-    this.setState(newState);
+    this.setState(newState, () => console.log('new state', this.state));
     this.props.updateSection({
       id: start.id,
       task_order: startTaskOrder
@@ -160,10 +176,17 @@ class SectionIndex extends React.Component {
       id: finish.id,
       task_order: finishTaskOrder
     });
-    this.props.updateTask({
-      id: draggableId,
-      section_id: finish.id
-    })
+    // this.props.updateTask({
+    //   id: draggableId,
+    //   section_id: finish.id
+    // })
+
+    console.log('new start')
+    console.log(JSON.stringify(newStart))
+    // console.log(JSON.stringify(this.state.sections[newStart.id].taskOrder))
+    console.log('new finish')
+    console.log(JSON.stringify(newFinish))
+    // console.log(JSON.stringify(this.state.sections[newFinish.id].taskOrder))
 
     // this.setState(newState, () => {
     //   this.props.updateSection({
@@ -212,11 +235,11 @@ class SectionIndex extends React.Component {
                   key={sectionId}
                   sectionId={sectionId}
                   // keying into this.state.sections results in draggables getting "stuck" after drop
-                  section={this.props.sections[sectionId]}
+                  section={this.state.sections[sectionId]}
                   // section={this.state.sections[sectionId]}
 
                   // testing
-                  taskOrder={this.state.sections[sectionId].taskOrder}
+                  // taskOrder={this.state.sections[sectionId].taskOrder}
 
                   createTask={this.props.createTask} 
                   deleteSection={this.props.deleteSection}
