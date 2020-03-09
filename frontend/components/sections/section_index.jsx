@@ -15,7 +15,10 @@ class SectionIndex extends React.Component {
       project: this.props.project,
       // sections: sections,
       sections: sections,
-      sectionOrder: this.props.sectionOrder
+      // sectionOrder: this.props.sectionOrder
+
+      // Testing
+      sectionOrder: this.props.project.sectionOrder
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revealForm = this.revealForm.bind(this);
@@ -40,10 +43,30 @@ class SectionIndex extends React.Component {
       // this.props.fetchProject(this.props.match.params.projectId)
     };
     
-    // Removing these fixes the task "sticking" issue
+    // Removing this fixes the task "sticking" issue
+    // Adding this makes newly created sections show up but causes sticking 
+    // Sticking likely caused by grabbing sections from props and passing 
+    // to children
     // if (prevProps.sections !== this.props.sections) {
     //   this.setState({
     //     sections: this.props.sections
+    //   })
+    // }
+
+    if (prevProps.project.sectionOrder.length !== this.props.project.sectionOrder) {
+      // this.setState({
+      //   sectionOrder: this.props.project.sectionOrder
+      // })
+    }
+
+    // if (prevProps.sections !== this.props.sections) {
+    //   // this.props.fetchSections(this.props.match.params.projectId)
+    //   this.props.fetchProject(this.props.match.params.projectId)
+    // }
+
+    // if (prevProps.sections !== this.props.sections) {
+    //   this.setState({
+    //     sectionOrder: this.props.project.sectionOrder
     //   })
     // }
 
@@ -103,18 +126,7 @@ class SectionIndex extends React.Component {
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-    console.log('start')
-    console.log(JSON.stringify(start))
-    // console.log(JSON.stringify(start.taskOrder))
-    console.log('finish')
-    console.log(JSON.stringify(finish))
-    // console.log(JSON.stringify(finish.taskOrder))
-    // console.log('start: ', start)
-    // console.log('finish: ', finish)
-    // console.log('sections state: ', this.state.sections)
-    // console.log('source droppaple id: ', source.droppableId)
-    // console.log('destination droppable id: ', destination.droppableId)
-    // console.log('draggable id type: ', typeof(draggableId))
+
     if (start === finish) {
       const newTaskOrder = Array.from(start.taskOrder)
       newTaskOrder.splice(source.index, 1);
@@ -216,19 +228,6 @@ class SectionIndex extends React.Component {
       <div className='section-index-parent'>
         <div className='section-index-content'>
           <DragDropContext onDragEnd={this.onDragEnd}>
-            {/* {
-              this.props.sections.map((section, index) => (
-                <SectionIndexItem 
-                  key={section.id} 
-                  section={section} 
-                  createTask={this.props.createTask} 
-                  deleteSection={this.props.deleteSection}
-                  updateSection={this.props.updateSection}
-                  project={this.props.project}
-                  index={index}
-                />
-              ))
-            } */}
             {
               this.state.sectionOrder.map((sectionId, index) => (
                 <SectionIndexItemContainer 

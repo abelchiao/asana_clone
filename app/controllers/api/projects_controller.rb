@@ -34,7 +34,13 @@ class Api::ProjectsController < ApplicationController
     @project_favorites = current_user.project_favorites
 
     if @project.update(project_params)
-      render :show
+      @project.section_order = [] unless project_params[:section_order]
+      if @project.save!
+        render :show
+      else
+        render json: @project.errors.full_messages, status: 422
+      end
+      # render :show
     else
       render json: @project.errors.full_messages, status: 422
     end

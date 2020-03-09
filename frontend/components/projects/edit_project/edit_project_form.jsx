@@ -3,7 +3,10 @@ import React from 'react';
 class EditProjectForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = this.props.currentProject;
+    this.state = {
+      ...this.props.currentProject,
+      section_order: this.props.currentProject.sectionOrder
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -30,11 +33,17 @@ class EditProjectForm extends React.Component {
 
   handleSubmit() {
     // e.preventDefault();
-    const project = this.state
+    const project = {
+      ...this.state,
+      section_order: this.state.sectionOrder
+    }
+    // project[section_order] = this.state.sectionOrder
     this.props.updateProject(project);
+    console.log(this.state)
   }
 
   render() {
+    console.log('edit project form state: ', this.state)
     return (
       <div className='edit-form-parent'>
         <div className='edit-form-header'>

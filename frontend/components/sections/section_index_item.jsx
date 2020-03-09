@@ -158,7 +158,7 @@ class SectionIndexItem extends React.Component {
 
   render() {
     if (!this.props.section) return null
-    console.log('SII sectionId, taskOrder: ', this.props.section.id, this.props.section.taskOrder)
+    // console.log('SII sectionId, taskOrder: ', this.props.section.id, this.props.section.taskOrder)
     // debugger
     // if (!this.state.renderComponent) return null
     // if (!this.state.section_id) return null

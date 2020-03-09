@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
   deleteSection: sectionId => dispatch(deleteSection(sectionId)),
   updateSection: section => dispatch(updateSection(section)),
   updateProject: project => dispatch(updateProject(project)),
-  // fetchProject: projectId => dispatch(fetchProject(projectId)),
+  fetchProject: projectId => dispatch(fetchProject(projectId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SectionIndex);
