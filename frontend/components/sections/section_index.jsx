@@ -29,7 +29,7 @@ class SectionIndex extends React.Component {
       this.setState({
         sections: result.sections
       })
-      console.log('section-index CDM, sections state: ', this.state.sections)
+      // console.log('section-index CDM, sections state: ', this.state.sections)
     })
   }
 
@@ -53,11 +53,62 @@ class SectionIndex extends React.Component {
     //   })
     // }
 
-    if (prevProps.project.sectionOrder.length !== this.props.project.sectionOrder) {
-      // this.setState({
-      //   sectionOrder: this.props.project.sectionOrder
-      // })
+    if (Object.keys(prevProps.sections).length !== Object.keys(this.props.sections).length) {
+      this.setState({
+        sections: this.props.sections
+      })
     }
+
+    Object.keys(this.props.sections).forEach(sectionId => {
+      // debugger
+      // console.log('SECTION ID: ', sectionId)
+      // console.log('this.props taskOrder: ', this.props.sections[sectionId])
+      // console.log('prevProps taskOrder: ', prevProps.sections[sectionId])
+      if (!prevProps.sections[sectionId]) return;
+
+      // if (this.props.sections[sectionId].taskOrder.length !== 
+      //   prevProps.sections[sectionId].taskOrder.length) {
+      //   this.setState({
+      //     sections: this.props.sections
+      //   })
+      // }
+
+      if (this.props.sections[sectionId].taskOrder.length !== 
+        prevProps.sections[sectionId].taskOrder.length) {
+        console.log('need to update state in section-index')
+        this.setState({
+          ...this.state,
+          sections: {
+            ...this.state.sections,
+            [sectionId]: this.props.sections[sectionId]
+          }
+        }, () => {
+          console.log('forcing update')
+          this.forceUpdate()
+        })
+      }
+    })
+
+    // Object.values(this.props.sections).forEach(section => {
+    //   if (section.taskOrder !== prevProps.sections[section.id].taskOrder) {
+    //     this.setState({
+    //       sections: {
+    //         [section.id]: section,
+    //       }
+    //     })
+    //   }
+    // })
+    // if (prevProps.project !== this.props.project) {
+    //   this.setState({
+    //     sectionOrder: this.props.project.sectionOrder
+    //   })
+    // }
+
+    // if (prevProps.tasks !== this.props.tasks) {
+    //   this.setState({
+    //     sections: this.props.sections,
+    //   })
+    // }
 
     // if (prevProps.sections !== this.props.sections) {
     //   // this.props.fetchSections(this.props.match.params.projectId)
@@ -84,15 +135,38 @@ class SectionIndex extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let updatedSectionOrder = this.state.sectionOrder
-    this.props.createSection(this.state)
+    // this.props.createSection(this.state)
+    this.props.createSection({
+      title: this.state.title,
+      project_id: this.state.project_id,
+      // task_order: []
+    })
       .then(data => {
+        // const newSectionId = data.section.id
         updatedSectionOrder.push(data.section.id)
-        this.setState({ sectionOrder: updatedSectionOrder }, () => {
+
+        // testing
+        // const newSection = data.section;
+        // // newSection.taskOrder = newSection.task_order
+        // newSection.taskOrder = []
+        // console.log('new section: ', newSection)
+        // console.log('SECTION CREATION DATA: ', data)
+
+        this.setState({ 
+          sectionOrder: updatedSectionOrder,
+          sections: {
+            ...this.state.sections,
+            [data.section.id]: data.section
+            // [data.section.id]: newSection
+          }
+        }, () => {
           this.props.updateProject({
             id: this.props.project.id,
             section_order: updatedSectionOrder
           })
-        })
+        console.log('updated section order: ', updatedSectionOrder)
+        console.log('section-index after submitting :', this.state)
+      })
       })
     this.setState({ title: '' })
     const form = document.getElementById(`new-section-form-${this.props.projectId}`)
@@ -188,10 +262,10 @@ class SectionIndex extends React.Component {
       id: finish.id,
       task_order: finishTaskOrder
     });
-    // this.props.updateTask({
-    //   id: draggableId,
-    //   section_id: finish.id
-    // })
+    this.props.updateTask({
+      id: draggableId,
+      section_id: finish.id
+    })
 
     console.log('new start')
     console.log(JSON.stringify(newStart))
@@ -224,6 +298,7 @@ class SectionIndex extends React.Component {
     // console.log('section-index-sections: ', this.props.sections)
     // console.log('section-index-sectionOrder: ', this.props.sectionOrder)
     // console.log('section-index props: ', this.props)
+    console.log('section index render state: ', JSON.stringify(this.state.sections))
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>
@@ -235,14 +310,14 @@ class SectionIndex extends React.Component {
                   sectionId={sectionId}
                   // keying into this.state.sections results in draggables getting "stuck" after drop
                   section={this.state.sections[sectionId]}
-                  // section={this.state.sections[sectionId]}
+                  // section={this.props.sections[sectionId]}
 
                   // testing
                   // taskOrder={this.state.sections[sectionId].taskOrder}
 
                   createTask={this.props.createTask} 
-                  deleteSection={this.props.deleteSection}
-                  updateSection={this.props.updateSection}
+                  // deleteSection={this.props.deleteSection}
+                  // updateSection={this.props.updateSection}
                   project={this.props.project}
                   index={index}
                   updateProject={this.props.updateProject}

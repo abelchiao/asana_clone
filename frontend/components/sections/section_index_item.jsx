@@ -45,9 +45,14 @@ class SectionIndexItem extends React.Component {
     // console.log('component did mount section props: ', this.props.section)
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (!this.props.section) return;
+  componentDidUpdate(prevProps) {
+    if (!this.props.section) return;
 
+    if (prevProps.section !== this.props.section) {
+      this.setState({
+        taskOrder: this.props.section.taskOrder
+      })
+    }
   //   if (prevProps.section !== this.props.section) {
   //     this.setState({
   //       sectionTitle: this.props.section.title,
@@ -62,11 +67,12 @@ class SectionIndexItem extends React.Component {
   //       taskOrder: this.props.taskOrder
   //     })
   //   }
-  // }
+  }
 
   handleSubmitTask(e) {
     e.preventDefault();
     let updatedTaskOrder = this.state.taskOrder;
+    // console.log('submit task updated taskOrder: ', this.state.taskOrder)
     // const { title, section_id } = this.state;
     this.props.createTask({ 
       title: this.state.title, 
@@ -74,6 +80,7 @@ class SectionIndexItem extends React.Component {
     })
       .then(data => {
         updatedTaskOrder.unshift(data.task.id)
+        console.log('submit task updated taskOrder: ', updatedTaskOrder)
         this.setState({ taskOrder: updatedTaskOrder }, () => {
           this.props.updateSection({
             id: this.props.section.id,
@@ -81,9 +88,9 @@ class SectionIndexItem extends React.Component {
            }).then(data => {
              this.setState({
                section: data.section
+               
              })
            })
-
         })
         // this.props.updateSection({ id: section_id, task_order: updatedTaskOrder});
       })
