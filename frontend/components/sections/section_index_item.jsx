@@ -157,7 +157,8 @@ class SectionIndexItem extends React.Component {
   handleUpdateSectionTitle() {
     const section = {
       title: this.state.sectionTitle,
-      id: this.props.section.id
+      id: this.props.section.id,
+      task_order: this.props.section.taskOrder
     }
     this.props.updateSection(section)
       .then(() => this.setState({ renderForm: false }))

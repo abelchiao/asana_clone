@@ -66,26 +66,28 @@ class SectionIndex extends React.Component {
       // console.log('prevProps taskOrder: ', prevProps.sections[sectionId])
       if (!prevProps.sections[sectionId]) return;
 
-      // if (this.props.sections[sectionId].taskOrder.length !== 
-      //   prevProps.sections[sectionId].taskOrder.length) {
-      //   this.setState({
-      //     sections: this.props.sections
-      //   })
-      // }
-
       if (this.props.sections[sectionId].taskOrder.length !== 
         prevProps.sections[sectionId].taskOrder.length) {
-        console.log('need to update state in section-index')
-        this.setState({
-          ...this.state,
-          sections: {
-            ...this.state.sections,
-            [sectionId]: this.props.sections[sectionId]
-          }
-        }, () => {
-          console.log('forcing update')
-          this.forceUpdate()
-        })
+          console.log('need to update state in section-index')
+          this.setState({
+            ...this.state,
+            sections: {
+              ...this.state.sections,
+              [sectionId]: this.props.sections[sectionId]
+            }
+          })
+      }
+
+      if (this.props.sections[sectionId].title !== 
+        prevProps.sections[sectionId].title) {
+          console.log('need to update state in section-index')
+          this.setState({
+            ...this.state,
+            sections: {
+              ...this.state.sections,
+              [sectionId]: this.props.sections[sectionId]
+            }
+          })
       }
     })
 
@@ -298,7 +300,10 @@ class SectionIndex extends React.Component {
     // console.log('section-index-sections: ', this.props.sections)
     // console.log('section-index-sectionOrder: ', this.props.sectionOrder)
     // console.log('section-index props: ', this.props)
+
+    // console log for debugging why new sections weren't showing up in newly created sections
     console.log('section index render state: ', JSON.stringify(this.state.sections))
+    
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>
