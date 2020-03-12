@@ -2,7 +2,7 @@ import React from 'react';
 import TaskIndexContainer from '../tasks/task_index_container';
 import TaskIndexItem from '../tasks/task_index_item';
 import { withRouter } from 'react-router-dom';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 class SectionIndexItem extends React.Component {
   constructor(props) {
@@ -34,13 +34,13 @@ class SectionIndexItem extends React.Component {
 
   componentDidMount() {
     if (!this.props.section) return;
-    const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
-    sectionHeader.onmouseover = function () {
-      this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
-    }
-    sectionHeader.onmouseout = function() {
-      this.parentElement.style = '';
-    }
+    // const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
+    // sectionHeader.onmouseover = function () {
+    //   this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
+    // }
+    // sectionHeader.onmouseout = function() {
+    //   this.parentElement.style = '';
+    // }
     // console.log('inside component did mount')
     // console.log('component did mount section props: ', this.props.section)
   }
@@ -51,6 +51,12 @@ class SectionIndexItem extends React.Component {
     if (prevProps.section !== this.props.section) {
       this.setState({
         taskOrder: this.props.section.taskOrder
+      })
+    }
+
+    if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+      this.setState({
+        sectionOrder: this.props.project.sectionOrder
       })
     }
   //   if (prevProps.section !== this.props.section) {
@@ -104,18 +110,30 @@ class SectionIndexItem extends React.Component {
   handleDeleteSection(e) {
     e.preventDefault();
     let updatedSectionOrder = this.state.sectionOrder
+    updatedSectionOrder.splice(this.props.index, 1)
+    this.props.updateProject({
+      id: this.props.project.id,
+      section_order: updatedSectionOrder
+    });
     this.props.deleteSection(this.props.section.id)
-      .then(data => {
-        updatedSectionOrder.splice(this.props.index, 1)
-        this.setState({
-          sectionOrder: updatedSectionOrder
-        })
-        this.props.updateProject({
-          id: this.props.project.id,
-          section_order: updatedSectionOrder
-        });
-      })
   }
+
+  // handleDeleteSection(e) {
+  //   e.preventDefault();
+  //   let updatedSectionOrder = this.state.sectionOrder
+  //   this.props.deleteSection(this.props.section.id)
+  //     .then(data => {
+  //       updatedSectionOrder.splice(this.props.index, 1)
+  //       // console.log('section deletion data: ', data)
+  //       this.setState({
+  //         sectionOrder: updatedSectionOrder
+  //       })
+  //       this.props.updateProject({
+  //         id: this.props.project.id,
+  //         section_order: updatedSectionOrder
+  //       });
+  //     })
+  // }
 
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value })
@@ -172,76 +190,93 @@ class SectionIndexItem extends React.Component {
     // if (!this.state.section_id) return null
     const { section, deleteTask, taskOrder } = this.props;
     // console.log('section-index-item props: ', this.props)
+    console.log('sectionIndexItem render sectionOrder state : ', this.state.sectionOrder)
     return (
-      <div className='section-index-item-parent' id='section-index-item-parent'>
-        <div className='section-index-item-header' id={`section-index-item-header-${section.id}`}>
-          {this.renderSectionTitle()}
-          <div>
-            <svg 
-              onClick={this.handleDeleteSection}
-              className='section-index-delete-icon' 
-              viewBox='0 0 448 512'
-            >
-              <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
-            </svg>
-          </div>
-        </div>
-        <div onClick={this.revealForm} className='reveal-task-form-button'>
-          <svg className='new-task-plus-icon' viewBox='0 0 32 32'>
-            <path d="M26,14h-8V6c0-1.1-0.9-2-2-2l0,0c-1.1,0-2,0.9-2,2v8H6c-1.1,0-2,0.9-2,2l0,0c0,1.1,0.9,2,2,2h8v8c0,1.1,0.9,2,2,2l0,0c1.1,0,2-0.9,2-2v-8h8c1.1,0,2-0.9,2-2l0,0C28,14.9,27.1,14,26,14z"></path>
-          </svg>
-        </div>
-        <form 
-          id={`create-task-${section.id}`}
-          className='task-create-form' 
-          onSubmit={this.handleSubmit}
-        >
-          <textarea
-            className='task-create-input'
-            id={`create-task-textarea-${section.id}`}
-            onChange={this.update('title')}
-            value={this.state.title}
-            placeholder='New task'
-            onBlur={this.handleSubmitTask}
-          />
-        </form>
-
-        {/* Formerly TaskIndex */}
-        <Droppable droppableId={this.props.section.id.toString()}>
-          {provided => (
+      <Draggable 
+        draggableId={(this.props.section.id + 999999).toString()} 
+        index={this.props.index}
+      >
+        {provided => (
+          <div
+            {...provided.draggableProps}
+            ref={provided.innerRef}
+            className='section-index-item-parent' 
+            id='section-index-item-parent'
+          >
             <div
-              className='task-index-parent'
-              ref={provided.innerRef}
-              {...provided.droppableProps}
+              {...provided.dragHandleProps}
+              className='section-index-item-header' 
+              id={`section-index-item-header-${section.id}`}
             >
-              {
-                // this.state.taskOrder.map((taskId, index) => (
-                // this.props.taskOrder.map((taskId, index) => (
-                this.props.section.taskOrder.map((taskId, index) => (
-                  <TaskIndexItem
-                    key={taskId.toString()}
-                    index={index}
-                    taskId={taskId}
-                    task={this.props.tasks[taskId]}
-                    deleteTask={deleteTask}
-                    section={this.props.section}
-                    updateSection={this.props.updateSection}
-                  />
-                ))
-              }
-              {provided.placeholder}
+              {this.renderSectionTitle()}
+              <div>
+                <svg 
+                  onClick={this.handleDeleteSection}
+                  className='section-index-delete-icon' 
+                  viewBox='0 0 448 512'
+                >
+                  <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
+                </svg>
+              </div>
             </div>
-          )}
-        </Droppable>
+            <div onClick={this.revealForm} className='reveal-task-form-button'>
+              <svg className='new-task-plus-icon' viewBox='0 0 32 32'>
+                <path d="M26,14h-8V6c0-1.1-0.9-2-2-2l0,0c-1.1,0-2,0.9-2,2v8H6c-1.1,0-2,0.9-2,2l0,0c0,1.1,0.9,2,2,2h8v8c0,1.1,0.9,2,2,2l0,0c1.1,0,2-0.9,2-2v-8h8c1.1,0,2-0.9,2-2l0,0C28,14.9,27.1,14,26,14z"></path>
+              </svg>
+            </div>
+            <form 
+              id={`create-task-${section.id}`}
+              className='task-create-form' 
+              onSubmit={this.handleSubmit}
+            >
+              <textarea
+                className='task-create-input'
+                id={`create-task-textarea-${section.id}`}
+                onChange={this.update('title')}
+                value={this.state.title}
+                placeholder='New task'
+                onBlur={this.handleSubmitTask}
+              />
+            </form>
 
-        {/* <DragDropContext onDragEnd={this.onDragEnd}> */}
-          {/* <TaskIndexContainer 
-            sectionId={section.id} 
-            section={section}
-            taskOrder={taskOrder}
-          /> */}
-        {/* </DragDropContext> */}
-      </div>
+            {/* Formerly TaskIndex */}
+            <Droppable droppableId={this.props.section.id.toString()} type='task'>
+              {provided => (
+                <div
+                  className='task-index-parent'
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  {
+                    // this.state.taskOrder.map((taskId, index) => (
+                    // this.props.taskOrder.map((taskId, index) => (
+                    this.props.section.taskOrder.map((taskId, index) => (
+                      <TaskIndexItem
+                        key={taskId.toString()}
+                        index={index}
+                        taskId={taskId}
+                        task={this.props.tasks[taskId]}
+                        deleteTask={deleteTask}
+                        section={this.props.section}
+                        updateSection={this.props.updateSection}
+                      />
+                    ))
+                  }
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+
+            {/* <DragDropContext onDragEnd={this.onDragEnd}> */}
+              {/* <TaskIndexContainer 
+                sectionId={section.id} 
+                section={section}
+                taskOrder={taskOrder}
+              /> */}
+            {/* </DragDropContext> */}
+          </div>
+        )}
+      </Draggable>
     )
   }
 }

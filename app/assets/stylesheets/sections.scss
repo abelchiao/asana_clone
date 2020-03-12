@@ -142,3 +142,20 @@
 .new-section-form {
   display: none;
 }
+
+.sections-droppable {
+  display: flex;
+}
+
+.section-index-item-parent:hover, .section-index-item-parent:active {
+  border: 1px solid #fff;
+  padding: 7px;
+}
+
+.section-index-item-parent:active {
+  background: rgb(245, 245, 245);
+  .section-index-item-title {
+    color: black;
+  }
+}
+

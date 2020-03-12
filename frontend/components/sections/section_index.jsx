@@ -2,7 +2,7 @@ import React from 'react';
 // import SectionIndexItem from './section_index_item';
 import SectionIndexItemContainer from './section_index_item_container';
 import { withRouter } from 'react-router-dom';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class SectionIndex extends React.Component {
   constructor(props) {
@@ -38,11 +38,17 @@ class SectionIndex extends React.Component {
       this.setState({ 
         title: '',
         project_id: this.props.match.params.projectId,
-        sectionOrder: this.props.sectionOrder
+        // sectionOrder: this.props.sectionOrder
+        sectionOrder: this.props.project.sectionOrder
       });
       // this.props.fetchProject(this.props.match.params.projectId)
     };
     
+    if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+      this.setState({
+        sectionOrder: this.props.sectionOrder
+      })
+    }
     // Removing this fixes the task "sticking" issue
     // Adding this makes newly created sections show up but causes sticking 
     // Sticking likely caused by grabbing sections from props and passing 
@@ -187,7 +193,7 @@ class SectionIndex extends React.Component {
   };
 
   onDragEnd = result => {
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) {
       return;
@@ -200,11 +206,30 @@ class SectionIndex extends React.Component {
       return;
     }
 
+    if (type === 'column') {
+      const newSectionOrder = Array.from(this.state.sectionOrder);
+      newSectionOrder.splice(source.index, 1);
+      newSectionOrder.splice(destination.index, 0, (parseInt(draggableId) - 999999));
+
+      const newState = {
+        ...this.state,
+        sectionOrder: newSectionOrder
+      };
+      this.setState(newState, () => {
+        this.props.updateProject({
+          id: this.props.project.id,
+          section_order: newSectionOrder
+        })
+      });
+      // need to persist order to database here
+      return;
+    }
+
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
 
     if (start === finish) {
-      const newTaskOrder = Array.from(start.taskOrder)
+      const newTaskOrder = Array.from(start.taskOrder);
       newTaskOrder.splice(source.index, 1);
       newTaskOrder.splice(destination.index, 0, draggableId);
 
@@ -302,33 +327,51 @@ class SectionIndex extends React.Component {
     // console.log('section-index props: ', this.props)
 
     // console log for debugging why new sections weren't showing up in newly created sections
-    console.log('section index render state: ', JSON.stringify(this.state.sections))
-    
+    // console.log('section index render state: ', JSON.stringify(this.state.sections))
+    console.log('section index render state sectionOrder: ', this.state.sectionOrder)
+    console.log('section index render state sections: ', this.state.sections)
+    console.log('section index render props: ', this.props)
+
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>
           <DragDropContext onDragEnd={this.onDragEnd}>
-            {
-              this.state.sectionOrder.map((sectionId, index) => (
-                <SectionIndexItemContainer 
-                  key={sectionId}
-                  sectionId={sectionId}
-                  // keying into this.state.sections results in draggables getting "stuck" after drop
-                  section={this.state.sections[sectionId]}
-                  // section={this.props.sections[sectionId]}
+            <Droppable 
+              droppableId='all-sections' 
+              direction='horizontal' 
+              type='column'
+            >
+              {provided => (
+                <div
+                  className='sections-droppable'
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {
+                    this.state.sectionOrder.map((sectionId, index) => (
+                      <SectionIndexItemContainer 
+                        key={sectionId}
+                        sectionId={sectionId}
+                        // keying into this.state.sections results in draggables getting "stuck" after drop
+                        section={this.state.sections[sectionId]}
+                        // section={this.props.sections[sectionId]}
 
-                  // testing
-                  // taskOrder={this.state.sections[sectionId].taskOrder}
+                        // testing
+                        // taskOrder={this.state.sections[sectionId].taskOrder}
 
-                  createTask={this.props.createTask} 
-                  // deleteSection={this.props.deleteSection}
-                  // updateSection={this.props.updateSection}
-                  project={this.props.project}
-                  index={index}
-                  updateProject={this.props.updateProject}
-                />
-              ))
-            }
+                        createTask={this.props.createTask} 
+                        // deleteSection={this.props.deleteSection}
+                        // updateSection={this.props.updateSection}
+                        project={this.props.project}
+                        index={index}
+                        updateProject={this.props.updateProject}
+                      />
+                    ))
+                  }
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </DragDropContext>
           <div className='new-section-form-container'>
             <div 
