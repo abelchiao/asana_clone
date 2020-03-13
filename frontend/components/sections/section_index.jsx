@@ -13,7 +13,6 @@ class SectionIndex extends React.Component {
       title: '',
       project_id: this.props.match.params.projectId,
       project: this.props.project,
-      // sections: sections,
       sections: sections,
       // sectionOrder: this.props.sectionOrder
 
@@ -66,15 +65,10 @@ class SectionIndex extends React.Component {
     }
 
     Object.keys(this.props.sections).forEach(sectionId => {
-      // debugger
-      // console.log('SECTION ID: ', sectionId)
-      // console.log('this.props taskOrder: ', this.props.sections[sectionId])
-      // console.log('prevProps taskOrder: ', prevProps.sections[sectionId])
       if (!prevProps.sections[sectionId]) return;
 
       if (this.props.sections[sectionId].taskOrder.length !== 
         prevProps.sections[sectionId].taskOrder.length) {
-          // console.log('need to update state in section-index')
           this.setState({
             ...this.state,
             sections: {
@@ -86,7 +80,6 @@ class SectionIndex extends React.Component {
 
       if (this.props.sections[sectionId].title !== 
         prevProps.sections[sectionId].title) {
-          // console.log('need to update state in section-index')
           this.setState({
             ...this.state,
             sections: {
@@ -143,37 +136,24 @@ class SectionIndex extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let updatedSectionOrder = this.state.sectionOrder
-    // this.props.createSection(this.state)
     this.props.createSection({
       title: this.state.title,
       project_id: this.state.project_id,
-      // task_order: []
     })
       .then(data => {
-        // const newSectionId = data.section.id
         updatedSectionOrder.push(data.section.id)
-
-        // testing
-        // const newSection = data.section;
-        // // newSection.taskOrder = newSection.task_order
-        // newSection.taskOrder = []
-        // console.log('new section: ', newSection)
-        // console.log('SECTION CREATION DATA: ', data)
 
         this.setState({ 
           sectionOrder: updatedSectionOrder,
           sections: {
             ...this.state.sections,
             [data.section.id]: data.section
-            // [data.section.id]: newSection
           }
         }, () => {
           this.props.updateProject({
             id: this.props.project.id,
             section_order: updatedSectionOrder
           })
-        // console.log('updated section order: ', updatedSectionOrder)
-        // console.log('section-index after submitting :', this.state)
       })
       })
     this.setState({ title: '' })
@@ -221,7 +201,6 @@ class SectionIndex extends React.Component {
           section_order: newSectionOrder
         })
       });
-      // need to persist order to database here
       return;
     }
 
@@ -233,13 +212,11 @@ class SectionIndex extends React.Component {
       newTaskOrder.splice(source.index, 1);
       newTaskOrder.splice(destination.index, 0, draggableId);
 
-      // console.log('start: ', start)
       const newSection = {
         ...start,
         taskOrder: newTaskOrder,
       };
 
-      // console.log('new section: ', newSection)
       const newState = {
         ...this.state,
         sections: {
@@ -342,8 +319,6 @@ class SectionIndex extends React.Component {
                         // taskOrder={this.state.sections[sectionId].taskOrder}
 
                         createTask={this.props.createTask} 
-                        // deleteSection={this.props.deleteSection}
-                        // updateSection={this.props.updateSection}
                         project={this.props.project}
                         index={index}
                         updateProject={this.props.updateProject}
@@ -377,7 +352,6 @@ class SectionIndex extends React.Component {
                 placeholder='Section title'
                 onBlur={this.handleSubmit}
               />
-              {/* <button type='submit'>Create column</button> */}
             </form>
           </div>
         </div>

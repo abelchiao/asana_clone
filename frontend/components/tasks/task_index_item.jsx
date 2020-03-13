@@ -40,7 +40,6 @@ class TaskIndexItem extends React.Component {
 
   handleDelete(e) {
     e.stopPropagation();
-    // let updatedTaskOrder = this.state.taskOrder;
     let updatedTaskOrder = this.props.section.taskOrder;
     console.log('tii handleDelete pre-delete taskOrder: ', updatedTaskOrder)
     console.log('tii handleDelete index: ', this.props.index)
@@ -112,26 +111,16 @@ class TaskIndexItem extends React.Component {
     if (!this.props) return null;
     if (!this.props.taskId) return null;
 
-    // Test task deletion console logs
-    console.log('TII RENDER STATE taskOrder', this.state.taskOrder)
-    console.log('TII RENDER PROPS taskOrder', this.props.section.taskOrder)
-
     const { task } = this.props;
-    // console.log('task-index-item props: ', this.props)
-    // console.log('task-index-item taskId prop: ', this.props.taskId)
-    // console.log('task-index-item taskId prop stringified: ', this.props.taskId.toString())
+
     return (
       <Draggable
-        // draggableId={this.props.dndId}
-        // draggableId={this.props.taskId.toString()}
 
         // testing
         draggableId={this.props.task.id.toString()}
         // draggableId={`${this.props.task.id}`}
         // key={this.props.task.id}
         index={this.props.index}
-        // index={this.props.index}
-        // id={this.props.task.id}
       >
         {(provided) => (
           <div 

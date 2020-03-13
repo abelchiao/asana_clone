@@ -7,11 +7,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 class SectionIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    // debugger
-    // console.log('constructor props: ', props)
-    // console.log('constructor this props: ', this.props)
     let sectionTitle = this.props.section ? this.props.section.title : '';
-    // let taskOrder = this.props.section ? this.props.section.taskOrder : [];
     let taskOrder = this.props.taskOrder ? this.props.taskOrder : [];
     let section = this.props.section ? this.props.section : {};
     let sectionOrder = this.props.project ? this.props.project.sectionOrder : [];
@@ -19,8 +15,6 @@ class SectionIndexItem extends React.Component {
     this.state = {
       title: '',
       renderForm: false,
-      // renderComponent: false,
-      // section_id: this.props.section.id,
       sectionTitle: sectionTitle,
       taskOrder: taskOrder,
       section: section,
@@ -41,8 +35,6 @@ class SectionIndexItem extends React.Component {
     // sectionHeader.onmouseout = function() {
     //   this.parentElement.style = '';
     // }
-    // console.log('inside component did mount')
-    // console.log('component did mount section props: ', this.props.section)
   }
 
   componentDidUpdate(prevProps) {
@@ -78,7 +70,6 @@ class SectionIndexItem extends React.Component {
   handleSubmitTask(e) {
     e.preventDefault();
     let updatedTaskOrder = this.state.taskOrder;
-    // console.log('submit task updated taskOrder: ', this.state.taskOrder)
     // const { title, section_id } = this.state;
     this.props.createTask({ 
       title: this.state.title, 

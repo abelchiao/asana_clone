@@ -1,6 +1,5 @@
 import React from 'react';
 import SideBarContainer from '../../side_bar/side_bar_container';
-import ProjectShowNavBar from '../project_show/project_show_nav_bar';
 import ProjectShowNavBarContainer from '../project_show/project_show_nav_bar_container';
 import SectionIndexContainer from '../../sections/section_index_container';
 
@@ -12,7 +11,6 @@ class ProjectShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId)
-    // this.props.fetchSections(this.props.match.params.projectId)
   }
 
   componentDidUpdate(prevProps) {
@@ -23,7 +21,6 @@ class ProjectShow extends React.Component {
 
   render() {
     if (!this.props.project) return null;
-    // console.log('project show props: ', this.props)
     const { project, logout, createProject, closeModal } = this.props;
     return (
       <div className='project-show-parent'>
@@ -41,12 +38,10 @@ class ProjectShow extends React.Component {
               />
             </div>
             <div className='project-show-contents'>
-              {/* <SectionIndexContainer projectId={project.id} /> */}
               <SectionIndexContainer 
                 projectId={this.props.match.params.projectId}
                 project={this.props.project}
                 sectionOrder={this.props.project.sectionOrder}
-                // sections={this.props.sections}
               />
             </div>
           </div>
