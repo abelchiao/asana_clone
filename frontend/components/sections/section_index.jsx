@@ -345,7 +345,7 @@ class SectionIndex extends React.Component {
               direction='horizontal' 
               type='column'
             >
-              {provided => (
+              {(provided, snapshot) => (
                 <div
                   className='sections-droppable'
                   {...provided.droppableProps}

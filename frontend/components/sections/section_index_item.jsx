@@ -197,12 +197,14 @@ class SectionIndexItem extends React.Component {
         draggableId={(this.props.section.id + 999999).toString()} 
         index={this.props.index}
       >
-        {provided => (
+        {(provided, snapshot) => (
           <div
             {...provided.draggableProps}
             ref={provided.innerRef}
-            className='section-index-item-parent' 
+            isDragging={snapshot.isDragging}
+            className={`section-index-item-parent ${snapshot.isDragging ? 'isDragging' : ''}`}
             id='section-index-item-parent'
+            // style={ snapshot.isDragging ? { background: 'white' } : {}}
           >
             <div
               {...provided.dragHandleProps}
