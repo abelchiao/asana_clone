@@ -189,8 +189,9 @@ class SectionIndexItem extends React.Component {
     // if (!this.state.renderComponent) return null
     // if (!this.state.section_id) return null
     const { section, deleteTask, taskOrder } = this.props;
+    console.log('SII RENDER taskOrder: ', this.props.section.taskOrder)
     // console.log('section-index-item props: ', this.props)
-    console.log('sectionIndexItem render sectionOrder state : ', this.state.sectionOrder)
+    // console.log('sectionIndexItem render sectionOrder state : ', this.state.sectionOrder)
     return (
       <Draggable 
         draggableId={(this.props.section.id + 999999).toString()} 

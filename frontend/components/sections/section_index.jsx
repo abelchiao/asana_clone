@@ -74,7 +74,7 @@ class SectionIndex extends React.Component {
 
       if (this.props.sections[sectionId].taskOrder.length !== 
         prevProps.sections[sectionId].taskOrder.length) {
-          console.log('need to update state in section-index')
+          // console.log('need to update state in section-index')
           this.setState({
             ...this.state,
             sections: {
@@ -86,7 +86,7 @@ class SectionIndex extends React.Component {
 
       if (this.props.sections[sectionId].title !== 
         prevProps.sections[sectionId].title) {
-          console.log('need to update state in section-index')
+          // console.log('need to update state in section-index')
           this.setState({
             ...this.state,
             sections: {
@@ -172,8 +172,8 @@ class SectionIndex extends React.Component {
             id: this.props.project.id,
             section_order: updatedSectionOrder
           })
-        console.log('updated section order: ', updatedSectionOrder)
-        console.log('section-index after submitting :', this.state)
+        // console.log('updated section order: ', updatedSectionOrder)
+        // console.log('section-index after submitting :', this.state)
       })
       })
     this.setState({ title: '' })
@@ -328,9 +328,13 @@ class SectionIndex extends React.Component {
 
     // console log for debugging why new sections weren't showing up in newly created sections
     // console.log('section index render state: ', JSON.stringify(this.state.sections))
-    console.log('section index render state sectionOrder: ', this.state.sectionOrder)
-    console.log('section index render state sections: ', this.state.sections)
-    console.log('section index render props: ', this.props)
+    // console.log('section index render state sectionOrder: ', this.state.sectionOrder)
+    // console.log('section index render state sections: ', this.state.sections)
+    // console.log('section index render props: ', this.props)
+
+    // Console logs for debugging taskOrder weirdness
+    // console.log('SECTION INDEX RENDER SECTIONS PROPS: ', this.props.sections[13].taskOrder)
+    // console.log('SECTION INDEX RENDER SECTIONS STATE: ', this.state.sections[13].taskOrder)
 
     return (
       <div className='section-index-parent'>

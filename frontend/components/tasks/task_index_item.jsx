@@ -4,12 +4,12 @@ import { Draggable } from 'react-beautiful-dnd';
 class TaskIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    // let taskOrder = this.props.section.taskOrder ? this.props.section.taskOrder : [];
+    let taskOrder = this.props.section.taskOrder ? this.props.section.taskOrder : [];
     let taskId = this.props.taskId ? this.props.taskId.toString() : ''
 
     this.state = {
-      // taskOrder: taskOrder
-      taskOrder: this.props.section.taskOrder,
+      taskOrder: taskOrder,
+      // taskOrder: this.props.section.taskOrder,
       taskId: taskId
     }
     
@@ -17,26 +17,35 @@ class TaskIndexItem extends React.Component {
     this.revealTaskDropdown = this.revealTaskDropdown.bind(this);
   };
 
-  // componentDiDUpdate(prevProps) {
-  //   if (prevProps.task !== this.props.task) {
-  //   // if (prevProps.section !== this.props.section) {
-  //     this.setState({
-  //       sections: this.props.sections
-  //       // taskOrder: this.props.section.taskOrder
-  //     })
-  //   }
+  componentDiDUpdate(prevProps) {
+    if (prevProps.section.taskOrder !== this.props.section.taskOrder) {
+      this.setState({
+        taskOrder: this.props.section.taskOrder
+      })
+    }
+    // if (prevProps.task !== this.props.task) {
+    // // if (prevProps.section !== this.props.section) {
+    //   this.setState({
+    //     sections: this.props.sections
+    //     // taskOrder: this.props.section.taskOrder
+    //   })
+    // }
 
-  //   if (prevProps.taskId !== this.props.taskId) {
-  //     this.setState({
-  //       taskId: this.props.taskId
-  //     })
-  //   }
-  // }
+    // if (prevProps.taskId !== this.props.taskId) {
+    //   this.setState({
+    //     taskId: this.props.taskId
+    //   })
+    // }
+  }
 
   handleDelete(e) {
     e.stopPropagation();
-    let updatedTaskOrder = this.state.taskOrder
+    // let updatedTaskOrder = this.state.taskOrder;
+    let updatedTaskOrder = this.props.section.taskOrder;
+    console.log('tii handleDelete pre-delete taskOrder: ', updatedTaskOrder)
+    console.log('tii handleDelete index: ', this.props.index)
     updatedTaskOrder.splice(this.props.index, 1)
+    console.log('tii handleDelete post-delete taskOrder: ', updatedTaskOrder)
     this.setState({ taskOrder: updatedTaskOrder }, () => {
       this.props.deleteTask(this.props.task.id)
         .then(data => {
@@ -102,6 +111,11 @@ class TaskIndexItem extends React.Component {
     if (!this.props.task) return null;
     if (!this.props) return null;
     if (!this.props.taskId) return null;
+
+    // Test task deletion console logs
+    console.log('TII RENDER STATE taskOrder', this.state.taskOrder)
+    console.log('TII RENDER PROPS taskOrder', this.props.section.taskOrder)
+
     const { task } = this.props;
     // console.log('task-index-item props: ', this.props)
     // console.log('task-index-item taskId prop: ', this.props.taskId)
