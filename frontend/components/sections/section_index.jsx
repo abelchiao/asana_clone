@@ -294,13 +294,6 @@ class SectionIndex extends React.Component {
       section_id: finish.id
     })
 
-    console.log('new start')
-    console.log(JSON.stringify(newStart))
-    // console.log(JSON.stringify(this.state.sections[newStart.id].taskOrder))
-    console.log('new finish')
-    console.log(JSON.stringify(newFinish))
-    // console.log(JSON.stringify(this.state.sections[newFinish.id].taskOrder))
-
     // this.setState(newState, () => {
     //   this.props.updateSection({
     //     id: start.id,
@@ -320,21 +313,6 @@ class SectionIndex extends React.Component {
   render() {
     if (!this.props) return null;
     if (!this.props.sections) return null;
-    // console.log('this.props.sectionOrder: ', this.props.sectionOrder)
-    // console.log('this.state.sectionOrder: ', this.state.sectionOrder)
-    // console.log('section-index-sections: ', this.props.sections)
-    // console.log('section-index-sectionOrder: ', this.props.sectionOrder)
-    // console.log('section-index props: ', this.props)
-
-    // console log for debugging why new sections weren't showing up in newly created sections
-    // console.log('section index render state: ', JSON.stringify(this.state.sections))
-    // console.log('section index render state sectionOrder: ', this.state.sectionOrder)
-    // console.log('section index render state sections: ', this.state.sections)
-    // console.log('section index render props: ', this.props)
-
-    // Console logs for debugging taskOrder weirdness
-    // console.log('SECTION INDEX RENDER SECTIONS PROPS: ', this.props.sections[13].taskOrder)
-    // console.log('SECTION INDEX RENDER SECTIONS STATE: ', this.state.sections[13].taskOrder)
 
     return (
       <div className='section-index-parent'>
