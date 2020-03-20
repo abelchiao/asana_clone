@@ -36,12 +36,34 @@ function Modal({modal, closeModal, currentProject}) {
   );
 };
 ```
-
-
-
 ___
 #### Add new columns/tasks to a project through a clean, intuitive UI
 ![Column task creation demo](img/column_task_create.gif)
+
+#### Implementation: 
+Column and task creation fields are hidden by default until activated to preserve a cleaner UI.
+```
+<div onClick={this.revealForm} className='reveal-task-form-button'>
+  <svg className='new-task-plus-icon' viewBox='0 0 32 32'>
+    <path d="..."></path>
+  </svg>
+</div>
+<form 
+  id={`create-task-${section.id}`}
+  className='task-create-form' 
+  onSubmit={this.handleSubmit}
+>
+  <textarea
+    className='task-create-input'
+    id={`create-task-textarea-${section.id}`}
+    onChange={this.update('title')}
+    value={this.state.title}
+    placeholder='New task'
+    onBlur={this.handleSubmitTask}
+  />
+</form>
+```
+
 
 ___
 #### Organize/rearrange your project items using drag and drop
