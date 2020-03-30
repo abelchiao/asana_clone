@@ -145,9 +145,9 @@ class TaskIndexItem extends React.Component {
                   id={`task-item-${task.id}`}
                   className='task-dropdown-contents'
                 >
-                  <div className='task-dropdown-item'>
+                  {/* <div className='task-dropdown-item'>
                     Edit task details
-                  </div>
+                  </div> */}
                   <div onClick={this.handleDelete} className='task-dropdown-item'>
                     Delete task
                   </div>
