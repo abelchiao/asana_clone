@@ -5,7 +5,6 @@ An intuitive interface for adding, organizing, and visualizing work to be done m
 [Check out the app here.](https://notsana.herokuapp.com)
 
 ## Features
-___
 #### Create new projects, edit them, and add them to your favorites
 ![Project creation demo](img/project_create.gif)
 
@@ -125,7 +124,6 @@ this.setState(newState, () => {
   })
 });
 ```
-___
 
 ## Technologies
 + React / Redux
